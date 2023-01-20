@@ -1,4 +1,4 @@
-# T3A2-A - Wormreads
+# Wormreads Full-Stack Web Application
 
 ## Purpose
 
@@ -64,8 +64,8 @@ The benefit of using MERN in this manner is that the whole application can be co
 
 Build and operate an online electronic book library for users to access books in their browser and read for a limited time period.
 
-- As a library administrator, I want to be able to view, add, update and delete books in the library from my computer. This will allow me to attract more clients to the application by expanding the number of books they can borrow over time. It also allows me to correct any errors present in existing listings and delete books I no longer wish to lend. It would also be beneficial to be able to see which books are the most popular and have been lent out the most frequently, so that I can order more of that specific book and add more books of that type, genre, era and by the same author in the future. I want to be able to see which books are currently lent out and to which customers. It would be good to have a customer’s access to a book revoked once their hire date has passed and a method to confirm that books have been returned.
-- As an avid reader I want to be able to borrow books online and read the book on my web browser at any time during the loan period. I want to be able to browse different book genres and authors to find something appealing. I also want to be able to see which books are currently available and place a hold on items that are already checked out. It is important for me to be able to check how much time I have left on a book before it needs to be returned. It would be good to see which books were the most popular with other readers to help find something I am likely to enjoy and which to avoid.  I also enjoy writing comments to support my favourite authors and share my opinions with others to feel as though I am contributing to the reading community.
+- As a library administrator, I want to be able to view, add, update and delete books in the library from my computer. This will allow me to attract more clients to the application by expanding the number of books they can borrow over time. It also allows me to correct any errors present in existing listings and delete books I no longer wish to lend. It would also be beneficial to be able to see which books are the most popular, and have been lent out the most frequently, so that I can order more of that specific book and add more books of that type, genre, era and author in the future. Furthermore I want to be able to see which books are currently lent out and to which customers. It would be good to have a customer’s access to a book revoked once their hire date has passed and a method to confirm that books have been returned.
+- As an avid reader I want to be able to borrow books online and read the book on my web browser at any time during the loan period. I want to be able to browse different book genres and authors to find something appealing. I also want to be able to see which books are currently available and place a hold on items that are already checked out. It is important for me to be able to check how much time I have left on a book before it needs to be returned. It would be good to see which books were the most popular with other readers to help find something I am likely to enjoy and which to avoid. I do also enjoy writing comments to support my favourite authors and share my opinions with others to feel as though I am contributing to the reading community.
 
 ### Refined User Stories
 
@@ -77,8 +77,8 @@ Build and operate an online electronic book library for users to access books in
 6. As a library administrator I want to ensure books are returned to the system by the return date so that they can be read by more people.
 7. As a library administrator I want to be able to update and delete existing books so that I can improve upon previous listings and fix any past mistakes I have made.
 8. I Steve, as an indecisive reader, want to be able to view ratings and comments from other people about books to guide my decision about what to read so that I can ensure I am reading a popular well liked book.
-9. I Janet, as an avid reader, I want to be able to provide comments and ratings about a book so that I can share my opinions and thoughts, to help support the authors and books I love and help others decide if the book is worth reading.
-10. As a library administrator I want to see which books are the most popular so that I can respond to customer demand and purchase more of this specific book and also more from this author and/or genre.
+9. I Janet, as an avid reader, want to be able to provide comments and ratings about a book so that I can share my opinions and thoughts, to help support the authors and books I love and help others decide if the book is worth reading.
+10. As a library administrator I want to see which books are the most popular so that I can respond to customer demand and purchase more of this specific book and additional copies from this author and/or genre.
 11. I’m Jess and I’m really set on reading a book when I’ve put my mind to it. It would be cool to be able to put a book on hold if it's already taken.
 
 ## Wireframes

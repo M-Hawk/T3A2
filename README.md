@@ -136,6 +136,7 @@ Build and operate an online electronic book library for users to access books in
 ## <a name='Project-Management'></a>Project Management
 
 [Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
+
 Trello was used to plan and track tasks for this project. This allowed work streams to be defined in lists, with user stories and Kanban methodology being implemented. The following lists were created:
 
 Grading Tracker: This list tracks the grade requirements for each expected assignment outcome. 
@@ -144,11 +145,14 @@ Grading Tracker: This list tracks the grade requirements for each expected assig
 -Doing: A task currently being worked on. This allows the entire team to immediately see who is working on what and to ensure we don’t have too many ongoing tasks at the one time. 
 -Ongoing: A task that has been worked on, however is awaiting other tasks to be completed or requires refinement, revision or review prior to being marked as completed.
 -Completed: All completed tasks
+
 ### Trello Board as at 16th Jan 2023
 ![Trello Board 16th Jan](/docs/Trello%20Board%2016%20Jan.jpg)
 ### Trello Board as at 18th Jan 2023
 ![Trello Board 18th Jan](/docs/Trello%20Board%2018%20Jan.png)
-Features were added as tasks to complete in the Trello board. Each feature encompasses relevant user stories that have dictated the contents of the feature. The user stories that relate to each feature have been included in the description of each feature as shown here: 
+
+Features were added as tasks to complete in the Trello board. Each feature encompasses relevant user stories that have dictated the contents of the feature. The user stories that relate to each feature have been included in the description of each feature as shown here:
+
 ![Trello Board Feature](/docs/Trello%20Board%20Features.jpg)
 ### Trello Board as at 20th Jan 2023
 ![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot.png)

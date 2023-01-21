@@ -1,10 +1,10 @@
 
-# <a name='Return-to-Top'></a> Wormreads Full-Stack Web Application 
+# <a name='Return'></a> Wormreads Full-Stack Web Application
 
 ## Table of Contents
 
 - [Purpose](#purpose)
-- [Functionality / Features](#Functionality-Features)
+- [Functionality/Features](#Functionality)
 - [Target Audience](#Target-Audience)
 - [Tech Stack](#Tech-Stack)
 - [Dataflow Diagram](#Dataflow-Diagram)
@@ -17,7 +17,7 @@
 
 The purpose of this Full-Stack MERN application is to provide book readers with the         ability to borrow and read books in an online environment. All digital content available on Wormreads is free to borrow (subject to availability) and accessible through a web browser after registering to use the application. There are no subscription costs, no in-app purchases, and no late fees (digital titles are automatically returned on their due dates).
 
-## <a name='Functionality-Features'></a>Functionality / Features
+## <a name='Functionality'></a>Functionality/Features
 
 Based on user story revision and driving factors, it has been determined that the following features and functions are required to make the application a viable product.
 
@@ -123,4 +123,4 @@ Build and operate an online electronic book library for users to access books in
 
 ![alt text](image.jpg)
 
-[Return to Top](#Return-to-Top)
+[Return to Top](#Return)

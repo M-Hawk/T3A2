@@ -3,6 +3,8 @@
 
 # Wormreads Full-Stack Web Application
 
+[Github Repository Link](https://github.com/M-Hawk/T3A2-Wormreads)
+
 ## Table of Contents
 
 - [Purpose](#purpose)
@@ -66,17 +68,27 @@ The benefit of using MERN in this manner is that the whole application can be co
 
 ## <a name='Dataflow-Diagram'></a>Dataflow Diagram
 
+The following dataflow diagrams (DFD) were created to illustrate the flow of data through the application.
+
 ### Users
 
+This DFD is used to show how data is exchanged to log-in and register a new user. 
+
 ![User Registration](/docs/Wormreads%20User%20log-in%20and%20register%20DFD.jpeg)
+
+Users can also search or browse for a book based on search fields, get more details on a specific book, and borrow a book. They can also view their own user information including which books they have borrowed and when each is due to be returned. The flow of data throughout these activities is depicted in this DFD:  
 
 ![User Actions](/docs/Wormreads%20User%20Actions%20DFD.jpeg)
 
 ### Admins
 
-![Admin CRUD Commands](/docs/Admin%20Routes%20(Book%20CRUD%20routes)%20DFD.jpeg)
+The following DFD depicts how data will flow throughout the application when an  admin user adds, modifies, or deletes book details from the database.  This involves the CRUD functionality for the Book Details Collection. This is a collection which will store details about each book (title, author and genre). It also includes how data is exchanged when viewing all borrowings and all users in the database. Only users who have a valid JSON token (received after successfully logging in) and isAdmin set to true in their users document will be permitted access to these routes.  
 
 ![Admin Actions](/docs/Admin%20Routes%20DFD%20Part%201.jpg)
+
+Another collection called Books is also required to store details about each individual book including the book id, book details id (from the book details collection) and whether it is available. This dataflow diagram depicts how data is changed when adding, updating, and deleting books in this collection. Again only users who have a valid JSON token (received after successfully logging in) and isAdmin set to true in their users document will be permitted access to these routes.
+
+![Admin CRUD Commands](/docs/Admin%20Routes%20(Book%20CRUD%20routes)%20DFD.jpeg)
 
 ## <a name='Application-Architecture-Diagram'></a>Application Architecture Diagram
 
@@ -135,13 +147,33 @@ Build and operate an online electronic book library for users to access books in
 
 [Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
 
+Trello was used to plan and track tasks for this project. This allowed work streams to be defined in lists, with user stories and Kanban methodology being implemented. The following lists were created:
+
+Grading Tracker: This list tracks the grade requirements for each expected assignment outcome.
+
+- Backlog: A prioritised list of unplanned tasks that we intended to spend time on but haven't started yet. This is the staging area where tasks will get fleshed out. They are not in the current implementation plan.
+- To-do: A prioritised list of planned work that is ready to be completed.
+- Doing: A task currently being worked on. This allows the entire team to immediately see who is working on what and to ensure we don’t have too many ongoing tasks at the one time.
+- Ongoing: A task that has been worked on, however is awaiting other tasks to be completed or requires refinement, revision or review prior to being marked as completed.
+- Completed: All completed tasks
+
+### Trello Board as at 16th Jan 2023
+
 ![Trello Board 16th Jan](/docs/Trello%20Board%2016%20Jan.jpg)
 
-![Trello Board Feature](/docs/Trello%20Board%20Features.jpg)
+### Trello Board as at 18th Jan 2023
 
 ![Trello Board 18th Jan](/docs/Trello%20Board%2018%20Jan.png)
 
+Features were added as tasks to complete in the Trello board. Each feature encompasses relevant user stories that have dictated the contents of the feature. The user stories that relate to each feature have been included in the description of each feature as shown here:
+
+![Trello Board Feature](/docs/Trello%20Board%20Features.jpg)
+
+### Trello Board as at 20th Jan 2023
+
 ![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot.png)
+
+### Trello Board as at 21st Jan 2023
 
 ![Trello Board Screenshot1](/docs/Trello%20Board%20Screenshot1.png)
 

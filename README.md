@@ -68,17 +68,27 @@ The benefit of using MERN in this manner is that the whole application can be co
 
 ## <a name='Dataflow-Diagram'></a>Dataflow Diagram
 
+The following dataflow diagrams were created to illustrate the flow of data through the application. 
+
 ### Users
 
+The dataflow diagram below is used to show how data is exchanged to log-in and register a new user. 
+
 ![User Registration](/docs/Wormreads%20User%20log-in%20and%20register%20DFD.jpeg)
+
+Users can also search or browse for a book based on search fields, get more details on a specific book, and borrow a book. They can also view their own user information. The flow of data throughout these activities is depicted in the following data flow diagram:  
 
 ![User Actions](/docs/Wormreads%20User%20Actions%20DFD.jpeg)
 
 ### Admins
 
-![Admin CRUD Commands](/docs/Admin%20Routes%20(Book%20CRUD%20routes)%20DFD.jpeg)
+The following dataflow diagram depicts how data will flow throughout the application when an  admin user adds, modifies, or deletes book details from the database.  This involves the CRUD functionality for the Book Details Collection. This is a collection which will store details about each book (title, author and genre). It also includes how data is exchanged when viewing all borrowings and all users in the database. Only users who have a valid JSON token (received after successfully logging in) and isAdmin set to true in their users document will be permitted access to these routes.  
 
 ![Admin Actions](/docs/Admin%20Routes%20DFD%20Part%201.jpg)
+
+Another collection called Books is also required to store details about each individual book including the book id, book details id (from the book details collection) and whether it is available. This dataflow diagram depicts how data is changed when adding, updating, and deleting books in this collection.  
+
+![Admin CRUD Commands](/docs/Admin%20Routes%20(Book%20CRUD%20routes)%20DFD.jpeg)
 
 ## <a name='Application-Architecture-Diagram'></a>Application Architecture Diagram
 

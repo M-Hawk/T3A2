@@ -1,24 +1,23 @@
 
-# Wormreads Full-Stack Web Application
+# <a name='Return-to-Top'></a> Wormreads Full-Stack Web Application 
 
 ## Table of Contents
 
 - [Purpose](#purpose)
-- [Functionality / Features](#FunctionalityFeatures)
-- [Target Audience](#TargetAudience)
-- [Tech Stack](#TechStack)
-- [Dataflow Diagram](#DataflowDiagram)
-- [Application Architecture Diagram](#ApplicationArchitectureDiagram)
-- [User Stories](#UserStories)
+- [Functionality / Features](#Functionality-Features)
+- [Target Audience](#Target-Audience)
+- [Tech Stack](#Tech-Stack)
+- [Dataflow Diagram](#Dataflow-Diagram)
+- [Application Architecture Diagram](#Application-Architecture-Diagram)
+- [User Stories](#User-Stories)
 - [Wireframes](#Wireframes)
-- [Project Management](#ProjectManagement)
-- [Return to Top](#ReturntoTop)
+- [Project Management](#Project-Management)
 
 ## <a name='Purpose'></a>Purpose
 
 The purpose of this Full-Stack MERN application is to provide book readers with the         ability to borrow and read books in an online environment. All digital content available on Wormreads is free to borrow (subject to availability) and accessible through a web browser after registering to use the application. There are no subscription costs, no in-app purchases, and no late fees (digital titles are automatically returned on their due dates).
 
-## <a name='FunctionalityFeatures'></a>Functionality / Features
+## <a name='Functionality-Features'></a>Functionality / Features
 
 Based on user story revision and driving factors, it has been determined that the following features and functions are required to make the application a viable product.
 
@@ -41,13 +40,13 @@ Based on user story revision and driving factors, it has been determined that th
 12. Administrators are able to view book ratings to determine popularity of books for marketing purposes
 13. Users are able to place a book on hold when all quantities of that book are already borrowed out
 
-## <a name='TargetAudience'></a>Target Audience
+## <a name='Target-Audience'></a>Target Audience
 
 This application aims to provide an online library service for any book readers that have access to an internet service. It benefits those who may be after a specific book or books that they cannot access locally, cannot afford or do not have the physical room to store.
 
 Market research revealed that the key demographic characteristics of the target market is that they are of varying ages (ranging from teenages to seniors), educated, fluent in English, with a low to mid income level. They are also comfortable using internet services, environmentally conscious and consider themselves an avid reader. The application will specifically target those living in Australia.
 
-## <a name='TechStack'></a>Tech Stack
+## <a name='Tech-Stack'></a>Tech Stack
 
 Based on the web applications requirements, it has been determined that utilisation of the MERN stack would be the most suitable method of execution.
 
@@ -63,7 +62,7 @@ The benefit of using MERN in this manner is that the whole application can be co
 - **Wireframes and Sitemap:** Figma
 - **Image Editing:** Image Optimiser and Microsoft Paint 3D
 
-## <a name='DataflowDiagram'></a>Dataflow Diagram
+## <a name='Dataflow-Diagram'></a>Dataflow Diagram
 
 ### Users
 
@@ -77,11 +76,11 @@ The benefit of using MERN in this manner is that the whole application can be co
 
 ![Admin Actions](/docs/Admin%20Routes%20DFD%20Part%201.jpg)
 
-## <a name='ApplicationArchitectureDiagram'></a>Application Architecture Diagram
+## <a name='Application-Architecture-Diagram'></a>Application Architecture Diagram
 
 ![Wormreads Architecture Diagram](/docs/T3A2%20Full-Stack%20Application%20Architecture%20Diagram.png)
 
-##  <a name='UserStories'></a>User Stories
+##  <a name='User-Stories'></a>User Stories
 
 ### Epic
 
@@ -116,7 +115,7 @@ Build and operate an online electronic book library for users to access books in
 
 ![alt text](image.jpg)
 
-## <a name='ProjectManagement'></a>Project Management
+## <a name='Project-Management'></a>Project Management
 
 [Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
 
@@ -124,4 +123,4 @@ Build and operate an online electronic book library for users to access books in
 
 ![alt text](image.jpg)
 
-### <a name='ReturntoTop'></a>Return to Top
+[Return to Top](#Return-to-Top)

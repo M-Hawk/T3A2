@@ -135,8 +135,15 @@ Build and operate an online electronic book library for users to access books in
 
 [Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
 
+
+![Trello Board 16th Jan](/docs/Trello%20Board%2016%20Jan.jpg)
+
+![Trello Board Feature](/docs/Trello%20Board%20Features.jpg)
+
+![Trello Board 18th Jan](/docs/Trello%20Board%2018%20Jan.png)
+
 ![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot.png)
 
-![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot1.png)
+![Trello Board Screenshot1](/docs/Trello%20Board%20Screenshot1.png)
 
 [Return to Top](#Return)

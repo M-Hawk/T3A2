@@ -107,15 +107,29 @@ Build and operate an online electronic book library for users to access books in
 
 ##  <a name='Wireframes'></a>Wireframes
 
-![alt text](image.jpg)
+### User
 
-![alt text](image.jpg)
+![Home Page](/docs/Home%20Page%20Wireframe.png)
 
-![alt text](image.jpg)
+![Register User Page](/docs/User%20Register%20Page%20Wireframe.png)
 
-![alt text](image.jpg)
+![User Profile Page](/docs/User%20Profile%20Page%20Wireframe.png)
 
-![alt text](image.jpg)
+![Books List Page](/docs/Books%20List%20Page%20Wireframe.png)
+
+![Book Page](/docs/Books%20Page%20Wireframe.png)
+
+![Comments Page](/docs/Comments%20Page%20Wireframe.png)
+
+### Admin
+
+![Admin User Profile Page](/docs/Admin%20User%20Profile%20Page%20Wireframe.png)
+
+![Update Book Page](/docs/Update%20Books%20Page%20Wireframe.png)
+
+![Add Book Page](/docs/Add%20Book%20Page%20Wireframe.png)
+
+![View Borrowings Page](/docs/View%20Borrowings%20Page%20Wireframe.png)
 
 ## <a name='Project-Management'></a>Project Management
 
@@ -123,6 +137,6 @@ Build and operate an online electronic book library for users to access books in
 
 ![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot.png)
 
-![alt text](image.jpg)
+![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot1.png)
 
 [Return to Top](#Return)

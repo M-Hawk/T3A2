@@ -138,7 +138,7 @@ Build and operate an online electronic book library for users to access books in
 [Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
 
 ![Trello Board 16th Jan](/docs/Trello%20Board%2016%20Jan.jpg)
-
+Features were added as tasks to complete in the Trello board. Each feature encompasses relevant user stories that have dictated the contents of the feature. The user stories that relate to each feature have been included in the description of each feature as shown here: 
 ![Trello Board Feature](/docs/Trello%20Board%20Features.jpg)
 
 ![Trello Board 18th Jan](/docs/Trello%20Board%2018%20Jan.png)

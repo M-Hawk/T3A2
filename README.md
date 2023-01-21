@@ -140,11 +140,11 @@ Build and operate an online electronic book library for users to access books in
 Trello was used to plan and track tasks for this project. This allowed work streams to be defined in lists, with user stories and Kanban methodology being implemented. The following lists were created:
 
 Grading Tracker: This list tracks the grade requirements for each expected assignment outcome. 
--Backlog: A prioritised list of unplanned tasks that we intended to spend time on but haven't started yet. This is the staging area where tasks will get fleshed out. They are not in the current implementation plan.
--To-do: A prioritised list of planned work that is ready to be completed.
--Doing: A task currently being worked on. This allows the entire team to immediately see who is working on what and to ensure we don’t have too many ongoing tasks at the one time. 
--Ongoing: A task that has been worked on, however is awaiting other tasks to be completed or requires refinement, revision or review prior to being marked as completed.
--Completed: All completed tasks
+- Backlog: A prioritised list of unplanned tasks that we intended to spend time on but haven't started yet. This is the staging area where tasks will get fleshed out. They are not in the current implementation plan.
+- To-do: A prioritised list of planned work that is ready to be completed.
+- Doing: A task currently being worked on. This allows the entire team to immediately see who is working on what and to ensure we don’t have too many ongoing tasks at the one time. 
+- Ongoing: A task that has been worked on, however is awaiting other tasks to be completed or requires refinement, revision or review prior to being marked as completed.
+- Completed: All completed tasks
 
 ### Trello Board as at 16th Jan 2023
 ![Trello Board 16th Jan](/docs/Trello%20Board%2016%20Jan.jpg)

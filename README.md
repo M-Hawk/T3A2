@@ -1,10 +1,24 @@
+
 # Wormreads Full-Stack Web Application
 
-## Purpose
+## Table of Contents
+
+- [Purpose](#purpose)
+- [Functionality / Features](#FunctionalityFeatures)
+- [Target Audience](#TargetAudience)
+- [Tech Stack](#TechStack)
+- [Dataflow Diagram](#DataflowDiagram)
+- [Application Architecture Diagram](#ApplicationArchitectureDiagram)
+- [User Stories](#UserStories)
+- [Wireframes](#Wireframes)
+- [Project Management](#ProjectManagement)
+- [Return to Top](#ReturntoTop)
+
+## <a name='Purpose'></a>Purpose
 
 The purpose of this Full-Stack MERN application is to provide book readers with the         ability to borrow and read books in an online environment. All digital content available on Wormreads is free to borrow (subject to availability) and accessible through a web browser after registering to use the application. There are no subscription costs, no in-app purchases, and no late fees (digital titles are automatically returned on their due dates).
 
-## Functionality / Features
+## <a name='FunctionalityFeatures'></a>Functionality / Features
 
 Based on user story revision and driving factors, it has been determined that the following features and functions are required to make the application a viable product.
 
@@ -16,7 +30,7 @@ Based on user story revision and driving factors, it has been determined that th
 4. Users are able to view a list of books available for borrowing, with the books details (name,genre,author,abstract)
 5. Users are able to search and list books by Genre, Author or Name
 6. Administrators are able to post new books into the database for listing
-7. Administrators are able to view a list of ongoing and returned borrowed books
+7. Administrators are able to view a list of ongoing borrowed books
 8. Administrators are able to update current books in the database
 9. Administrators are able to delete books from the database
 
@@ -27,13 +41,13 @@ Based on user story revision and driving factors, it has been determined that th
 12. Administrators are able to view book ratings to determine popularity of books for marketing purposes
 13. Users are able to place a book on hold when all quantities of that book are already borrowed out
 
-## Target Audience
+## <a name='TargetAudience'></a>Target Audience
 
 This application aims to provide an online library service for any book readers that have access to an internet service. It benefits those who may be after a specific book or books that they cannot access locally, cannot afford or do not have the physical room to store.
 
 Market research revealed that the key demographic characteristics of the target market is that they are of varying ages (ranging from teenages to seniors), educated, fluent in English, with a low to mid income level. They are also comfortable using internet services, environmentally conscious and consider themselves an avid reader. The application will specifically target those living in Australia.
 
-## Tech Stack
+## <a name='TechStack'></a>Tech Stack
 
 Based on the web applications requirements, it has been determined that utilisation of the MERN stack would be the most suitable method of execution.
 
@@ -49,16 +63,25 @@ The benefit of using MERN in this manner is that the whole application can be co
 - **Wireframes and Sitemap:** Figma
 - **Image Editing:** Image Optimiser and Microsoft Paint 3D
 
-## Dataflow Diagram
+## <a name='DataflowDiagram'></a>Dataflow Diagram
 
-![![Wormreads Dataflow Diagram](image.jpg)
-](image.jpg)
+### Users
 
-## Application Architecture Diagram
+![User Registration](/docs/Wormreads%20User%20log-in%20and%20register%20DFD.jpeg)
+
+![User Actions](/docs/Wormreads%20User%20Actions%20DFD.jpeg)
+
+### Admins
+
+![Admin CRUD Commands](/docs/Admin%20Routes%20(Book%20CRUD%20routes)%20DFD.jpeg)
+
+![Admin Actions](/docs/Admin%20Routes%20DFD%20Part%201.jpg)
+
+## <a name='ApplicationArchitectureDiagram'></a>Application Architecture Diagram
 
 ![Wormreads Architecture Diagram](/docs/T3A2%20Full-Stack%20Application%20Architecture%20Diagram.png)
 
-## User Stories
+##  <a name='UserStories'></a>User Stories
 
 ### Epic
 
@@ -81,7 +104,7 @@ Build and operate an online electronic book library for users to access books in
 10. As a library administrator I want to see which books are the most popular so that I can respond to customer demand and purchase more of this specific book and additional copies from this author and/or genre.
 11. I’m Jess and I’m really set on reading a book when I’ve put my mind to it. It would be cool to be able to put a book on hold if it's already taken.
 
-## Wireframes
+##  <a name='Wireframes'></a>Wireframes
 
 ![alt text](image.jpg)
 
@@ -89,12 +112,16 @@ Build and operate an online electronic book library for users to access books in
 
 ![alt text](image.jpg)
 
-## Project Management
+![alt text](image.jpg)
 
-## Trello Board Link
+![alt text](image.jpg)
+
+## <a name='ProjectManagement'></a>Project Management
 
 [Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
 
+![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot.png)
+
 ![alt text](image.jpg)
 
-![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot.png)
+### <a name='ReturntoTop'></a>Return to Top

@@ -1,10 +1,12 @@
 const asyncHandler = require("express-async-handler")
 
+const BookDetailsModel = require("../models/bookDetailsModel")
 // @desc    Get book details
 // @route   GET /api/bookdetails
 // @access  Private
 const getBookDetails = asyncHandler(async (req, res) => {
-  res.status(200).json({ message: "Get Book Details" })
+  const bookDetails = await BookDetailsModel.find()
+  res.status(200).json(bookDetails)
 })
 
 // @desc    Set book details
@@ -15,8 +17,15 @@ const setBookDetails = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error("Please add the title key")
   }
-  res.status(200).json({ message: "Set a books details" })
+  const bookDetails = await BookDetailsModel.create({
+    title: req.body.title,
+    author: req.body.author,
+    genre: req.body.genre,
+    description: req.body.description
+  })
+  res.status(200).json(bookDetails)
 })
+
 
 // @desc    Update book details
 // @route   PUT /api/bookdetails/:id

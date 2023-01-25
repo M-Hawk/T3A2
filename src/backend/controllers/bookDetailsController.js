@@ -38,6 +38,8 @@ const updateBookDetails = asyncHandler(async (req, res) => {
   //   res.status(400)
   //   throw new Error('No book could be found with that id.')
   // }
+
+  
   const updatedBookDetails = await BookDetailsModel.findByIdAndUpdate(req.params.id, req.body, {
     new:true,
   }) // Test to see if we want new:true. Create it if it doesn't exist. 
@@ -50,7 +52,12 @@ const updateBookDetails = asyncHandler(async (req, res) => {
 // @access  Private
 const deleteBookDetails = asyncHandler(async (req, res) => {
   const bookDetails = await BookDetailsModel.findById(req.params.id)
-  
+  //Could try Matt's method. 
+  // if(!bookDetails) {
+  //   res.status(400)
+  //   throw new Error('No book could be found with that id.')
+  // }
+
   await bookDetails.remove()
   
   res.status(200).json({ message: `Deleted a book's details ${req.params.id}` })

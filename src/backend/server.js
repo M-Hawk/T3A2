@@ -14,6 +14,7 @@ app.use(express.json())
 
 // Define route first
 app.use("/api/bookdetails", require("./routes/bookDetailsRoutes"))
+app.use("/api/users", require("./routes/userRoutes"))
 
 app.use(errorHandler)
 

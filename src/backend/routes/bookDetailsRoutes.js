@@ -6,11 +6,12 @@ const {
   updateBookDetails, 
   deleteBookDetails,
  } = require("../controllers/bookDetailsController")
+ 
+// Update and delete routes
+router.route("/:id").put(updateBookDetails).delete(deleteBookDetails)
 
- // Get and post routes
+// Get and create routes
 router.route("/").get(getBookDetails).post(setBookDetails)
 
-// Create and delete routes
-router.route("/:id").put(updateBookDetails).delete(deleteBookDetails)
 
 module.exports = router

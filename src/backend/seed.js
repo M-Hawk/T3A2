@@ -78,10 +78,6 @@ const bookDetails = [
   } 
 ]
 
-// bookDetailsModel.insertMany(bookDetails)
-// console.log("Inserted seed data for book details.")
-// dbClose() // Closes the MongoDB connection
-
 
 
 

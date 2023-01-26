@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const { 
+  getOneBookDetails,
   getBookDetails, 
   setBookDetails, 
   updateBookDetails, 
@@ -10,7 +11,7 @@ const {
 const {protect} = require("../middleware/authMiddleware")
 
 // Update and delete routes
-router.route("/:id").put(protect, updateBookDetails).delete(protect, deleteBookDetails)
+router.route("/:id").get(getOneBookDetails).put(protect, updateBookDetails).delete(protect, deleteBookDetails)
 
 // Get and create routes
 router.route("/").get(getBookDetails).post(protect, setBookDetails)

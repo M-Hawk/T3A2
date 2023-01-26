@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 const asyncHandler = require("express-async-handler")
-const User = require("../models/userModel")
+const UserModel = require("../models/userModel")
 // @desc    Register new user
 // @route   POST /api/users
 // @access  Public
@@ -14,14 +14,14 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   //Check if user email exists
-  const userEmailExists= await User.findOne({email})
+  const userEmailExists= await UserModel.findOne({email})
 
   if(userEmailExists) {
     res.status(400)
     throw new Error("Email already exists.")
   }
   //Check if username exists
-  const usernameExists= await User.findOne({username})
+  const usernameExists= await UserModel.findOne({username})
 
   if(usernameExists) {
     res.status(400)
@@ -32,7 +32,7 @@ const registerUser = asyncHandler(async (req, res) => {
   const hashedPassword = await bcrypt.hash(password, salt)
 
   //Create User
-  const user = await User.create({
+  const user = await UserModel.create({
     username,
     email,
     password: hashedPassword
@@ -59,7 +59,7 @@ const loginUser = asyncHandler(async (req, res) => {
   const {username, password} = req.body
 
   // Check for username
-  const user = await User.findOne({ username })
+  const user = await UserModel.findOne({ username })
 
   if(user && (await bcrypt.compare(password, user.password))) {
     res.json({
@@ -80,7 +80,7 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/profile
 // @access  Private
 const getProfile = asyncHandler(async(req, res) => {
-  const { _id, email, username } = await User.findById(req.user.id)
+  const { _id, email, username } = await UserModel.findById(req.user.id)
   res.status(200).json({
     id: _id,
     username,

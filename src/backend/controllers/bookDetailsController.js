@@ -11,8 +11,10 @@ const getBookDetails = asyncHandler(async (req, res) => {
 
 // @desc    Set book details
 // @route   POST /api/bookdetails
-// @access  Private
-// ? decide if we need this error and whether we should handle a similar error. 
+// @access  Admin Private
+// To-Do decide if we need this error and whether we should handle a similar error. 
+// To do- Protected route (add isAdmin)
+// To-do Add functionality to prevent someone adding the same book twice (not allowing duplicate title and author) 
 const setBookDetails = asyncHandler(async (req, res) => {
   // if(!req.body.title) {
   //   res.status(400)
@@ -29,7 +31,8 @@ const setBookDetails = asyncHandler(async (req, res) => {
 
 // @desc    Update book details
 // @route   PUT /api/bookdetails/:id
-// @access  Private
+// @access  Admin Private
+// Protected route (To-Do add isAdmin)
 const updateBookDetails = asyncHandler(async (req, res) => {
   const bookDetails = await BookDetailsModel.findById(req.params.id)
 //To-Do: find a way to provide a more semantic error message for then a book doesn't exist with that id. 
@@ -49,7 +52,8 @@ const updateBookDetails = asyncHandler(async (req, res) => {
 
 // @desc    Delete book details
 // @route   DELETE /api/bookdetails/:id
-// @access  Private
+// @access  Admin Private
+// Protected route (To-Do add isAdmin)
 const deleteBookDetails = asyncHandler(async (req, res) => {
   const bookDetails = await BookDetailsModel.findById(req.params.id)
   //Could try Matt's method. 

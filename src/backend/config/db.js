@@ -3,7 +3,6 @@ const mongoose = require("mongoose")
 mongoose.set('strictQuery', true)
 
 const dbClose = async ()=> {
-
   await mongoose.connection.close()
   console.log('Database disconnected')
 }

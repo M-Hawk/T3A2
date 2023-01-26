@@ -1,8 +1,15 @@
-const BookCopyModel = require("./models/bookCopyModel")
-const BookDetailsModel = require("./models/bookDetailsModel")
-const LoanModel = require("./models/loanModel")
-const UserModel = require("./models/userModel")
-const dbClose = require("./config/db")
+// const BookCopyModel = require("./models/bookCopyModel")
+const BookDetailsModel = require("./models/bookDetailsModel.js")
+// const LoanModel = require("./models/loanModel")
+// const UserModel = require("./models/userModel")
+// const dbClose = require("./config/db")
+
+// Delete the existing entries in our database. 
+await BookDetailsModel.deleteMany() 
+console.log("Deleted all book details in the Wormreads database")
+
+// await UserModel.deleteMany()
+// console.log("Deleted all user details in the Wormreads database")
 
 const bookDetails = [
   { title: "Alice's Adventures in Wonderland", 
@@ -55,10 +62,11 @@ const bookDetails = [
     genre: "Adventure",
     description: "Robert Cohn was once middleweight boxing champion of Princeton. Do not think that I am very much impressed by that as a boxing title, but it meant a lot to Cohn. He cared nothing for boxing, in fact he disliked it, but he learned it painfully and thoroughly to counteract the feeling of inferiority and shyness he had felt on being treated as a Jew at Princeton. There was a certain inner comfort in knowing he could knock down anybody who was snooty to him, although, being very shy and a thoroughly nice boy, he never fought except in the gym. He was Spider Kelly's star pupil. Spider Kelly taught all his young gentlemen to box like featherweights, no matter whether they weighed one hundred and five or two hundred and five pounds. But it seemed to fit Cohn. He was really very fast. He was so good that Spider promptly overmatched him and got his nose permanently flattened. This increased Cohn's distaste for boxing, but it gave him a certain satisfaction of some strange sort, and it certainly improved his nose. In his last year at Princeton he read too much and took to wearing spectacles. I never met any one of his class who remembered him. They did not even remember that he was middleweight boxing champion."
   } 
-  
 ]
 
-dbClose() // Closes the MongoDB connection
+// await bookDetailsModel.insertMany(bookDetails)
+// console.log("Inserted seed data for book details.")
+// dbClose() // Closes the MongoDB connection
 
 
 

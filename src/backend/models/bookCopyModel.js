@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const bookCopySchema = mongoose.Schema({
   bookDetails:{ 
     type: mongoose.Schema.Types.ObjectId,
-    // required: true,
+    required: [true, "Please add a book details value"],
     ref: "BookDetails"
   },
   isAvailable:{

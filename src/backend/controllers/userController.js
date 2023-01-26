@@ -42,7 +42,8 @@ const registerUser = asyncHandler(async (req, res) => {
     res.status(201).json({
       _id: user._id,
       username: user.username,
-      email: user.email
+      email: user.email,
+      token: generateToken(user._id)
     })
   } 
   else {
@@ -57,7 +58,7 @@ const registerUser = asyncHandler(async (req, res) => {
 const loginUser = asyncHandler(async (req, res) => {
   const {username, password} = req.body
 
-  // Check for user email
+  // Check for username
   const user = await User.findOne({ username })
 
   if(user && (await bcrypt.compare(password, user.password))) {
@@ -65,6 +66,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      token: generateToken(user._id),
     })
   }
   else {
@@ -76,11 +78,22 @@ const loginUser = asyncHandler(async (req, res) => {
 
 // @desc    Get user data
 // @route   GET /api/users/profile
-// @access  Public
+// @access  Private
 const getProfile = asyncHandler(async(req, res) => {
-  res.json({ message: "Display profile" })
+  const { _id, email, username } = await User.findById(req.user.id)
+  res.status(200).json({
+    id: _id,
+    username,
+    email,
+  })
 })
 
+// Generate JWT Tokin
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET_KEY, {
+    expiresIn: "30d",
+    })
+}
 module.exports = { 
   registerUser,
   loginUser,

@@ -20,4 +20,4 @@ const connectDB = async ()=> {
     }
 }
 
-module.exports = { dbClose, connectDB }
+module.exports = connectDB, dbClose 

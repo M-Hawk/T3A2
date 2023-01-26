@@ -1,15 +1,29 @@
-// const BookCopyModel = require("./models/bookCopyModel")
-const BookDetailsModel = require("./models/bookDetailsModel.js")
-// const LoanModel = require("./models/loanModel")
-// const UserModel = require("./models/userModel")
+const mongoose = require("mongoose")
+const colors = require("colors")
+const dotenv = require("dotenv").config()
+const connectDB =  require("./config/db")
+// // const BookCopyModel = require("./models/bookCopyModel")
+const BookDetailsModel = require("./models/bookDetailsModel")
+// // const LoanModel = require("./models/loanModel")
+// // const UserModel = require("./models/userModel")
 // const dbClose = require("./config/db")
 
-// Delete the existing entries in our database. 
-await BookDetailsModel.deleteMany() 
-console.log("Deleted all book details in the Wormreads database")
 
-// await UserModel.deleteMany()
-// console.log("Deleted all user details in the Wormreads database")
+const seedDB = async () => {
+  console.log('running delete')
+  await connectDB()
+  // Delete the existing entries in our database.
+  await BookDetailsModel.deleteMany()
+  console.log("Deleted all book details in the Wormread's database")
+
+  await BookDetailsModel.insertMany(bookDetails)
+  console.log("Inserted seed data for book details.")
+}
+seedDB().then(() => {
+  mongoose.connection.close()
+  console.log("Server Disconnected")
+})
+
 
 const bookDetails = [
   { title: "Alice's Adventures in Wonderland", 
@@ -64,7 +78,7 @@ const bookDetails = [
   } 
 ]
 
-// await bookDetailsModel.insertMany(bookDetails)
+// bookDetailsModel.insertMany(bookDetails)
 // console.log("Inserted seed data for book details.")
 // dbClose() // Closes the MongoDB connection
 

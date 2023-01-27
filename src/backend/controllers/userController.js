@@ -3,6 +3,8 @@ const bcrypt = require("bcryptjs")
 const asyncHandler = require("express-async-handler")
 const UserModel = require("../models/userModel")
 
+// ADD ERROR HANDLING TO ALL ROUTES!!!
+
 // @desc    Register new user
 // @route   POST /api/users
 // @access  Public
@@ -113,6 +115,16 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 
 })
 
+// @desc    Delete own profile
+// @route   DELETE /api/users/profile
+// @access  Private
+const deleteProfile = asyncHandler(async(req, res) => {
+  const deleteprofile = await UserModel.findById(req.user.id)
+  await deleteprofile.remove()
+  
+  res.status(200).json({ message: `Your profile has been deleted from the database`})
+})
+
 // @desc    Delete a users data
 // @route   DELETE /api/users/:id
 // @access  Admin Private
@@ -139,6 +151,7 @@ module.exports = {
   getProfile,
   getUsers,
   updateUserProfile,
+  deleteProfile,
   deleteUser,
 }
 

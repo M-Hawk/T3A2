@@ -2,21 +2,134 @@ const mongoose = require("mongoose")
 const colors = require("colors")
 const dotenv = require("dotenv").config()
 const connectDB =  require("./config/db")
-// // const BookCopyModel = require("./models/bookCopyModel")
+const bcrypt = require("bcryptjs")
+const BookCopyModel = require("./models/bookCopyModel")
 const BookDetailsModel = require("./models/bookDetailsModel")
-// // const LoanModel = require("./models/loanModel")
-// // const UserModel = require("./models/userModel")
+const LoanModel = require("./models/loanModel")
+const UserModel = require("./models/userModel")
 // const dbClose = require("./config/db")
 
 const seedDB = async () => {
   console.log('running delete')
   await connectDB()
   // Delete the existing entries in our database.
+  await UserModel.deleteMany()
+  console.log("Deleted all users in the Wormread's database")
+
   await BookDetailsModel.deleteMany()
   console.log("Deleted all book details in the Wormread's database")
 
-  await BookDetailsModel.insertMany(bookDetails)
+  await BookCopyModel.deleteMany()
+  console.log("Deleted all book copies in the Wormread's database")
+
+  await LoanModel.deleteMany()
+  console.log("Deleted all loan entries in the Wormread's database")
+  
+  // Seed new entries in our database.
+  // Seed Users
+  const salt = await bcrypt.genSalt(10)
+  const users = [ 
+    {
+      username: "Jack",
+      email: "JackTheDog11@gmail.com",
+      password: await bcrypt.hash("Jack", salt)
+    },
+    {
+      username: "Matt",
+      email: "MattH@gmail.com",
+      password: await bcrypt.hash("Matt", salt),
+      isAdmin: true
+    },
+    {
+      username: "Dayle",
+      email: "dayleclarke1071@gmail.com",
+      password: await bcrypt.hash("Dayle", salt),
+      isAdmin: true
+    },
+    {
+      username: "Janet",
+      email: "Janetstone@gmail.com",
+      password: await bcrypt.hash("ChangeMe4", salt)
+    },
+    {
+      username: "Claire",
+      email: "ClaireWhite@gmail.com",
+      password: await bcrypt.hash("ChangeMe5", salt)
+    },
+    {
+      username: "Geoff",
+      email: "Geoffsmith93@gmail.com",
+      password: await bcrypt.hash("ChangeMe6", salt)
+    },
+    {
+      username: "Rhonda",
+      email: "RhondaTaylor75@gmail.com",
+      password: await bcrypt.hash("ChangeMe7", salt)
+    }
+  ]
+  
+  const user = await UserModel.insertMany(users)
   console.log("Inserted seed data for book details.")
+
+  //Seed Book Details
+  const bookDets = await BookDetailsModel.insertMany(bookDetails)
+  console.log("Inserted seed data for book details.")
+  
+  //Seed Book Copies
+  const bookCopies = [
+    { bookDetails: bookDets[0] },
+    { bookDetails: bookDets[0] },
+    { bookDetails: bookDets[0] },
+    { bookDetails: bookDets[1] },
+    { bookDetails: bookDets[1] },
+    { bookDetails: bookDets[1] },
+    { bookDetails: bookDets[2] },
+    { bookDetails: bookDets[2] },
+    { bookDetails: bookDets[2] },
+    { bookDetails: bookDets[3] },
+    { bookDetails: bookDets[4] },
+    { bookDetails: bookDets[5] },    
+    { bookDetails: bookDets[5] },    
+    { bookDetails: bookDets[6] },    
+    { bookDetails: bookDets[6] },    
+    { bookDetails: bookDets[7] },    
+    { bookDetails: bookDets[8] },    
+    { bookDetails: bookDets[9] }    
+  ]
+
+  const bookCops = await BookCopyModel.insertMany(bookCopies)
+  console.log("Inserted seed data for book details.")
+
+  //Seed Loans
+  const loans =[
+    { bookCopy: bookCops[0],
+      user: user[0]
+    },
+    { bookCopy: bookCops[1],
+      user: user[0]
+    },
+    { bookCopy: bookCops[2],
+      user: user[0]
+    },
+    { bookCopy: bookCops[3],
+      user: user[0]
+    },
+    { bookCopy: bookCops[4],
+      user: user[1]
+    },
+    { bookCopy: bookCops[5],
+      user: user[1]
+    },
+    { bookCopy: bookCops[6],
+      user: user[2]
+    },
+    { bookCopy: bookCops[7],
+      user: user[3]
+    },
+    { bookCopy: bookCops[8],
+      user: user[4]
+    }
+  ]
 }
 seedDB().then(() => {
   mongoose.connection.close()
@@ -76,8 +189,6 @@ const bookDetails = [
     description: "Robert Cohn was once middleweight boxing champion of Princeton. Do not think that I am very much impressed by that as a boxing title, but it meant a lot to Cohn. He cared nothing for boxing, in fact he disliked it, but he learned it painfully and thoroughly to counteract the feeling of inferiority and shyness he had felt on being treated as a Jew at Princeton. There was a certain inner comfort in knowing he could knock down anybody who was snooty to him, although, being very shy and a thoroughly nice boy, he never fought except in the gym. He was Spider Kelly's star pupil. Spider Kelly taught all his young gentlemen to box like featherweights, no matter whether they weighed one hundred and five or two hundred and five pounds. But it seemed to fit Cohn. He was really very fast. He was so good that Spider promptly overmatched him and got his nose permanently flattened. This increased Cohn's distaste for boxing, but it gave him a certain satisfaction of some strange sort, and it certainly improved his nose. In his last year at Princeton he read too much and took to wearing spectacles. I never met any one of his class who remembered him. They did not even remember that he was middleweight boxing champion."
   } 
 ]
-
-
 
 
 

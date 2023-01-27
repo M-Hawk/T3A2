@@ -16,7 +16,6 @@ const getOwnLoans = asyncHandler(async (req, res) => {
 // @access  Admin Private
 const getLoans = asyncHandler(async (req, res) => {
   const loans = await LoanModel.find().populate({path: "bookCopy", populate: "bookDetails"}).populate("user")
-  
   res.status(200).json(loans)
 })
 

@@ -30,8 +30,8 @@ const getOneBookDetails = asyncHandler(async (req, res) => {
   }
   })
 
-// To do- Protected route (add isAdmin)
 // To-do Add functionality to prevent someone adding the same book twice (not allowing duplicate title and author) 
+//
 
 // @desc    Set new book details
 // @route   POST /api/bookdetails
@@ -65,7 +65,6 @@ const updateBookDetails = asyncHandler(async (req, res) => {
 
 })
 
-// Protected route (To-Do add isAdmin)
 
 // @desc    Delete an existing book's details
 // @route   DELETE /api/bookdetails/:id
@@ -83,6 +82,7 @@ const deleteBookDetails = asyncHandler(async (req, res) => {
 })
 
 // exported controller functions
+
 module.exports = {
   getOneBookDetails,
   getBookDetails,

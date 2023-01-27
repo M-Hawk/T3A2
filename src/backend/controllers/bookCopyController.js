@@ -27,7 +27,7 @@ const getOneBookCopy = asyncHandler(async (req, res) => {
   }
   catch (err) {
     res.status(404).send({ error: "Book copy not found with that ID" })
-  }     
+  }
   })
 
 // To do- Protected route (add isAdmin) 
@@ -50,8 +50,6 @@ const setBookCopy = asyncHandler(async (req, res) => {
 // @route   PUT /api/bookcopies/:id
 // @access  Admin Private
 const updateBookCopy = asyncHandler(async (req, res) => {
-  const bookCopy = await BookCopyModel.findById(req.params.id)
-
 //Could try Matt's method. 
 
   // if(!bookDetails) {
@@ -89,5 +87,4 @@ module.exports = {
   setBookCopy,
   updateBookCopy,
   deleteBookCopy
-
 }

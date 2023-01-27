@@ -37,7 +37,8 @@ const admin = asyncHandler(async(req, res, next) => {
     next()
   }
   else {
-    res.status(401).json({ message: "You are not authorised to perform that action" })
+    res.status(401)
+    throw new Error("You are not authorised to perform that action")
   }
 })
 

@@ -4,13 +4,19 @@ const dotenv = require("dotenv").config()
 const {errorHandler} = require("./middleware/errorMiddleware.js")
 const connectDB =  require("./config/db")
 const port = process.env.PORT || 8000
+// const scheduledFunctions = require("./scheduledFunctions")
 
 connectDB()
 
 const app = express()
 
-// Middleware
 app.use(express.json())
+
+// Scheduled jobs
+
+// Checks 
+// scheduledFunctions.initScheduledJobs()
+// Middleware
 
 // Define route first
 app.use("/api/bookdetails", require("./routes/bookDetailsRoutes"))

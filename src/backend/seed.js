@@ -77,15 +77,24 @@ const seedDB = async () => {
   
   //Seed Book Copies
   const bookCopies = [
-    { bookDetails: bookDets[0] },
-    { bookDetails: bookDets[0] },
-    { bookDetails: bookDets[0] },
-    { bookDetails: bookDets[1] },
-    { bookDetails: bookDets[1] },
-    { bookDetails: bookDets[1] },
-    { bookDetails: bookDets[2] },
-    { bookDetails: bookDets[2] },
-    { bookDetails: bookDets[2] },
+    { bookDetails: bookDets[0],
+      isAvailable: false },
+    { bookDetails: bookDets[0],
+      isAvailable: false },
+    { bookDetails: bookDets[0],
+      isAvailable: false },
+    { bookDetails: bookDets[1],
+      isAvailable: false },
+    { bookDetails: bookDets[1],
+      isAvailable: false },
+    { bookDetails: bookDets[1],
+      isAvailable: false },
+    { bookDetails: bookDets[2],
+      isAvailable: false },
+    { bookDetails: bookDets[2],
+      isAvailable: false },
+    { bookDetails: bookDets[2],
+      isAvailable: false },
     { bookDetails: bookDets[3] },
     { bookDetails: bookDets[4] },
     { bookDetails: bookDets[5] },    
@@ -130,6 +139,8 @@ const seedDB = async () => {
       user: user[4]
     }
   ]
+  await LoanModel.insertMany(loans)
+  console.log("Inserted seed data for loans.")
 }
 seedDB().then(() => {
   mongoose.connection.close()

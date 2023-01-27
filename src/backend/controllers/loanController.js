@@ -1,7 +1,6 @@
 const asyncHandler = require("express-async-handler")
 const LoanModel = require("../models/loanModel")
-
-//Todo- FIX THSI ROUTE!!!!!!
+const BookCopyModel = require("../models/bookCopyModel")
 
 // @desc    Get Own Profile's current loans
 // @route   GET /api/loans/getmyloans
@@ -30,41 +29,39 @@ const getLoans = asyncHandler(async (req, res) => {
 // @route   POST /api/loans
 // @access  Private
 const setLoan = asyncHandler(async (req, res) => {
-  if(req.body.bookCopy) {
-    bookCopyId = req.body.bookCopy._id
-    if(availability.isAvailable) {
-      res.status(204)
-      throw new Error("Book is currently not available")    
-    }
+  const bookCopy = await BookCopyModel.findById(req.body.bookCopy)
+  if(bookCopy.isAvailable === true) {
+    const loan = await LoanModel.create({ bookCopy: req.body.bookCopy, user: req.user.id })
+    await BookCopyModel.findByIdAndUpdate(req.body.bookCopy, { isAvailable: false})
+    res.status(200).json(loan)
   }
-  const loan = await LoanModel.create({
-    bookCopy: req.body.bookCopy,
-    user: req.user.id,
-  })
-  res.status(200).json(loan)
+  else{
+    res.status(200).json({ message: "Book is currently not available" })
+  }
 })
 
+//To-Do: find a way to provide a more semantic error message for a loan doesn't exist with that id. 
+//Could try Matt's method. 
 // Protected route (To-Do add isAdmin)
 
 // @desc    Update a loan
 // @route   PUT /api/loans/:id
 // @access  Admin Private
 const updateLoan = asyncHandler(async (req, res) => {
-  const loan = await LoanModel.findById(req.params.id)
-  
-//To-Do: find a way to provide a more semantic error message for then a book doesn't exist with that id. 
-//Could try Matt's method. 
   // if(!bookDetails) {
   //   res.status(400)
   //   throw new Error('No book could be found with that id.')
   // } 
   const updatedloan = await LoanModel.findByIdAndUpdate(req.params.id, req.body, {
     new:true,
-  }) // Test to see if we want new:true. Create it if it doesn't exist. 
+  })
   res.status(201).json(updatedloan)
 
 })
 
+// @desc    Delete a loan
+// @route   PUT /api/loans/:id
+// @access  Admin Private
 const deleteLoan = asyncHandler(async (req, res) => {
   const loan = await LoanModel.findById(req.params.id)
   //Could try Matt's method. 

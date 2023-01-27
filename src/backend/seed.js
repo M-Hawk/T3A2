@@ -8,7 +8,6 @@ const BookDetailsModel = require("./models/bookDetailsModel")
 // // const UserModel = require("./models/userModel")
 // const dbClose = require("./config/db")
 
-
 const seedDB = async () => {
   console.log('running delete')
   await connectDB()

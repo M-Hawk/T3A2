@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler")
 
 const BookDetailsModel = require("../models/bookDetailsModel")
+
 // @desc    Get all book details
 // @route   GET /api/bookdetails
 // @access  Public
@@ -26,11 +27,11 @@ const getOneBookDetails = asyncHandler(async (req, res) => {
   }
   catch (err) {
     res.status(404).send({ error: "Book details not found with that ID" })
-  }     
+  }
   })
 
-  // To do- Protected route (add isAdmin)
-  // To-do Add functionality to prevent someone adding the same book twice (not allowing duplicate title and author) 
+// To do- Protected route (add isAdmin)
+// To-do Add functionality to prevent someone adding the same book twice (not allowing duplicate title and author) 
 
 // @desc    Set new book details
 // @route   POST /api/bookdetails
@@ -45,21 +46,18 @@ const setBookDetails = asyncHandler(async (req, res) => {
   res.status(200).json(bookDetails)
 })
 
+//To-Do: find a way to provide a more semantic error message for then a book doesn't exist with that id. 
 // Protected route (To-Do add isAdmin)
 
 // @desc    Update an exsisting book's details
 // @route   PUT /api/bookdetails/:id
 // @access  Admin Private
 const updateBookDetails = asyncHandler(async (req, res) => {
-  const bookDetails = await BookDetailsModel.findById(req.params.id)
-
-//To-Do: find a way to provide a more semantic error message for then a book doesn't exist with that id. 
-//Could try Matt's method. 
+  //Could try Matt's method. 
   // if(!bookDetails) {
   //   res.status(400)
   //   throw new Error('No book could be found with that id.')
   // }
-  
   const updatedBookDetails = await BookDetailsModel.findByIdAndUpdate(req.params.id, req.body, {
     new:true,
   }) 

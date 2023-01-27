@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const { 
+const {
+  getOwnLoans, 
   getLoans, 
   setLoan, 
   updateLoan, 
@@ -14,6 +15,7 @@ router.route("/:id").put(protect, updateLoan).delete(protect, deleteLoan)
 
 // Get and create routes
 router.route("/").get(protect, getLoans).post(protect, setLoan)
+router.route("/getmyloans").get(protect, getOwnLoans)
 
 
 module.exports = router

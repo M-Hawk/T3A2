@@ -12,7 +12,7 @@ const loanSchema = mongoose.Schema({
   },
   dueDate: {
     type: Date,
-    required: [true, "Please add a date"] //make a default date that is today's date plus 2 weeks
+    default: Date.now() + 14*24*60*60*1000,
   },
   
   }, {

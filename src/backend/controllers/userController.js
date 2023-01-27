@@ -77,7 +77,7 @@ const loginUser = asyncHandler(async (req, res) => {
   }
 })
 
-// @desc    Get user data
+// @desc    Get own user data
 // @route   GET /api/users/profile
 // @access  Private
 const getProfile = asyncHandler(async(req, res) => {
@@ -89,16 +89,57 @@ const getProfile = asyncHandler(async(req, res) => {
   })
 })
 
+// @desc    Get all users in the database
+// @route   GET /api/users/
+// @access  Admin Private
+const getUsers = asyncHandler(async(req, res) => {
+  const users = await UserModel.find()
+  
+  res.status(200).json(users)
+})
+
+// @desc    Update own user profile
+// @route   PUT /api/users/profile/
+// @access  Private
+const updateUserProfile = asyncHandler(async (req, res) => {
+  // if(!bookDetails) {
+  //   res.status(400)
+  //   throw new Error('No book could be found with that id.')
+  // } 
+  const updatedUserProfile = await UserModel.findByIdAndUpdate(req.user.id, req.body, {
+    new:true,
+  })
+  res.status(201).json(updatedUserProfile)
+
+})
+
+// @desc    Delete a users data
+// @route   DELETE /api/users/:id
+// @access  Admin Private
+const deleteUser = asyncHandler(async(req, res) => {
+  const user = await UserModel.findById(req.params.id)
+  const { username } = await UserModel.findById(req.params.id)
+  await user.remove()
+  
+  res.status(200).json({ message: `Deleted user: ${username}, from the database`})
+})
+
+
+
 // Generate JWT Tokin
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET_KEY, {
     expiresIn: "30d",
     })
 }
+
 module.exports = { 
   registerUser,
   loginUser,
   getProfile,
+  getUsers,
+  updateUserProfile,
+  deleteUser,
 }
 
 

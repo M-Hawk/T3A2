@@ -4,19 +4,20 @@ const LoanModel = require("../models/loanModel")
 //Todo- FIX THSI ROUTE!!!!!!
 
 // @desc    Get Own Profile's current loans
-// @route   GET /api/loans
+// @route   GET /api/loans/getmyloans
 // @access  Private (40:30 seconds)
 const getOwnLoans = asyncHandler(async (req, res) => {
-  const loans = await LoanModel.find({ user: req.user.id })
-  
+  const loans = await LoanModel.find({ user: req.user.id }).populate({path: "bookCopy", populate: "bookDetails"})
   res.status(200).json(loans)
 })
+
+// SET SO ONLY ADMIN CAN USE THIS ROUTE
 
 // @desc    Get All Current loans
 // @route   GET /api/loans
 // @access  Admin Private
 const getLoans = asyncHandler(async (req, res) => {
-  const loans = await LoanModel.find().populate(["user","bookCopy"])
+  const loans = await LoanModel.find().populate({path: "bookCopy", populate: "bookDetails"}).populate("user")
   
   res.status(200).json(loans)
 })
@@ -29,14 +30,16 @@ const getLoans = asyncHandler(async (req, res) => {
 // @route   POST /api/loans
 // @access  Private
 const setLoan = asyncHandler(async (req, res) => {
-  // if(!req.body.title) {
-  //   res.status(400)
-  //   throw new Error("Please add the title key")
-  // }
+  if(req.body.bookCopy) {
+    bookCopyId = req.body.bookCopy._id
+    if(availability.isAvailable) {
+      res.status(204)
+      throw new Error("Book is currently not available")    
+    }
+  }
   const loan = await LoanModel.create({
     bookCopy: req.body.bookCopy,
-    user: req.body.user,
-    dueDate: req.body.dueDate
+    user: req.user.id,
   })
   res.status(200).json(loan)
 })
@@ -76,6 +79,7 @@ const deleteLoan = asyncHandler(async (req, res) => {
 })
 
 module.exports = {
+  getOwnLoans,
   getLoans,
   setLoan,
   updateLoan,

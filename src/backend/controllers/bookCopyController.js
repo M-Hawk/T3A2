@@ -30,8 +30,6 @@ const getOneBookCopy = asyncHandler(async (req, res) => {
   }
   })
 
-// To do- Protected route (add isAdmin) 
-
 // @desc    Create a new book copy
 // @route   POST /api/bookcopies/
 // @access  Admin Private
@@ -43,7 +41,6 @@ const setBookCopy = asyncHandler(async (req, res) => {
   res.status(200).json(bookCopy)
 })
 
-// Protected route (To-Do add isAdmin)
 //To-Do: find a way to provide a more semantic error message for when a book doesn't exist with that id. 
 
 // @desc    Update an exsisting book copy
@@ -62,8 +59,6 @@ const updateBookCopy = asyncHandler(async (req, res) => {
   res.status(201).json(updatedBookCopy)
 
 })
-
-// Protected route (To-Do add isAdmin)
 
 // @desc    Delete book copy
 // @route   DELETE /api/bookcopies/:id

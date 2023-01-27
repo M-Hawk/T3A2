@@ -8,13 +8,13 @@ const {
   deleteBookCopy
  } = require("../controllers/bookCopyController")
 
-const {protect} = require("../middleware/authMiddleware")
+ const { protect, admin } = require("../middleware/authMiddleware")
 
 // Update and delete routes
-router.route("/:id").get(getOneBookCopy).put(protect, updateBookCopy).delete(protect, deleteBookCopy)
+router.route("/:id").get(getOneBookCopy).put(protect, admin, updateBookCopy).delete(protect, admin, deleteBookCopy)
 
 // Get and create routes
-router.route("/").get(getBookCopies).post(protect, setBookCopy)
+router.route("/").get(getBookCopies).post(protect, admin, setBookCopy)
 
 
 module.exports = router

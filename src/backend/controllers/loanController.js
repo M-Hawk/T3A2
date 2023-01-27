@@ -4,13 +4,12 @@ const BookCopyModel = require("../models/bookCopyModel")
 
 // @desc    Get Own Profile's current loans
 // @route   GET /api/loans/getmyloans
-// @access  Private (40:30 seconds)
+// @access  Private
 const getOwnLoans = asyncHandler(async (req, res) => {
   const loans = await LoanModel.find({ user: req.user.id }).populate({path: "bookCopy", populate: "bookDetails"})
   res.status(200).json(loans)
 })
 
-// SET SO ONLY ADMIN CAN USE THIS ROUTE
 
 // @desc    Get All Current loans
 // @route   GET /api/loans

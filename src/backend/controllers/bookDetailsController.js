@@ -10,7 +10,7 @@ const getBookDetails = asyncHandler(async (req, res) => {
   res.status(200).json(bookDetails)
 })
 
-// To-Do- Find out why the else statement below doesn't work but the catch does.  
+// To-Do- Find out why the else statement below doesn't work but the catch does.
 
 // @desc    Get a single book's details by its ID
 // @route   GET /api/bookdetails/:id

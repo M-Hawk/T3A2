@@ -16,19 +16,15 @@ const getBookCopies = asyncHandler(async (req, res) => {
 // @route   GET /api/bookcopies/:id
 // @access  Public
 const getOneBookCopy = asyncHandler(async (req, res) => {
-  try {
     const bookCopy = await BookCopyModel.findById(req.params.id).populate("bookDetails")
-    if (bookCopy) {
-      res.status(200).json(bookCopy)
+    if (!bookCopy) {
+      res.status(404)
+      throw new Error("Book copy not found with that ID")
     }
-    // else {
-    //   res.status(404).send({ error: 'Book copy not found with that ID'})
-    // }
-  }
-  catch (err) {
-    res.status(404).send({ error: "Book copy not found with that ID" })
-  }
-  })
+    else {
+      res.status(200).json(bookCopy)
+      }
+    })
 
 // @desc    Create a new book copy
 // @route   POST /api/bookcopies/

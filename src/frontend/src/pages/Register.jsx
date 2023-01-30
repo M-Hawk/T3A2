@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react"
-import { FaUser } from "react-icons/fa"
+import { FaUser, FaInfoCircle, FaCheck, FaTimes} from "react-icons/fa"
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/
@@ -7,7 +7,7 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
 
 
 const Register = () => {
-  const userRef = useRef()
+  const emailRef = useRef()
   const errRef = useRef()
   
   const [email, setEmail] = useState("") 
@@ -31,7 +31,7 @@ const Register = () => {
   const [success, setSuccess] = useState(false)
 
   useEffect(() => {
-    userRef.current.focus()
+    emailRef.current.focus()
   }, [])
 
   
@@ -39,7 +39,7 @@ const Register = () => {
     const result = EMAIL_REGEX.test(email)
     console.log(result)
     console.log(email)
-    setValidUsername(result)
+    setValidEmail(result)
   }, [email])
 
   useEffect(() => {
@@ -93,8 +93,136 @@ const Register = () => {
       </h1>
       <p>Please create an account</p>
     </section>
-
     <section className="form">
+      <form>
+      <div className="form-group">
+        <label htmlFor="email">
+          Email:
+          <span className={validEmail ? "valid": "hide"}>
+            <FaCheck />
+          </span> 
+          <span className={validEmail || !email ? "hide" : "invalid"}>
+            <FaTimes />
+          </span> 
+        </label>
+        <input 
+          type="text"
+          id="email"
+          ref= {emailRef}
+          autoComplete="off"
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          placeholder="Enter your email address"
+          aria-invalid={validEmail ? "false" : "true"}
+          aria-describedby="emailnote"
+          onFocus={() => setEmailFocus(true)}
+          onBlur={() => setEmailFocus(false)}
+        />
+        <p id="emailnote" className={emailFocus && email && !validEmail ? "instructions" : "offscreen"}>
+          <FaInfoCircle />
+          Please enter a valid email address.<br />
+        </p>
+      </div>
+      <div className="form-group">
+        <label htmlFor="username">
+          Username:
+          <span className={validUsername ? "valid": "hide"}>
+            <FaCheck />
+          </span> 
+          <span className={validUsername || !username ? "hide" : "invalid"}>
+            <FaTimes />
+          </span> 
+        </label>
+        <input 
+          type="text"
+          id="username"
+          autoComplete="off"
+          onChange={(e) => setUsername(e.target.value)}
+          required
+          placeholder="Enter your username"
+          aria-invalid={validUsername ? "false" : "true"}
+          aria-describedby="uidnote"
+          onFocus={() => setUsernameFocus(true)}
+          onBlur={() => setUsernameFocus(false)}
+        />
+        <p id="uidnote" className={usernameFocus && username && !validUsername ? "instructions" : "offscreen"}>
+          <FaInfoCircle />
+          4 to 24 characters.<br />
+          Must begin with a letter.<br />
+          Letters, numbers, underscores and hyphens allowed.
+        </p>
+      </div>
+      <div className="form-group">
+        <label htmlFor="password">
+          Password:
+          <span className={validPwd ? "valid": "hide"}>
+            <FaCheck />
+          </span> 
+          <span className={validPwd || !pwd ? "hide" : "invalid"}>
+            <FaTimes />
+          </span> 
+        </label>
+        <input 
+          type="password"
+          id="password"
+          onChange={(e) => setPwd(e.target.value)}
+          required
+          placeholder="Enter your password"
+          aria-invalid={validPwd ? "false" : "true"}
+          aria-describedby="pwdnote"
+          onFocus={() => setPwdFocus(true)}
+          onBlur={() => setPwdFocus(false)}
+        />
+        <p id="pwdnote" className={pwdFocus && !validPwd ? "instructions" : "offscreen"}>
+          <FaInfoCircle />
+          8 to 24 characters.<br />
+          Must include uppercase and lowercase letters, a number and a special character.<br />
+          Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+        </p>
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="confirm_pwd">
+          Confirm Password:
+          <span className={validMatch && matchPwd ? "valid": "hide"}>
+            <FaCheck />
+          </span> 
+          <span className={validMatch || !matchPwd ? "hide" : "invalid"}>
+            <FaTimes />
+          </span> 
+        </label>
+        <input 
+          type="password"
+          id="confirm_password"
+          onChange={(e) => setMatchPwd(e.target.value)}
+          required
+          placeholder="Confirm your password"
+          aria-invalid={validMatch ? "false" : "true"}
+          aria-describedby="confirmnote"
+          onFocus={() => setMatchFocus(true)}
+          onBlur={() => setMatchFocus(false)}
+        />
+        <p id="confirmnote" className={matchFocus && !validMatch ? "instructions" : "offscreen"}>
+          <FaInfoCircle />
+          Must match the first password input field.    
+        </p>
+      </div>
+{/* Fix formatting so that the button is disabled */}
+        <button disabled={!validUsername || !validPwd || !validMatch ? true : false} className="btn btn-block">Register</button>
+
+
+      </form>
+    </section>
+    <p>
+      Already registered?<br />
+      <span className="line">
+        {/* Put Router Link Here */}
+        <a href="#">Log In</a>
+
+      </span>
+    </p>
+
+    {/* <section className="form">
       <form onSubmit={onSubmit}>
         <div className="form-group">
           <input 
@@ -146,7 +274,7 @@ const Register = () => {
           </button>
         </div>
       </form>
-    </section>
+    </section> */}
   </>
 }
 

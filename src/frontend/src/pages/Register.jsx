@@ -54,7 +54,7 @@ const Register = () => {
   useEffect(() => {
     const result = PWD_REGEX.test(pwd)
     console.log(result)
-    console.log(pwd)
+    // console.log(pwd)
     setValidPwd(result)
     const match = pwd === matchPwd
     setValidMatch(match)

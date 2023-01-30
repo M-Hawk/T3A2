@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react"
 import { FaUser } from "react-icons/fa"
 
+const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
 
-function Register() {
+const Register = () => {
   const [formData, setFormData] = useState({
     email: "",
     username: "",

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { FaSignInAlt } from "react-icons/fa"
 
 
-function Login() {
+const Login = () =>{
   const [formData, setFormData] = useState({
     username: "",
     password: "",

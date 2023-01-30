@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useContext } from "react"
-// import { AuthContext } from "../context/AuthProvider.jsx"
+import { AuthContext } from "../context/AuthProvider"
 import axios from "../apiConnect/axios"
 import { FaSignInAlt } from "react-icons/fa"
 
@@ -7,7 +7,7 @@ const LOGIN_URL = "api/users/login"
 
 const Login = () => {
 
-  // const { setAuth } = useContext(AuthContext)
+  const { setAuth } = useContext(AuthContext)
   const usernameRef = useRef()
   const errRef = useRef()
 
@@ -36,7 +36,7 @@ const Login = () => {
       console.log(JSON.stringify(response))
       const token = response?.data?.token
       // const isAdmin = response?.data?.isAdmin
-      setAuth({ username, password, token})
+      setAuth({username, password})
       setUsername("")
       setPwd("")
       setSuccess(true)

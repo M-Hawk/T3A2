@@ -20,14 +20,14 @@ const registerUser = asyncHandler(async (req, res) => {
   const userEmailExists= await UserModel.findOne({email})
 
   if(userEmailExists) {
-    res.status(400)
+    res.status(409)
     throw new Error("Email already exists.")
   }
   //Check if username exists
   const usernameExists= await UserModel.findOne({username})
 
   if(usernameExists) {
-    res.status(400)
+    res.status(409)
     throw new Error("Username already exists.")
   }
   // Hash password
@@ -70,14 +70,14 @@ const registerAdmin = asyncHandler(async (req, res) => {
   const userEmailExists= await UserModel.findOne({email})
 
   if(userEmailExists) {
-    res.status(400)
+    res.status(409)
     throw new Error("Email already exists.")
   }
   //Check if username exists
   const usernameExists= await UserModel.findOne({username})
 
   if(usernameExists) {
-    res.status(400)
+    res.status(409)
     throw new Error("Username already exists.")
   }
   // Hash password

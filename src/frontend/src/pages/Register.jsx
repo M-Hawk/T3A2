@@ -1,10 +1,12 @@
 import { useRef, useState, useEffect } from "react"
 import { FaUser, FaInfoCircle, FaCheck, FaTimes} from "react-icons/fa"
+import axios from "../apiConnect/axios"
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/
 
+const REGISTER_URL = "/api/users/register"
 
 const Register = () => {
   const emailRef = useRef()
@@ -91,8 +93,31 @@ const Register = () => {
       setErrMsg("Invalid Entry")
       return
     }
-    console.log(username, pwd)
-    setSuccess(true)
+    try {
+      const response = await axios.post(REGISTER_URL, JSON.stringify({ email, username, password: pwd }),
+        {
+          headers: {"Content-Type" : "application/json"},
+
+
+        }
+      )
+      console.log(response.data)
+      console.log(response.accessToken)
+      console.log(JSON.stringify(response))
+      setSuccess(true)
+    } 
+    catch (err) {
+      if (!err?.response) {
+        setErrMsg("No server response")
+      } 
+      else if (err.response?.status === 409) {
+        setErrMsg("Username or Email Taken")
+      }
+      else {
+        setErrMsg("Registration Failed")
+      }
+      errRef.current.focus()
+    }
   }
 
   return (

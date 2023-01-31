@@ -11,7 +11,7 @@ const {
  const { protect, admin } = require("../middleware/authMiddleware")
 
 // Update and delete routes
-router.route("/:id").get(getOneBookDetails).put(protect, admin, updateBookDetails).delete(protect, admin, deleteBookDetails)
+router.route("/:id").get(getOneBookDetails).put(updateBookDetails).delete(protect, admin, deleteBookDetails)
 
 // Get and create routes
 router.route("/").get(getBookDetails).post(setBookDetails)

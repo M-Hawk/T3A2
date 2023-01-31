@@ -6,6 +6,7 @@ import Register from "./pages/Register"
 import Books from "./pages/Books"
 import BookInfo from "./pages/BookInfo"
 import AddBookDetails from "./pages/AddBookDetails"
+import AddBookCopy from "./pages/AddBookCopy"
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
               <Route path="/books" element={<Books />} />
               <Route path="/books/:id" element={<BookInfo />} />
               <Route path="/books/add/details" element={<AddBookDetails />} />
+              <Route path="/books/add/copy/:details" element={<AddBookCopy />} />
             </Routes>
         </div>
       </Router>

@@ -133,9 +133,9 @@ const Register = () => {
             <p ref={errRef} classname={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           </section>
           <section className="heading">
-            <h1>
+            <h2>
               <FaUser /> Register
-            </h1>
+            </h2>
               <p>Please create an account</p>
           </section>
 

@@ -2,7 +2,7 @@ import {FaSignInAlt, FaSignOutAlt, FaUser} from "react-icons/fa"
 import {Link} from "react-router-dom"
 
 
-function Header() {
+function NavBar() {
   return (
     <header className="header">
     <div className="logo">
@@ -24,4 +24,4 @@ function Header() {
   )
 }
 
-export default Header
+export default NavBar

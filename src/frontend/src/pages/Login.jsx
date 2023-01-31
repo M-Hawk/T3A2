@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useContext } from "react"
-import { AuthContext } from "../context/AuthProvider"
+// import { AuthContext } from "../context/AuthProvider"
 import axios from "../apiConnect/axios"
 import { FaSignInAlt } from "react-icons/fa"
 
@@ -7,7 +7,7 @@ const LOGIN_URL = "api/users/login"
 
 const Login = () => {
 
-  const { setAuth } = useContext(AuthContext)
+  // const { setAuth } = useContext(AuthContext)
   const usernameRef = useRef()
   const errRef = useRef()
 
@@ -26,7 +26,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    try {
+    // try {
       const response = await axios.post(LOGIN_URL, JSON.stringify({username, password: pwd}),
         {
           headers: { "Content-Type": "application/json" }
@@ -36,27 +36,27 @@ const Login = () => {
       console.log(JSON.stringify(response))
       const token = response?.data?.token
       // const isAdmin = response?.data?.isAdmin
-      setAuth({username, password})
+      setAuth({username, password, token})
       setUsername("")
       setPwd("")
       setSuccess(true)
-    }
-    catch (err) {
-      if (!err?.response) {
-        setErrMsg("No server response")
-      } 
-      else if (err.response?.status === 400) {
-        setErrMsg("Invalid Credentials")
-      }
+    // }
+    // catch (err) {
+      // if (!err?.response) {
+      //   setErrMsg("No server response")
+      // } 
+      // else if (err.response?.status === 400) {
+      //   setErrMsg("Invalid Credentials")
+      // }
       // else if (err.response?.status === 401) {
       //   setErrMsg("Unauthorized")
       // }
-      else {
-        setErrMsg("Login Failed")
-      }
+      // else {
+      //   setErrMsg("Login Failed")
+      // }
       // For screen readers
       errRef.current.focus()
-    }
+    // }
 
   }
 

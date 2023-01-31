@@ -98,8 +98,9 @@ const Register = () => {
           headers: {"Content-Type" : "application/json"}
         }
       )
+      // Delete these console logs after
       console.log(response.data)
-      console.log(response.accessToken)
+      console.log(response.data.token)
       console.log(JSON.stringify(response))
       setSuccess(true)
     } 

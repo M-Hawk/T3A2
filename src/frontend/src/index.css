@@ -176,28 +176,6 @@ h3 {
   transform: scale(0.98);
 }
 
-.loadingSpinnerContainer {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 5000;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.loadingSpinner {
-  width: 64px;
-  height: 64px;
-  border: 8px solid;
-  border-color: #000 transparent #555 transparent;
-  border-radius: 50%;
-  animation: spin 1.2s linear infinite;
-}
-
 .hide {
   display: none;
 }
@@ -240,27 +218,35 @@ img {
   width: 25%;
   max-width: 16rem;
 }
-
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+.book-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-@media (max-width: 600px) {
-  .form {
-    width: 90%;
-  }
-
-  .heading h1 {
-    font-size: 2rem;
-  }
-
-  .heading p {
-    font-size: 1.5rem;
-  }
+.book {
+  margin: 10px;
+  width: 288px;
+  overflow: hidden;
 }
+
+.book-title {
+  font-weight: bold;
+}
+
+.book-details {
+  margin-bottom: 1rem;
+}
+
+.book-details > div {
+  margin-bottom: 0.5rem;
+}
+
+.book-button {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+

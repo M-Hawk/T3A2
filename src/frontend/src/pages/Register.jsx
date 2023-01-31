@@ -99,7 +99,7 @@ const Register = () => {
         }
       )
       console.log(response.data)
-      console.log(response.accessToken)
+      console.log(response.data.token)
       console.log(JSON.stringify(response))
       setSuccess(true)
     } 
@@ -129,7 +129,7 @@ const Register = () => {
       ):(
         <> 
           <section>
-            <p ref={errRef} classname={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           </section>
           <section className="heading">
             <h1>

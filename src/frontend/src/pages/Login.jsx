@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect, useContext } from "react"
-import { AuthContext } from "../context/AuthProvider"
+// import { AuthContext } from "../context/AuthProvider"
 import axios from "../apiConnect/axios"
 import { FaSignInAlt } from "react-icons/fa"
 
@@ -7,7 +7,7 @@ const LOGIN_URL = "api/users/login"
 
 const Login = () => {
 
-  const { setAuth } = useContext(AuthContext)
+  // const { setAuth } = useContext(AuthContext)
   const usernameRef = useRef()
   const errRef = useRef()
 
@@ -32,18 +32,20 @@ const Login = () => {
           headers: { "Content-Type": "application/json" }
         }
       )
-      console.log(JSON.stringify(response?.data))
+      // console.log(JSON.stringify(response?.data))
       console.log(JSON.stringify(response))
-      const token = response?.data?.token
+      const JWTToken = (JSON.stringify(response.data.token))
+      console.log(JWTToken)
+      // const token = response?.data?.token
       // const isAdmin = response?.data?.isAdmin
-      setAuth({username, password})
+      // setAuth({username, password})
       setUsername("")
       setPwd("")
       setSuccess(true)
     }
     catch (err) {
       if (!err?.response) {
-        setErrMsg("No server response")
+        setErrMsg("Looooook at MEEEEE")
       } 
       else if (err.response?.status === 400) {
         setErrMsg("Invalid Credentials")
@@ -72,7 +74,7 @@ const Login = () => {
       ):(
         <>
           <section>
-            <p ref={errRef} classname={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           </section>
 
           <section className="heading">

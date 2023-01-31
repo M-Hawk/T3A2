@@ -14,7 +14,7 @@ const {
 router.route("/:id").get(getOneBookDetails).put(protect, admin, updateBookDetails).delete(protect, admin, deleteBookDetails)
 
 // Get and create routes
-router.route("/").get(getBookDetails).post(protect, admin, setBookDetails)
+router.route("/").get(getBookDetails).post(setBookDetails)
 
 
 module.exports = router

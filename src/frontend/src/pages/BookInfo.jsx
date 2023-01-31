@@ -4,7 +4,7 @@ import axios from "../apiConnect/axios"
 
 const GET_BOOKS_URL = "api/bookdetails"
 
-const Books = () => {
+const BookInfo = () => {
 
 
   // const [book, setBook] = useState(() => {

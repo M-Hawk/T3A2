@@ -26,37 +26,38 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    // try {
+    try {
       const response = await axios.post(LOGIN_URL, JSON.stringify({username, password: pwd}),
         {
           headers: { "Content-Type": "application/json" }
         }
       )
-      console.log(JSON.stringify(response?.data))
+      // console.log(JSON.stringify(response?.data))
       console.log(JSON.stringify(response))
-      const token = response?.data?.token
+      const token = (JSON.stringify(response.data.token))
+      console.log(token)
       // const isAdmin = response?.data?.isAdmin
-      setAuth({username, password, token})
+      // setAuth({username, password, token})
       setUsername("")
       setPwd("")
       setSuccess(true)
-    // }
-    // catch (err) {
-      // if (!err?.response) {
-      //   setErrMsg("No server response")
-      // } 
-      // else if (err.response?.status === 400) {
-      //   setErrMsg("Invalid Credentials")
-      // }
-      // else if (err.response?.status === 401) {
-      //   setErrMsg("Unauthorized")
-      // }
-      // else {
-      //   setErrMsg("Login Failed")
-      // }
+    }
+    catch (err) {
+      if (!err?.response) {
+        setErrMsg("No server response")
+      } 
+      else if (err.response?.status === 400) {
+        setErrMsg("Invalid Credentials")
+      }
+      else if (err.response?.status === 401) {
+        setErrMsg("Unauthorized")
+      }
+      else {
+        setErrMsg("Login Failed")
+      }
       // For screen readers
       errRef.current.focus()
-    // }
+    }
 
   }
 
@@ -72,7 +73,7 @@ const Login = () => {
       ):(
         <>
           <section>
-            <p ref={errRef} classname={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
           </section>
 
           <section className="heading">

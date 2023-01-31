@@ -250,3 +250,18 @@ img {
   margin-bottom: 1rem;
 }
 
+.menu-bar {
+  background-image: linear-gradient(-90deg, green, white)
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  margin: 10px;
+  color: white;
+  font-weight: 500px;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+
+}

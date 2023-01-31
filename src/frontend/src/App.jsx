@@ -5,6 +5,7 @@ import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Books from "./pages/Books"
 import BookInfo from "./pages/BookInfo"
+import AddBookDetails from "./pages/AddBookDetails"
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
               <Route path="/register" element={<Register />} />
               <Route path="/books" element={<Books />} />
               <Route path="/books/:id" element={<BookInfo />} />
+              <Route path="/books/add/details" element={<AddBookDetails />} />
             </Routes>
         </div>
       </Router>

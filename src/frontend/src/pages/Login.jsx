@@ -77,9 +77,9 @@ const Login = () => {
           </section>
 
           <section className="heading">
-            <h1>
+            <h2>
               <FaSignInAlt /> Login
-            </h1>
+            </h2>
             <p>Login and start borrowing books!</p>
           </section>
 

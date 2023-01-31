@@ -91,4 +91,4 @@ const BookInfo = () => {
   </Button>
 </Card.Body>
 </Card> */
-export default Books
+export default BookInfo

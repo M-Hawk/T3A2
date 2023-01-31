@@ -4,6 +4,7 @@ import Home from "./pages/Home"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Books from "./pages/Books"
+import BookInfo from "./pages/BookInfo"
 
 const App = () => {
   return (

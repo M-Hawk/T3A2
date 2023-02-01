@@ -2,6 +2,7 @@ import { useState, useEffect } from "react"
 import { Button, Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import axios from "../apiConnect/axios"
+import { randBookImg } from "./Books"
 
 const BookInfo = () => {
 
@@ -24,7 +25,8 @@ const BookInfo = () => {
 
   return (
     <section className="book-list">
-        <Card style={{ width: '18rem' }} className="book">
+        <Card bg="light" style={{ width: '100rem' }} className="book">
+          <Card.Img variant="top" className="book-image one-book-image" src={randBookImg()} />
           <Card.Body>
           <Card.Title className="book-title">{book.title}</Card.Title>
             <div className="book-details">
@@ -34,7 +36,7 @@ const BookInfo = () => {
             </div>
             <div className="book-button">
               <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Borrow</Button>
-              <Button variant="primary" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
+              <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
               <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>{' '}
             </div>
           </Card.Body>

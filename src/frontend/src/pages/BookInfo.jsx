@@ -2,19 +2,12 @@ import { useState, useEffect } from "react"
 import { Button, Card } from "react-bootstrap"
 import axios from "../apiConnect/axios"
 
-const GET_BOOKS_URL = "api/bookdetails"
+const GET_BOOK_URL = "api/bookdetails/:id"
 
 const BookInfo = () => {
 
 
-  // const [book, setBook] = useState(() => {
-  //   return {
-  //     title: book ? book.title : "",
-  //     author: book ? book.author : "",
-  //     genre: book ? book.genre : "",
-  //     description: book ? book.description : "",
-  //   }
-  // })
+  const [book, setBook] = useState()
   
   useEffect(() => {
     const fetchBooks = async () => {
@@ -33,25 +26,6 @@ const BookInfo = () => {
   return (
     <section className="book-list">
       
-      <Card style={{ width: '18rem' }} className="book">
-        <Card.Body>
-          <Card.Title className="book-title">Title</Card.Title>
-          <div className="book-details">
-            <div>Author: author</div>
-            <div>Genre: genre</div>
-            <div>Description: description</div>
-          </div>
-          <div className="book-button">
-            <Button variant="danger" onClick={() => handleRemoveBook(id)}>
-              Delete
-            </Button>{' '}
-            <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>
-              Edit
-            </Button>
-          </div>
-        </Card.Body>
-      </Card>
-
       <Card style={{ width: '18rem' }} className="book">
         <Card.Body>
           <Card.Title className="book-title">Title</Card.Title>

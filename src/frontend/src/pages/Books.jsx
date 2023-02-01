@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Button, Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import axios from "../apiConnect/axios"
-// import BookInfo from "./BookInfo"
+
 
 const GET_BOOKS_URL = "api/bookdetails"
 

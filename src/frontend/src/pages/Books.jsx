@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import { Button, Card } from "react-bootstrap"
+import { Link } from "react-router-dom"
 import axios from "../apiConnect/axios"
+// import BookInfo from "./BookInfo"
 
 const GET_BOOKS_URL = "api/bookdetails"
 
@@ -29,21 +31,20 @@ const Books = () => {
       {books.length ? (
         <section className="book-list">
           {books.map((book) => 
-            <Card style={{ width: '18rem' }} className="book">
+            <Card key={book._id}style={{ width: '18rem' }} className="book">
               <Card.Body>
               <Card.Title className="book-title">{book.title}</Card.Title>
                 <div className="book-details">
-                  <div>Author: {book.author}</div>
-                  <div>Genre: {book.genre}</div>
-                  <div>Description: {book.description}</div>
+                  <div><strong>Author:</strong> {book.author}</div>
+                  <div><strong>Genre:</strong> {book.genre}</div>
+                  <div><strong>Description:</strong> {book.description}</div>
                 </div>
                 <div className="book-button">
-                  <Button variant="danger" onClick={() => handleRemoveBook(id)}>
-                    Delete
-                  </Button>{' '}
-                  <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>
-                    Edit
-                  </Button>
+                  <Link to= {`/books/${book._id}`}>
+                    <Button variant="success">More Info</Button>
+                  </Link>
+                  <Button variant="primary" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
+                  <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>
                 </div>
               </Card.Body>
             </Card>

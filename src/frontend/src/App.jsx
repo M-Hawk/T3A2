@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import { useState } from "react"
 import NavBar from "./components/NavBar"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
@@ -12,6 +13,13 @@ import AddBookCopy from "./pages/AddBookCopy"
 import UserProfile from "./pages/UserProfile"
 
 const App = () => {
+
+  const [user, setUser] = useState(null)
+  const [token, setToken] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isAdmin, setAdmin] = useState(false)
+
+
   return (
     <>
       <Router>

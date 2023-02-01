@@ -1,28 +1,26 @@
 import {FaIdBadge } from "react-icons/fa"
 import { useState, useEffect } from "react"
 import { Button, Card } from "react-bootstrap"
+import { useParams } from "react-router-dom"
 import axios from "../apiConnect/axios"
-
-const GET_USERS_URL = "api/users/"
 
 const Users = () => {
 
-  // const [users, setUsers] = useState([])
+  const [users, setUser] = useState([])
+  const { id } = useParams()
   
-  // useEffect(() => {
-  //   const fetchUsers = async () => {
-  //     try {
-  //       const response = await axios.get(GET_USERS_URL)
-  //       const user = response.data
-  //       setUsers(user)
-  //     }
-  //     catch (err){
-  //       console.log(err.stack)
-  //     }
-  //   }
-  //   fetchUsers()
-  //   // Change this below to accept changes when new users are added or deleted
-  // }, [])
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get("api/users/" + id)
+        setUser(response.data)
+      }
+      catch (err){
+        console.log(err.stack)
+      }
+    }
+    fetchUser()
+  }, [])
 
   return (
     <>

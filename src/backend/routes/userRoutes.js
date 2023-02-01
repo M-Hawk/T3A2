@@ -5,6 +5,7 @@ const {
   registerAdmin,
   loginUser, 
   getProfile,
+  getOneUser,
   getUsers,
   updateUserProfile,
   deleteProfile,
@@ -18,7 +19,8 @@ router.post("/register", registerUser).post("/registeradmin",protect, admin, reg
 
 // Get routes
 
-router.get("/profile", protect, getProfile).get("/", protect, admin, getUsers)
+// router.get("/profile", protect, getProfile).get("/", protect, admin, getUsers)
+router.get("/profile", getProfile).get("/", getUsers).get("/:id", getOneUser)
 
 // Update route
 

@@ -9,7 +9,7 @@ const DESCRIPTION_REGEX = /^[A-Za-z0-9\s\-_,\.;:@&()]+$/
 
 const ADD_BOOK_DETAILS_URL = "/api/bookdetails"
 
-const AddBookDetails = () => {
+const AddBookDetails = ({book}) => {
   const titleRef = useRef()
   const errRef = useRef()
 
@@ -19,6 +19,7 @@ const AddBookDetails = () => {
 
   const [author, setAuthor] = useState("") 
   const [validAuthor, setValidAuthor] = useState(false)
+  
   const [authorFocus, setAuthorFocus] = useState(false)
 
   const [genre, setGenre] = useState("") 
@@ -130,6 +131,7 @@ const AddBookDetails = () => {
                 ref= {titleRef}
                 onChange={(e) => setTitle(e.target.value)}
                 required
+                value={title}
                 placeholder="Enter the book's title"
                 aria-invalid={validTitle ? "false" : "true"}
                 aria-describedby="titlenote"

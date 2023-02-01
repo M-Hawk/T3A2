@@ -151,6 +151,24 @@ const getUsers = asyncHandler(async(req, res) => {
   
   res.status(200).json(users)
 })
+// @desc    Get a single user's profile by their ID
+// @route   GET /api/bookdetails/:id
+// @access  Public
+const getOneUser = asyncHandler(async (req, res) => {
+  try {
+    const user = await UserModel.findById(req.params.id)
+    if (user) {
+      res.status(200).json(user)
+    }
+    // else {
+    //   res.status(404).send({ error: 'Book copy not found with that ID'})
+    // }
+  }
+  catch (err) {
+    res.status(404).send({ error: "User not found with that ID" })
+  }
+  })
+
 
 // @desc    Update own user profile
 // @route   PUT /api/users/profile/
@@ -177,7 +195,7 @@ const deleteProfile = asyncHandler(async(req, res) => {
   res.status(200).json({ message: `Your profile has been deleted from the database`})
 })
 
-// @desc    Delete a users data
+// @desc    Delete a user's data
 // @route   DELETE /api/users/:id
 // @access  Admin Private
 const deleteUser = asyncHandler(async(req, res) => {
@@ -202,6 +220,7 @@ module.exports = {
   registerAdmin,
   loginUser,
   getProfile,
+  getOneUser,
   getUsers,
   updateUserProfile,
   deleteProfile,

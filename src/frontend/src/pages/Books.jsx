@@ -12,67 +12,48 @@ const Books = () => {
     const fetchBooks = async () => {
       try {
         const response = await axios.get(GET_BOOKS_URL)
-        const book = response.data.bookDetails
-        // console.log(JSON.stringify(response.data))
-        setBooks(book)
+        const book = response.data
         console.log(book)
       }
       catch (err){
         console.log(err.stack)
       }
-      // return(books)
     }
     fetchBooks()
+    // Change this below to accept changes when new books are added or deleted
   }, [])
 
   
   return (
     <>
-    <p>Hello</p>
-    <div>
-    {books.map((book) => {
-        <ul key ={book._id}>
-          <li>Author: {book.author}</li>
-        </ul>
-    })}
-    </div>
-
+      {books.length ? (
+        <section className="book-list">
+          {books.map((book) => 
+            <Card style={{ width: '18rem' }} className="book">
+              <Card.Body>
+              <Card.Title className="book-title">{book.title}</Card.Title>
+                <div className="book-details">
+                  <div>Author: {book.author}</div>
+                  <div>Genre: {book.genre}</div>
+                  <div>Description: {book.description}</div>
+                </div>
+                <div className="book-button">
+                  <Button variant="danger" onClick={() => handleRemoveBook(id)}>
+                    Delete
+                  </Button>{' '}
+                  <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>
+                    Edit
+                  </Button>
+                </div>
+              </Card.Body>
+            </Card>
+          )}
+        </section>
+        )  : (
+     <p style={{ marginTop: '2rem' }}>There are no books available at the moment</p>
+     )}
     </>
   )
 }
-
-// {books.length ? (
-//   ) : (
-//     <p style={{ marginTop: '2rem' }}>Your list is empty.</p>      )}
-
-{/* 
-<section className="book-list">
-  <Card style={{ width: '18rem' }} className="book">
-      <Card.Body>
-        <Card.Title className="book-title">{book.title}</Card.Title>
-        <div className="book-details">
-          <div>Author: {book.author}</div>
-          <div>Genre: {book.genre}</div>
-          <div>Description: {book.description}</div>
-        </div>
-        <div className="book-button">
-          <Button variant="danger" onClick={() => handleRemoveBook(id)}>
-            Delete
-          </Button>{' '}
-          <Button variant="primary" onClick={() => history.push(`/edit/${id}`)}>
-            Edit
-          </Button>
-        </div>
-      </Card.Body>
-  </Card> */}
-
-// const [books, setBooks] = useState(() => {
-//   return {
-//     title: setBooks ? books.title : "",
-//     author: setBooks ? books.author : "",
-//     description: setBooks ? books.description : "",
-//     genre: setBooks ? books.genre : "",
-//   }
-// })
 
 export default Books

@@ -9,7 +9,9 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -32,9 +34,11 @@ li {
 }
 h1 {
   font-family: 'Cabin Sketch', cursive;
-  font-size: 3.2rem;
-
+  font-size: clamp(3rem, 6.5vw + 0.44rem, 6rem);
+  margin: 0.1em 0.1em;
 }
+
+
 h1,
 h2,
 h3 {
@@ -338,7 +342,9 @@ h3 {
     font-size: 1.5rem;
     line-height: 1.4;
 }
-
+.footer {
+  margin-top: auto;
+}
 /* .footer {
   position: absolute;
   bottom: 0;

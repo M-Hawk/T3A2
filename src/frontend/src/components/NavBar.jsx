@@ -1,4 +1,4 @@
-import {FaSignInAlt, FaHome, FaUser, FaBook} from "react-icons/fa"
+import {FaSignInAlt, FaHome, FaUser, FaIdBadge, FaBook} from "react-icons/fa"
 import {Link} from "react-router-dom"
 
 
@@ -13,10 +13,11 @@ const NavBar = () => {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ms-auto">
-            <Link class="nav-link" aria-current="page" to="/"><FaHome /> Home</Link>
-            <Link class="nav-link" to="/login"><FaSignInAlt /> Login</Link>
-            <Link class="nav-link" to="/register"><FaUser /> Register</Link>
-            <Link class="nav-link" to="/books"><FaBook /> Books</Link>
+            <Link className="nav-link" aria-current="page" to="/"><FaHome /> Home</Link>
+            <Link className="nav-link" to="/login"><FaSignInAlt /> Login</Link>
+            <Link className="nav-link" to="/register"><FaUser /> Register</Link>
+            <Link className="nav-link" to="/userprofile"><FaIdBadge /> User Profile</Link>
+            <Link className="nav-link" to="/books"><FaBook /> Books</Link>
           </div>
         </div>
       </div>

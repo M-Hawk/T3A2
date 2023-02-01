@@ -9,6 +9,7 @@ import Books from "./pages/Books"
 import BookInfo from "./pages/BookInfo"
 import AddBookDetails from "./pages/AddBookDetails"
 import AddBookCopy from "./pages/AddBookCopy"
+import UserProfile from "./pages/UserProfile"
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
+              <Route path="/userprofile" element={<UserProfile />} />
               <Route path="/books" element={<Books />} />
               <Route path="/books/:id" element={<BookInfo />} />
               <Route path="/books/add/details" element={<AddBookDetails />} />
@@ -34,3 +36,8 @@ const App = () => {
 }
 
 export default App
+
+{/* <Route path="/books/add/details" element={<AddBookDetails />} />
+<Route path="/books/add/copy/:details" element={<AddBookCopy />} />
+
+directory id action  */}

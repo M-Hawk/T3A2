@@ -13,7 +13,7 @@ const Books = () => {
       try {
         const response = await axios.get(GET_BOOKS_URL)
         const book = response.data
-        console.log(book)
+        setBooks(book)
       }
       catch (err){
         console.log(err.stack)

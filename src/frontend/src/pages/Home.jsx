@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div>
-      <h1>Wormreads</h1>
       <section className="heading">
         <h2>Welcome to the Wormreads Online Library</h2>
       </section>

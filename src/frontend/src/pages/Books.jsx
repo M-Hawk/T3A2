@@ -7,24 +7,6 @@ const BOOK_DESC_REGEX = /.+?\./
 const GET_BOOKS_URL = "api/bookdetails"
 const GET_COPIES_URL = "api/bookcopies"
 
-export const randBookImg = () => {
-  let imgUrls = 
-  ["https://api.lorem.space/image/book?w=150&h=220&hash=8B7BCDC2",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=500B67FB",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=A89D0DE6",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=225E6693",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=9D9539E7",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=BDC01094",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=7F5AE56A",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=4F32C4CF",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=B0E33EF4",
-  "https://api.lorem.space/image/book?w=150&h=220&hash=2D297A22",
-  ]
-  let random=  Math.floor((Math.random() * imgUrls.length))
-  let randomImg=imgUrls[random]
-  return randomImg
-}
-
 const Books = () => {
 
   const [books, setBooks] = useState([])
@@ -67,7 +49,7 @@ const Books = () => {
     <>
       {books.length ? (
         <section className="book-list">
-          {books.map((book) => 
+          {books.map((book) =>
             <Card key={book._id} bg="light" style={{ width: '24rem' }} className="book">
               <Card.Img variant="top" className="book-image" src= {book.imageList} />
               <Card.Body>

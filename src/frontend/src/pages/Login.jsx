@@ -2,19 +2,20 @@ import { useRef, useState, useEffect, useContext } from "react"
 // import { AuthContext } from "../context/AuthProvider"
 import axios from "../apiConnect/axios"
 import { FaSignInAlt } from "react-icons/fa"
+import { Link, useNavigate } from "react-router-dom"
 
 const LOGIN_URL = "api/users/login"
 
-const Login = () => {
+const Login = ({ setUser }) => {
 
   // const { setAuth } = useContext(AuthContext)
   const usernameRef = useRef()
   const errRef = useRef()
+  const navigateTo = useNavigate()
 
   const [username, setUsername] = useState("")
   const [pwd, setPwd] = useState("")
   const [errMsg, setErrMsg] = useState("")
-  const [success, setSuccess] = useState(false)
 
   useEffect(() => {
     usernameRef.current.focus()
@@ -32,15 +33,13 @@ const Login = () => {
           headers: { "Content-Type": "application/json" }
         }
       )
-      // console.log(JSON.stringify(response?.data))
-      console.log(JSON.stringify(response))
-      const token = (JSON.stringify(response.data.token))
-      console.log(token)
-      // const isAdmin = response?.data?.isAdmin
-      // setAuth({username, password, token})
-      setUsername("")
-      setPwd("")
-      setSuccess(true)
+      // set token in local storage
+      localStorage.setItem("token", response.data.token)
+      // log user in
+      await setUser(response.data)
+      console.log(response.data)
+      // redirect to home page
+      navigateTo("/")
     }
     catch (err) {
       if (!err?.response) {
@@ -63,64 +62,53 @@ const Login = () => {
 
   return (
     <>
-      {success ? (
-        <section>
-          <h1>Success!</h1>
-          <p>
-            <a href="#">Logged In</a>
-          </p>
-        </section>
-      ):(
-        <>
-          <section>
-            <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-          </section>
+      <section>
+        <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+      </section>
 
-          <section className="heading">
-            <h2>
-              <FaSignInAlt /> Login
-            </h2>
-            <p>Login and start borrowing books!</p>
-          </section>
+      <section className="heading">
+        <h2>
+          <FaSignInAlt /> Login
+        </h2>
+        <p>Login and start borrowing books!</p>
+      </section>
 
-          <section className="form">
-            <form onSubmit={handleSubmit}>
-              <div className="form-group">
-                <label htmlFor="username">Username:</label>
-                <input 
-                  type="text"
-                  id="username"
-                  ref={usernameRef}
-                  // autoComplete="off"
-                  placeholder="Enter your username"
-                  onChange={(e) => setUsername(e.target.value)}
-                  value={username}
-                  required
-                  />
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password:</label>
-                <input 
-                  type="password"
-                  id="password"
-                  placeholder="Enter your password"
-                  onChange={(e) => setPwd(e.target.value)}
-                  value={pwd}
-                  required
-                  />
-                  <button className="btn btn-block">Log In</button>
-              </div>
-            </form>
-            <p>
-              Need an Account?<br />
-              <span>
-                {/* {put router link here} */}
-                <a href="/register">Register</a>
-              </span>
-            </p>
-          </section>
-        </>
-      )}
+      <section className="form">
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="username">Username:</label>
+            <input 
+              type="text"
+              id="username"
+              ref={usernameRef}
+              // autoComplete="off"
+              placeholder="Enter your username"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              required
+              />
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password:</label>
+            <input 
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              onChange={(e) => setPwd(e.target.value)}
+              value={pwd}
+              required
+              />
+              <button className="btn btn-block">Log In</button>
+          </div>
+        </form>
+        <p>
+          Need an Account?<br />
+          <span>
+            {/* {put router link here} */}
+            <Link className="btn btn-small" to="/register"><FaSignInAlt/> Register</Link>
+          </span>
+        </p>
+      </section>
     </>
 
   )

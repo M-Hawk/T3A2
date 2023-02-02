@@ -1,4 +1,5 @@
 import {FaSignInAlt, FaHome, FaUser, FaIdBadge, FaBook} from "react-icons/fa"
+import logo from '../images/logo6.png'
 import {Link} from "react-router-dom"
 
 
@@ -7,7 +8,8 @@ const NavBar = () => {
   return (
     <nav class="navbar navbar-expand-lg bg-success bg-gradient">
       <div class="container-fluid">
-        <Link class="navbar-brand text-light" to="/">Wormreads</Link>
+        <Link class="navbar-brand text-light" to="/"><img className="logo" src={logo} alt="Image of Books" /> </Link>
+        
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

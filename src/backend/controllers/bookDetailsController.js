@@ -41,7 +41,9 @@ const setBookDetails = asyncHandler(async (req, res) => {
     title: req.body.title,
     author: req.body.author,
     genre: req.body.genre,
-    description: req.body.description
+    description: req.body.description,
+    imageList: req.body.imageList,
+    imageDetailed: req.body.imageDetailed
   })
   res.status(200).json(bookDetails)
 })

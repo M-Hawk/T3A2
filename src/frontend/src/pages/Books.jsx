@@ -25,19 +25,6 @@ export const randBookImg = () => {
   return randomImg
 }
 
-// Book images 
-// alice in wonderland = https://covers.openlibrary.org/b/isbn/9781841353463-M.jpg
-// pride and prejudice = https://covers.openlibrary.org/b/olid/OL40233763M-M.jpg
-// frankenstein = https://covers.openlibrary.org/b/olid/OL14448179M-M.jpg
-// the count of monte cristo = https://covers.openlibrary.org/b/olid/OL28434684M-M.jpg
-// david copperfield = https://covers.openlibrary.org/b/olid/OL44248875M-M.jpg
-// moby dick = https://covers.openlibrary.org/b/olid/OL29349220M-M.jpg
-// les mis = https://covers.openlibrary.org/b/olid/OL27211583M-M.jpg
-// dracula = https://covers.openlibrary.org/b/olid/OL31937676M-M.jpg
-// virginia wolf = https://covers.openlibrary.org/b/olid/OL43705038M-M.jpg
-// the sun also rises = https://covers.openlibrary.org/b/olid/OL974460M-M.jpg
-
-
 const Books = () => {
 
   const [books, setBooks] = useState([])
@@ -81,8 +68,8 @@ const Books = () => {
       {books.length ? (
         <section className="book-list">
           {books.map((book) => 
-            <Card key={book._id} bg="light" style={{ width: '18rem' }} className="book">
-              <Card.Img variant="top" className="book-image" src= {randBookImg()} />
+            <Card key={book._id} bg="light" style={{ width: '24rem' }} className="book">
+              <Card.Img variant="top" className="book-image" src= {book.imageList} />
               <Card.Body>
               <Card.Title className="book-title">{book.title}</Card.Title>
                 <div className="book-details">

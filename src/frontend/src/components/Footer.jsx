@@ -2,7 +2,7 @@
 const Footer = () => {
   return (
     <>
-      <footer className="footer fixed-bottom">
+      <footer className="footer">
         <section id="contact-details">
             <div>
                 <h3>Bite-Sized, easy to digest reads.</h3>

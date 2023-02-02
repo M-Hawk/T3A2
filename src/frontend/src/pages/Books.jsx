@@ -5,6 +5,7 @@ import axios from "../apiConnect/axios"
 
 const BOOK_DESC_REGEX = /.+?\./
 const GET_BOOKS_URL = "api/bookdetails"
+const GET_COPIES_URL = "api/bookcopies"
 
 export const randBookImg = () => {
   let imgUrls = 
@@ -26,7 +27,8 @@ export const randBookImg = () => {
 const Books = () => {
 
   const [books, setBooks] = useState([])
-  
+  const [bookCopies, setBookCopies] = useState([])
+
   useEffect(() => {
     const fetchBooks = async () => {
       try {
@@ -41,6 +43,23 @@ const Books = () => {
     fetchBooks()
     // Change this below to accept changes when new books are added or deleted
   }, [])
+
+  // useEffect(() => {
+  //   const fetchBookCopies = async () => {
+  //     try {
+  //       const response = await axios.get(GET_COPIES_URL)
+  //       const book = response.data
+  //       if(book.bookDetails.title === books.title) {
+  //         setBookcopies(book)
+  //       }
+  //     }
+  //     catch (err){
+  //       console.log(err.stack)
+  //     }
+  //   }
+  //   fetchBookCopies()
+  //   // Change this below to accept changes when new books are added or deleted
+  // }, [books])
 
   
   return (

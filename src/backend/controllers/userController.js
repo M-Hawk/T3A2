@@ -151,7 +151,7 @@ const getProfile = asyncHandler(async(req, res) => {
 // @route   GET /api/users/
 // @access  Admin Private
 const getUsers = asyncHandler(async(req, res) => {
-  const users = await UserModel.find()
+  const users = await UserModel.find().populate("booksOnLoan")
   
   res.status(200).json(users)
 })
@@ -160,7 +160,7 @@ const getUsers = asyncHandler(async(req, res) => {
 // @access  Public
 const getOneUser = asyncHandler(async (req, res) => {
   try {
-    const user = await UserModel.findById(req.params.id)
+    const user = await UserModel.findById(req.params.id).populate("booksOnLoan")
     if (user) {
       console.log(user)
       res.status(200).json(user)

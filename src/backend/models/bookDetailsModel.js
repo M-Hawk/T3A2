@@ -15,6 +15,14 @@ const bookDetailsSchema = mongoose.Schema({
   description: {
     type: String,
     required: [true, "Please add a book description value"]
+  },
+  imageList: {
+    type: String,
+    required: false
+  },
+  imageDetailed: {
+    type: String,
+    required: false
   }
   }, {
   timestamp: true

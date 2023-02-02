@@ -5,14 +5,14 @@ import {Link} from "react-router-dom"
 const NavBar = () => {
   
   return (
-    <nav class="navbar navbar-expand-lg bg-success bg-gradient">
-      <div class="container-fluid">
-        <Link class="navbar-brand text-light" to="/">Wormreads</Link>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav className="navbar navbar-expand-lg bg-success bg-gradient">
+      <div className="container-fluid">
+        <Link className="navbar-brand text-light" to="/">Wormreads</Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav ms-auto">
+        <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div className="navbar-nav ms-auto">
             <Link className="nav-link" aria-current="page" to="/"><FaHome /> Home</Link>
             <Link className="nav-link" to="/login"><FaSignInAlt /> Login</Link>
             <Link className="nav-link" to="/register"><FaUser /> Register</Link>

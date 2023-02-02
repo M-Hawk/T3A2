@@ -7,7 +7,7 @@ import avatarImage from '../images/femaleAvatar.png'
 
 const Users = () => {
 
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState()
   const { id } = useParams()
   
   useEffect(() => {
@@ -23,7 +23,8 @@ const Users = () => {
     fetchUser()
   }, [])
 
-  return (
+  if (user) {
+     return (
     <>
       <section className="heading">
         <h2>
@@ -39,10 +40,15 @@ const Users = () => {
             <div className="user-details">
               <div><strong>Username:</strong> {user.username}</div>
               <div><strong>Email:</strong> {user.email}</div>
+              {/* <div><strong>Date Joined:</strong> {user.createdAt}</div> */}
+              {
+                console.log(user)
+              }
+              {user.booksOnLoan.length > 0 && <div><strong>Date Joined:</strong> {user.booksOnLoan[0].title}</div>}
             </div>
             <div className="user-button">
-              <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
-              <Button variant="primary" onClick={() => editBookDetails(`/edit/${id}`)}>Delete Account</Button>
+              <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
+              <Button variant="danger" onClick={() => editBookDetails(`/edit/${id}`)}>Delete Account</Button>
             </div>
           </Card.Body>
         </Card>
@@ -55,7 +61,9 @@ const Users = () => {
       <p>You currently have the following books on loan:</p>
       </section>
     </>
-  )
+  ) } else {
+    return (<p>Loading your data</p>)
+  }
 }
 
 export default Users

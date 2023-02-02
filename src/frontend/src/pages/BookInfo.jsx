@@ -26,7 +26,7 @@ const BookInfo = () => {
   return (
     <section className="book-list">
         <Card bg="light" style={{ width: '100rem' }} className="book">
-          <Card.Img variant="top" className="book-image one-book-image" src={randBookImg()} />
+          <Card.Img variant="top" className="book-image one-book-image" src={book.imageDetailed} />
           <Card.Body>
           <Card.Title className="book-title">{book.title}</Card.Title>
             <div className="book-details">

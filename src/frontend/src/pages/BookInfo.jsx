@@ -2,7 +2,6 @@ import { useState, useEffect } from "react"
 import { Button, Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import axios from "../apiConnect/axios"
-import { randBookImg } from "./Books"
 
 const BookInfo = () => {
 

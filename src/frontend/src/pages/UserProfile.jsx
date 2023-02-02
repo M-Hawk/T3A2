@@ -4,24 +4,10 @@ import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 import axios from "../apiConnect/axios"
 import avatarImage from '../images/femaleAvatar.png'
+import checkStorageToken from "../App.jsx"
 
-const Users = () => {
-
-  const [user, setUser] = useState([])
-  const { id } = useParams()
-  
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get("api/users/" + id)
-        setUser(response.data)
-      }
-      catch (err){
-        console.log(err.stack)
-      }
-    }
-    fetchUser()
-  }, [])
+// Takes in user prop from App, user contains information stored in state of the logged in users details
+const Users = ( { user }) => {
 
   return (
     <>
@@ -47,7 +33,7 @@ const Users = () => {
           </Card.Body>
         </Card>
       </section>
-      <hr class="hr hr-blurry" />
+      <hr className="hr hr-blurry" />
       <section className="heading">
         <h2>
           <FaBook /> On Loan

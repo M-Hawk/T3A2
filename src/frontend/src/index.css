@@ -179,6 +179,10 @@ h3 {
   width: 100%;
   margin-bottom: 20px;
 }
+.btn-small {
+  width: 20%;
+  margin: auto;
+}
 
 .btn:hover {
   transform: scale(0.98);

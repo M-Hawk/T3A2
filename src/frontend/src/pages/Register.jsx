@@ -1,8 +1,7 @@
 import { useRef, useState, useEffect } from "react"
-import { FaUser, FaInfoCircle, FaCheck, FaTimes, FaSignInAlt, FaHome} from "react-icons/fa"
+import { FaUser, FaInfoCircle, FaCheck, FaTimes, FaSignInAlt } from "react-icons/fa"
 import axios from "../apiConnect/axios"
 import { Link, useNavigate } from "react-router-dom"
-
 
 const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 const USERNAME_REGEX = /^[A-z][A-z0-9-_]{3,23}$/
@@ -65,26 +64,6 @@ const Register = ({ setUser }) => {
     setErrMsg("")
   }, [email, username, pwd, matchPwd])
 
-  // const [formData, setFormData] = useState({
-  //   email: "",
-  //   username: "",
-  //   password: "",
-  //   password2: "",
-  // })
-
-  // const { email, username, password, password2 } = formData
-  
-  // const onChange = (e) => {
-  //   setFormData((prevState) => ({
-  //     ...prevState,
-  //     [e.target.name]: e.target.value,
-  //   }))
-  // }
-  
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
-  // }
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     // if submit button enabled with a JS hack
@@ -102,8 +81,10 @@ const Register = ({ setUser }) => {
       )
       // set token in local storage
       localStorage.setItem("token", response.data.token)
-      // log them in
-      setUser(response.data)
+      // log user in
+      await setUser(response.data)
+      console.log(response.data)
+      // redirect to home page
       navigateTo("/")
     } 
     catch (err) {
@@ -260,7 +241,7 @@ const Register = ({ setUser }) => {
           Already registered?<br />
             <span className="line">
               {/* FIX LINK HERE IT DOESNT RENDER */}
-              <Link className="nav-link" to="/login"><FaSignInAlt />Login</Link>
+              <Link className="btn btn-small" to="/login"><FaSignInAlt/> Log In</Link>
             </span>
           </p>
         </section>

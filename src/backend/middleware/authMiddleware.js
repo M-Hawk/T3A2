@@ -17,7 +17,7 @@ const protect = asyncHandler(async(req, res, next) => {
       req.user = await UserModel.findById(decoded.id).select("-password")
 
       next()
-    } 
+    }
     catch (error) {
       console.log(error)
       res.status(401)
@@ -29,6 +29,9 @@ const protect = asyncHandler(async(req, res, next) => {
     throw new Error("Not authorised, no token")
   }
 })
+
+
+
 
 const admin = asyncHandler(async(req, res, next) => {
   const user = await UserModel.findById(req.user.id)

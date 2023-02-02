@@ -19,6 +19,7 @@ app.use(express.json())
 
 // Checks 
 // scheduledFunctions.initScheduledJobs()
+
 // Middleware
 
 // Define route first

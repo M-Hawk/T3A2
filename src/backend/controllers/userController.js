@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 const asyncHandler = require("express-async-handler")
 const UserModel = require("../models/userModel")
-
 // ADD ERROR HANDLING TO ALL ROUTES!!!
 
 // @desc    Register new user
@@ -117,17 +116,17 @@ const loginUser = asyncHandler(async (req, res) => {
   const user = await UserModel.findOne({ username })
 
   if(user && (await bcrypt.compare(password, user.password))) {
-    res.json({
+    res.status(202).json({
+      // TOKEN MUST BE IN THE SAME OBJECT AS THE OTHER PROPERTIES
       _id: user._id,
-      username: user.username,
       email: user.email,
+      username: user.username,
       token: generateToken(user._id),
     })
   }
   else {
     res.status(400)
       throw new Error("Invalid credentials")
-
   }
 })
 
@@ -211,12 +210,19 @@ const deleteUser = asyncHandler(async(req, res) => {
   res.status(200).json({ message: `Deleted user: ${username}, from the database`})
 })
 
+// Get Auth Me
+// @desc   Gets a users information if there is a token in the database, auth middleware prevents incorrect token
+// @route   DELETE /api/users/auth
+// @access  Admin Private
+const getAuthMe = asyncHandler(async(req, res) => {
+  res.json(req.user)
+})
 
 
 // Generate JWT Token
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET_KEY, {
-    expiresIn: "2hr",
+    expiresIn: "30d",
     })
 }
 
@@ -228,6 +234,7 @@ module.exports = {
   getOneUser,
   getUsers,
   updateUserProfile,
+  getAuthMe,
   deleteProfile,
   deleteUser,
 }

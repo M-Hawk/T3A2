@@ -10,6 +10,8 @@ const {
 
  const { protect, admin } = require("../middleware/authMiddleware")
 
+ // PREFIX TO ROUTES: api/bookdetails/
+
 // Update and delete routes
 router.route("/:id").get(getOneBookDetails).put(protect, admin, updateBookDetails).delete(protect, admin, deleteBookDetails)
 

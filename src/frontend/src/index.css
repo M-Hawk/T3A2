@@ -6,7 +6,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  min-height: 100%;
+}
 body {
   font-family: 'Poppins', sans-serif;
   min-height: 100vh;
@@ -342,9 +344,8 @@ h3 {
     font-size: 1.5rem;
     line-height: 1.4;
 }
-.footer {
-  margin-top: auto;
-}
+
+
 /* .footer {
   position: absolute;
   bottom: 0;

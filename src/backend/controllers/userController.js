@@ -135,11 +135,15 @@ const loginUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/profile
 // @access  Private
 const getProfile = asyncHandler(async(req, res) => {
-  const { _id, email, username } = await UserModel.findById(req.user.id)
+  // const { _id, email, username,  } = await UserModel.findById(req.user.id)
+  const {_id, email, username, booksOnLoan} = await UserModel.findById(req.user.id).populate("booksOnLoan")
+  // res.send(await UserModel.findById(req.user.id)).populate("booksOnLoan")
+  
   res.status(200).json({
     id: _id,
     username,
     email,
+    booksOnLoan,
   })
 })
 
@@ -158,6 +162,7 @@ const getOneUser = asyncHandler(async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.id)
     if (user) {
+      console.log(user)
       res.status(200).json(user)
     }
     // else {

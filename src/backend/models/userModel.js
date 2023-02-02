@@ -19,6 +19,10 @@ const userSchema = mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  booksOnLoan: {
+    type: [mongoose.Schema.Types.ObjectId],
+    ref: "BookDetails"
+  }
 },
 {
   timestamps: true

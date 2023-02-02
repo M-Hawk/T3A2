@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler")
 const LoanModel = require("../models/loanModel")
 const BookCopyModel = require("../models/bookCopyModel")
+const UserModel = require("../models/userModel")
 
 // @desc    Get Own Profile's current loans
 // @route   GET /api/loans/getmyloans
@@ -27,9 +28,14 @@ const getLoans = asyncHandler(async (req, res) => {
 // @route   POST /api/loans
 // @access  Private
 const setLoan = asyncHandler(async (req, res) => {
-  const bookCopy = await BookCopyModel.findById(req.body.bookCopy)
+  const bookCopy = await BookCopyModel.findById(req.body.bookCopy).populate("bookDetails")
+
+  console.log(bookCopy)
+  const user = await UserModel.findById(req.user.id)
   if(bookCopy.isAvailable === true) {
     const loan = await LoanModel.create({ bookCopy: req.body.bookCopy, user: req.user.id })
+    user.booksOnLoan.push(bookCopy.bookDetails.id)
+    user.save()
     await BookCopyModel.findByIdAndUpdate(req.body.bookCopy, { isAvailable: false})
     res.status(200).json(loan)
   }

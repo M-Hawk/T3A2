@@ -1,4 +1,4 @@
-import {FaIdBadge } from "react-icons/fa"
+import {FaIdBadge, FaBook } from "react-icons/fa"
 import { Button, Card } from "react-bootstrap"
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
@@ -47,8 +47,13 @@ const Users = () => {
           </Card.Body>
         </Card>
       </section>
-
-
+      <hr class="hr hr-blurry" />
+      <section className="heading">
+        <h2>
+          <FaBook /> On Loan
+        </h2>
+      <p>You currently have the following books on loan:</p>
+      </section>
     </>
   )
 }

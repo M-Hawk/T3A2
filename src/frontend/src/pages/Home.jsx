@@ -1,6 +1,5 @@
 import React from 'react'
 import homeImage from '../images/homeImage.jpg'
-import { Link } from 'react-router-dom'
 
 const Home = () => {
   return (

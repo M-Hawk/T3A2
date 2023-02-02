@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "resetDb": "node seed.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watchAll",
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js"
   },

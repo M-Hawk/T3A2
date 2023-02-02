@@ -21,6 +21,8 @@ app.use(express.json())
 // Checks 
 // scheduledFunctions.initScheduledJobs()
 // Middleware
+//API homepage Route
+app.get('/', (req, res) => res.send({ info: "Wormreads API"}))
 
 // Define route first
 app.use("/api/bookdetails", require("./routes/bookDetailsRoutes"))

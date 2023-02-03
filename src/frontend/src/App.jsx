@@ -67,9 +67,9 @@ const App = () => {
               <Route path="/" element={<Home user={user} />} />
               <Route path="/login" element={<Login setUser={setUser}/>} />
               <Route path="/register" element={<Register setUser={setUser}/>} />
-              <Route path="/userprofile/:id" element={<UserProfile user={user}/>} />
+              <Route path="/userprofile/:id" element={<UserProfile token={token} user={user}/>} />
               <Route path="/books" element={<Books />} />
-              <Route path="/books/:id" element={<BookInfo />} />
+              <Route path="/books/:id" element={<BookInfo user={user}/>} />
               <Route path="/books/add/details" element={<AddBookDetails />} />
               <Route path="/books/add/copy/:details" element={<AddBookCopy />} />
             </Routes>

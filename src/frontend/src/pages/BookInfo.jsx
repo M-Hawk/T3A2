@@ -13,6 +13,7 @@ const BookInfo = () => {
     const fetchBook = async () => {
       try {
         const response = await axios.get("api/bookdetails/" + id)
+
         setBook(response.data)
       }
       catch (err){
@@ -32,6 +33,7 @@ const BookInfo = () => {
               <div><strong>Author:</strong> {book.author}</div>
               <div><strong>Genre:</strong> {book.genre}</div>
               <div><strong>Description:</strong> {book.description}</div>
+              <div><strong>Available Copies:</strong> {book.availableCopies}</div>
             </div>
             <div className="book-button">
               <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Borrow</Button>

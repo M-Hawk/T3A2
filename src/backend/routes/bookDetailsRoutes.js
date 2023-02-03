@@ -10,11 +10,21 @@ const {
 
  const { protect, admin } = require("../middleware/authMiddleware")
 
-// Update and delete routes
-router.route("/:id").get(getOneBookDetails).put(protect, admin, updateBookDetails).delete(protect, admin, deleteBookDetails)
+ // PREFIX TO ROUTES: api/bookdetails/
 
-// Get and create routes
-router.route("/").get(getBookDetails).post(setBookDetails)
+// Get routes
+
+router.route("/:id").get(getOneBookDetails)
+router.route("/").get(getBookDetails)
+
+// Update route
+router.route("/:id").put(protect, admin, updateBookDetails)
+
+// Delete route
+router.route("/:id").delete(protect, admin, deleteBookDetails)
+
+// Create route
+router.route("/").post(protect, admin, setBookDetails)
 
 
 module.exports = router

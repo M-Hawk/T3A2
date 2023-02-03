@@ -10,6 +10,8 @@ const {
 
  const { protect, admin } = require("../middleware/authMiddleware")
 
+ // PREFIX TO ROUTES: api/loans/
+
 // Update and delete routes
 
 router.route("/:id").put(protect, admin, updateLoan).delete(protect, admin, deleteLoan)
@@ -17,6 +19,7 @@ router.route("/:id").put(protect, admin, updateLoan).delete(protect, admin, dele
 // Get and create routes
 
 router.route("/").get(protect, admin, getLoans).post(protect, setLoan)
+
 router.route("/getmyloans").get(protect, admin, getOwnLoans)
 
 

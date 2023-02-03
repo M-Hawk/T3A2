@@ -29,6 +29,7 @@ const Users = ( { user }) => {
               <div className="user-details">
                 <div><strong>Username:</strong> {user.username}</div>
                 <div><strong>Email:</strong> {user.email}</div>
+                <div><strong>Email:</strong> {user.booksOnLoan[0].title}</div>
               </div>
               <div className="user-button">
                 <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
@@ -44,6 +45,9 @@ const Users = ( { user }) => {
             <FaBook /> On Loan
           </h2>
         <p>You currently have the following books on loan:</p>
+        </section>
+        <section>
+
         </section>
       </>
       ) : navigateTo("/")}

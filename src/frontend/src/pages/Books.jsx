@@ -57,7 +57,7 @@ const Books = () => {
                 <div className="book-details">
                   <div><strong>Author:</strong> {book.author}</div>
                   <div><strong>Genre:</strong> {book.genre}</div>
-                  <div><strong>Description:</strong> {book.description.match(BOOK_DESC_REGEX)}</div>
+                  <div><strong>Description:</strong> {book.description.match(BOOK_DESC_REGEX)}</div>  
                 </div>
                 <div className="book-button">
                   <Link to= {`/books/${book._id}`}>

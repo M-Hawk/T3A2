@@ -1,4 +1,5 @@
 const asyncHandler = require("express-async-handler")
+const bookCopyModel = require("../models/bookCopyModel")
 
 const BookDetailsModel = require("../models/bookDetailsModel")
 
@@ -18,8 +19,11 @@ const getBookDetails = asyncHandler(async (req, res) => {
 const getOneBookDetails = asyncHandler(async (req, res) => {
   try {
     const bookDetails = await BookDetailsModel.findById(req.params.id)
+    const count  = await bookCopyModel.count({bookDetails: req.params.id, isAvailable: true})
+
     if (bookDetails) {
-      res.status(200).json(bookDetails)
+
+      res.status(200).json({...bookDetails.toJSON(), availableCopies:count})
     }
     // else {
     //   res.status(404).send({ error: 'Book copy not found with that ID'})
@@ -31,7 +35,7 @@ const getOneBookDetails = asyncHandler(async (req, res) => {
   })
 
 // To-do Add functionality to prevent someone adding the same book twice (not allowing duplicate title and author) 
-//
+
 
 // @desc    Set new book details
 // @route   POST /api/bookdetails
@@ -64,7 +68,6 @@ const updateBookDetails = asyncHandler(async (req, res) => {
     new:true,
   }) 
   res.status(201).json(updatedBookDetails)
-
 })
 
 

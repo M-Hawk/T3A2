@@ -23,9 +23,26 @@ const bookDetailsSchema = mongoose.Schema({
   imageDetailed: {
     type: String,
     required: false
-  }
-  }, {
-  timestamp: true
+  },
+  
+}, {
+  timestamp: true,
+//   toJSON: {
+//     virtuals: true
+//   },
+//   toObject: {
+//     virtuals: true
+// }
 })
+
+// bookDetailsSchema.virtual("availability").get(async function() {
+//   model = mongoose.model("BookCopy")
+//   count = await model.count({bookDetails: this._id.toString(), isAvailable: true})
+//   console.log(count)
+//   return count;
+//   // .count({}, function (err, count) {
+//   //   console.log("The count is " + count)
+//   // })
+// })
 
 module.exports = mongoose.model("BookDetails", bookDetailsSchema)

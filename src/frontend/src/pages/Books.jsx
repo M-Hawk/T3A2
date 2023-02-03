@@ -7,7 +7,7 @@ const BOOK_DESC_REGEX = /.+?\./
 const GET_BOOKS_URL = "api/bookdetails"
 const GET_COPIES_URL = "api/bookcopies"
 
-const Books = ( {user} ) => {
+const Books = ({ user }) => {
 
   const [books, setBooks] = useState([])
   // const [bookCopies, setBookCopies] = useState([])

@@ -3,7 +3,7 @@ import logo from '../images/logo6.png'
 import {Link} from "react-router-dom"
 
 
-const NavBar = () => {
+const NavBar = ({ user }) => {
   
   return (
     <nav className="navbar navbar-expand-lg bg-success bg-gradient">
@@ -16,9 +16,12 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div className="navbar-nav ms-auto">
             <Link className="nav-link" aria-current="page" to="/"><FaHome /> Home</Link>
+            {user ? (<Link className="nav-link" to="/userprofile/:id"><FaIdBadge /> User Profile</Link>) : (
+            <>
             <Link className="nav-link" to="/login"><FaSignInAlt /> Login</Link>
             <Link className="nav-link" to="/register"><FaUser /> Register</Link>
-            <Link className="nav-link" to="/userprofile/:id"><FaIdBadge /> User Profile</Link>
+            </>
+            )}
             <Link className="nav-link" to="/books"><FaBook /> Books</Link>
           </div>
         </div>

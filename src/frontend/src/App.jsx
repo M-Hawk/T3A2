@@ -60,7 +60,7 @@ const App = () => {
   return (
     <>
       <Router>
-            <NavBar />
+            <NavBar user={user}/>
             <div className="container">
             <Header />
             <Routes>

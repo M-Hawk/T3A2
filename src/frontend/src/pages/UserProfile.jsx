@@ -1,7 +1,7 @@
 import {FaIdBadge, FaBook } from "react-icons/fa"
 import { Button, Card } from "react-bootstrap"
 import { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import axios from "../apiConnect/axios"
 import avatarImage from '../images/femaleAvatar.png'
 import checkStorageToken from "../App.jsx"
@@ -9,37 +9,44 @@ import checkStorageToken from "../App.jsx"
 // Takes in user prop from App, user contains information stored in state of the logged in users details
 const Users = ( { user }) => {
 
+  const navigateTo = useNavigate()
   return (
     <>
-      <section className="heading">
-        <h2>
-          <FaIdBadge /> User Profile
-        </h2>
-      <p>Hello! Please check your personal information, shown below:</p>
-      <img src={avatarImage} className="avatarImage" alt="Image of Female Avatar" />
-      </section>
-      <section className="user-list">
-        <Card style={{ width: '48rem' }} className="user">
-          <Card.Body>
-          <Card.Title className="user-title">Welcome {user.username}!</Card.Title>
-            <div className="user-details">
-              <div><strong>Username:</strong> {user.username}</div>
-              <div><strong>Email:</strong> {user.email}</div>
-            </div>
-            <div className="user-button">
-              <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
-              <Button variant="primary" onClick={() => editBookDetails(`/edit/${id}`)}>Delete Account</Button>
-            </div>
-          </Card.Body>
-        </Card>
-      </section>
-      <hr className="hr hr-blurry" />
-      <section className="heading">
-        <h2>
-          <FaBook /> On Loan
-        </h2>
-      <p>You currently have the following books on loan:</p>
-      </section>
+      {user ? (
+      <>
+        <section className="heading">
+          <h2>
+            <FaIdBadge /> User Profile
+          </h2>
+        <p>Hello! Please check your personal information, shown below:</p>
+        <img src={avatarImage} className="avatarImage" alt="Image of Female Avatar" />
+        </section>
+
+        <section className="user-list">
+          <Card style={{ width: '48rem' }} className="user">
+            <Card.Body>
+            <Card.Title className="user-title">Welcome {user.username}!</Card.Title>
+              <div className="user-details">
+                <div><strong>Username:</strong> {user.username}</div>
+                <div><strong>Email:</strong> {user.email}</div>
+              </div>
+              <div className="user-button">
+                <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
+                <Button variant="primary" onClick={() => editBookDetails(`/edit/${id}`)}>Delete Account</Button>
+              </div>
+            </Card.Body>
+          </Card>
+        </section>
+
+        <hr className="hr hr-blurry" />
+        <section className="heading">
+          <h2>
+            <FaBook /> On Loan
+          </h2>
+        <p>You currently have the following books on loan:</p>
+        </section>
+      </>
+      ) : navigateTo("/")}
     </>
   )
 }

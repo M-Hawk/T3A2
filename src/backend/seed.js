@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const colors = require("colors")
 const dotenv = require("dotenv").config()
-const connectDB =  require("./config/db")
+const {connectDB, disconnectDB} =  require("./config/db")
 const bcrypt = require("bcryptjs")
 const BookCopyModel = require("./models/bookCopyModel")
 const BookDetailsModel = require("./models/bookDetailsModel")
@@ -142,9 +142,9 @@ const seedDB = async () => {
   await LoanModel.insertMany(loans)
   console.log("Inserted seed data for loans.")
 }
-seedDB().then(() => {
-  mongoose.connection.close()
-  console.log("Server Disconnected")
+seedDB().then(async() => {
+  await disconnectDB()
+
 })
 
 

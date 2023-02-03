@@ -24,7 +24,7 @@ router.route("/:id").put(protect, admin, updateBookDetails)
 router.route("/:id").delete(protect, admin, deleteBookDetails)
 
 // Create route
-router.route("/").post(protect, admin, setBookDetails)
+router.route("/").post(setBookDetails)
 
 
 module.exports = router

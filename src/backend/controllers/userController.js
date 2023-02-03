@@ -58,6 +58,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   POST /api/users/registeradmin
 // @access  Admin private
 const registerAdmin = asyncHandler(async (req, res) => {
+  // res.json/(await UserModel.findOne({}))
   const { username, email, password } = req.body
 
   if(!username || !email || !password) {

@@ -25,22 +25,23 @@ const getLoans = asyncHandler(async (req, res) => {
 // To-do Add functionality to prevent someone adding the same book twice (not allowing duplicate title and author) 
 
 // @desc    Borrow a book
-// @route   POST /api/loans
+// @route   POST /api/loans/:id
 // @access  Private
 const setLoan = asyncHandler(async (req, res) => {
-  const bookCopy = await BookCopyModel.findById(req.body.bookCopy).populate("bookDetails")
-
+  const bookCopy = await BookCopyModel.findOne({bookDetails: req.params.id, isAvailable: true})
+  // .populate("bookDetails")
   console.log(bookCopy)
-  const user = await UserModel.findById(req.user.id)
-  if(bookCopy.isAvailable === true) {
-    const loan = await LoanModel.create({ bookCopy: req.body.bookCopy, user: req.user.id })
-    user.booksOnLoan.push(bookCopy.bookDetails.id)
-    user.save()
-    await BookCopyModel.findByIdAndUpdate(req.body.bookCopy, { isAvailable: false})
-    res.status(200).json(loan)
+
+  if(!bookCopy) {
+    res.status(200).json({ message: "No Books are currently available"})
   }
-  else{
-    res.status(200).json({ message: "Book is currently not available" })
+  else {
+    const loan = await LoanModel.create({ bookCopy: bookCopy._id, user: req.user.id })
+    const user = await UserModel.findById(req.user._id)
+    user.booksOnLoan.push(bookCopy.bookDetails._id)
+    user.save()
+    await BookCopyModel.findByIdAndUpdate(bookCopy._id, { isAvailable: false})
+    res.status(200).json(loan)
   }
 })
 

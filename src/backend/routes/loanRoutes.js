@@ -12,13 +12,13 @@ const {
 
  // PREFIX TO ROUTES: api/loans/
 
-// Update and delete routes
+// Update post and delete routes
 
-router.route("/:id").put(protect, admin, updateLoan).delete(protect, admin, deleteLoan)
+router.route("/:id").put(protect, admin, updateLoan).delete(protect, admin, deleteLoan).post(protect, setLoan)
 
-// Get and create routes
+// Get and route
 
-router.route("/").get(protect, admin, getLoans).post(protect, setLoan)
+router.route("/").get(protect, admin, getLoans)
 
 router.route("/getmyloans").get(protect, admin, getOwnLoans)
 

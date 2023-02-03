@@ -26,7 +26,7 @@ router.post("/register", registerUser).post("/registeradmin",protect, admin, reg
 router.get("/auth", protect, getAuthMe)
 
 router.get("/profile", protect, getProfile)
-router.get("/", protect, admin, getUsers)
+router.get("/", getUsers)
 router.get("/:id", protect, admin, getOneUser)
 
 // Update route

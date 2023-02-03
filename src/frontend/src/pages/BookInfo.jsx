@@ -2,13 +2,16 @@ import { useState, useEffect } from "react"
 import { Button, Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import axios from "../apiConnect/axios"
+import { Link, useNavigate } from "react-router-dom"
 
-const BookInfo = () => {
+const BookInfo = ( { user } ) => {
 
 
   const [book, setBook] = useState([])
   const { id } = useParams()
-  
+  const navigateTo = useNavigate()
+  const [errMsg, setErrMsg] = useState("") 
+
   useEffect(() => {
     const fetchBook = async () => {
       try {
@@ -23,6 +26,27 @@ const BookInfo = () => {
     fetchBook()
   }, [])
 
+  const borrowBook = async () =>{
+    try {
+      const response = await axios.post("api/loans/", JSON.stringify({ bookCopy: id, user }),
+        {
+          headers: {"Content-Type" : "application/json"}
+        }
+      )
+      console.log(response.data)
+      // redirect to home page
+      navigateTo("/userprofile/:id")
+    } 
+    catch (err) {
+      if (!err?.response) {
+        setErrMsg("No server response")
+      } 
+      else {
+        setErrMsg("Borrow Book Failed")
+      }
+    }
+  }
+
   return (
     <section className="book-list">
         <Card bg="light" style={{ width: '100rem' }} className="book">
@@ -36,7 +60,7 @@ const BookInfo = () => {
               <div><strong>Available Copies:</strong> {book.availableCopies}</div>
             </div>
             <div className="book-button">
-              <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Borrow</Button>
+              <Button variant="success" onClick={borrowBook}>Borrow</Button>
               <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
               <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>{' '}
             </div>

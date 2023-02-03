@@ -47,6 +47,11 @@ const Books = ({ user }) => {
 
   return (
     <>
+      <span>
+        {/* {put router link here} */}
+        <Link className="btn btn-small" to="/books/add">Add a New Book</Link>
+      </span>
+
       {books.length ? (
         <section className="book-list">
           {books.map((book) =>

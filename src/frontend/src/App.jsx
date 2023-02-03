@@ -27,13 +27,13 @@ const App = () => {
     const checkStorageToken = async () => {
       const token = localStorage.getItem('token')
       if (token){
-        console.log(token)
-        const user = await axios.get("/api/users/auth", {
+        // console.log(token)
+        const response = await axios.get("/api/users/auth", {
           headers: { "Authorization": `Bearer ${token}` },
           
         })
-        setUser(user)
-        console.log(user)
+        setUser(response.data)
+        // console.log(response.data)
       }
     }
     checkStorageToken()

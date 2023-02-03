@@ -14,20 +14,20 @@ const Register = ({ setUser }) => {
   const errRef = useRef()
   const navigateTo = useNavigate()
   
-  const [email, setEmail] = useState("dayleclarke1071@gmail.com") 
+  const [email, setEmail] = useState("") 
   const [validEmail, setValidEmail] = useState(false)
   const [emailFocus, setEmailFocus] = useState(false)
   
-  const [username, setUsername] = useState("Dayle") 
+  const [username, setUsername] = useState("") 
   const [validUsername, setValidUsername] = useState(false)
   const [usernameFocus, setUsernameFocus] = useState(false) 
 
 
-  const [pwd, setPwd] = useState("Dayle1212@") 
+  const [pwd, setPwd] = useState("") 
   const [validPwd, setValidPwd] = useState(false)
   const [pwdFocus, setPwdFocus] = useState(false)
 
-  const [matchPwd, setMatchPwd] = useState("Dayle1212@") 
+  const [matchPwd, setMatchPwd] = useState("") 
   const [validMatch, setValidMatch] = useState(false)
   const [matchFocus, setMatchFocus] = useState(false)
 
@@ -39,21 +39,16 @@ const Register = ({ setUser }) => {
 
   useEffect(() => {
     const result = EMAIL_REGEX.test(email)
-    console.log(result)
-    console.log(email)
     setValidEmail(result)
   }, [email])
 
   useEffect(() => {
     const result = USERNAME_REGEX.test(username)
-    console.log(result)
-    console.log(username)
     setValidUsername(result)
   }, [username])
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd)
-    console.log(result)
     // console.log(pwd)
     setValidPwd(result)
     const match = pwd === matchPwd
@@ -83,7 +78,7 @@ const Register = ({ setUser }) => {
       localStorage.setItem("token", response.data.token)
       // log user in
       await setUser(response.data)
-      console.log(response.data)
+      // console.log(response.data)
       // redirect to home page
       navigateTo("/")
     } 

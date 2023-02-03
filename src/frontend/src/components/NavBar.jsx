@@ -18,7 +18,7 @@ const NavBar = () => {
             <Link className="nav-link" aria-current="page" to="/"><FaHome /> Home</Link>
             <Link className="nav-link" to="/login"><FaSignInAlt /> Login</Link>
             <Link className="nav-link" to="/register"><FaUser /> Register</Link>
-            <Link className="nav-link" to="/userprofile/63d3765d5e5c1ef859c2fc30"><FaIdBadge /> User Profile</Link>
+            <Link className="nav-link" to="/userprofile/:id"><FaIdBadge /> User Profile</Link>
             <Link className="nav-link" to="/books"><FaBook /> Books</Link>
           </div>
         </div>

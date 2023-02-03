@@ -8,6 +8,23 @@ import checkStorageToken from "../App.jsx"
 
 // Takes in user prop from App, user contains information stored in state of the logged in users details
 const Users = ( { user }) => {
+  
+  const [ownProfile, setOwnProfile] = useState()
+
+  useEffect(() => {
+    const fetchOwnProfile = async () => {
+      try {
+        const response = await axios.get("api/users/" + user._id)
+        setOwnProfile(response.data)
+      }
+      catch (err){
+        console.log(err.stack)
+      }
+    }
+    fetchOwnProfile()
+  }, [])
+
+ 
 
   const navigateTo = useNavigate()
   return (
@@ -29,7 +46,9 @@ const Users = ( { user }) => {
               <div className="user-details">
                 <div><strong>Username:</strong> {user.username}</div>
                 <div><strong>Email:</strong> {user.email}</div>
-                <div><strong>Email:</strong> {user.booksOnLoan[0].title}</div>
+                <div><strong>User Id:</strong> {user._id}</div>
+                <div><strong>Date Joined:</strong> {user.createdAt}</div>
+                <div><strong>Number of Books on Loan:</strong> {user.booksOnLoan.length}</div>
               </div>
               <div className="user-button">
                 <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
@@ -46,9 +65,22 @@ const Users = ( { user }) => {
           </h2>
         <p>You currently have the following books on loan:</p>
         </section>
-        <section>
-
-        </section>
+        {user.booksOnLoan.length ? (
+          <section className="book-list">
+            {user.booksOnLoan.map((book) =>
+              <Card bg="light" style={{ width: '24rem' }} className="book">
+              <Card.Title className="user-title">Book ID {book}!</Card.Title>
+              <div className="book-details">
+                        <div><strong>Author:</strong> Author to Add</div>
+                        <div><strong>Genre:</strong> Genre to Add</div>
+                        <div><strong>Description:</strong> Descripton to Add</div>  
+                      </div>
+              </Card>
+            )}
+          </section>
+          ) : (
+          <p style={{ marginTop: '2rem' }}>You have no books on loan yet</p>
+          )}        
       </>
       ) : navigateTo("/")}
     </>

@@ -14,7 +14,8 @@ const {
 
 // Update post and delete routes
 
-router.route("/:id").put(protect, admin, updateLoan).delete(protect, admin, deleteLoan).post(protect, setLoan)
+router.route("/:id").put(protect, admin, updateLoan).delete(protect, admin, deleteLoan)
+router.route("/:id").post(setLoan)
 
 // Get and route
 

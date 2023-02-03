@@ -26,16 +26,16 @@ const BookInfo = ( { user } ) => {
     fetchBook()
   }, [])
 
-  const borrowBook = async () =>{
+  const borrowBook = async (id) =>{
     try {
-      const response = await axios.post("api/loans/", JSON.stringify({ bookCopy: id, user }),
+      const response = await axios.post("api/loans/" + id,
         {
-          headers: {"Content-Type" : "application/json"}
-        }
+          headers: {"Content-Type" : "application/json"},
+        },
       )
       console.log(response.data)
-      // redirect to home page
-      navigateTo("/userprofile/:id")
+      // redirect to books list page
+      navigateTo("/books")
     } 
     catch (err) {
       if (!err?.response) {
@@ -59,11 +59,12 @@ const BookInfo = ( { user } ) => {
               <div><strong>Description:</strong> {book.description}</div>
               <div><strong>Available Copies:</strong> {book.availableCopies}</div>
             </div>
+            { user ? (
             <div className="book-button">
-              <Button variant="success" onClick={borrowBook}>Borrow</Button>
+              <Button variant="success" onClick={()=> borrowBook}>Borrow</Button>
               <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
-              <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>{' '}
-            </div>
+              <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>
+            </div> ) : ("")}
           </Card.Body>
         </Card>
     </section>

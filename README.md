@@ -169,6 +169,15 @@ Vite (an alternative to create-react-app) was used to scaffold the React project
 
 @types/react is a package that contains type definitions for React and @types/react-dom is a package that contains type definitions for React (react-dom)
 
+## <a name='Testing'></a>Testing
+
+### Backend Development API Testing in PostMan
+Manual testing was run using Postman to test to endpoints of the API. A comprehensive table of the results was compiled and include here:
+
+[BackEnd Manual Testing Findings](/docs/BackendTesting.pdf)
+
+
+
 ## <a name='Dataflow-Diagram'></a>Dataflow Diagram
 
 The following dataflow diagrams (DFD) were created to illustrate the flow of data through the application.

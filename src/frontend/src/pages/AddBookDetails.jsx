@@ -10,7 +10,7 @@ const DESCRIPTION_REGEX = /^[A-Za-z0-9\s\-_,\.;:@&()]+$/
 
 const ADD_BOOK_DETAILS_URL = "/api/bookdetails"
 
-const AddBookDetails = ({book}) => {
+const AddBookDetails = ({ book }) => {
   const titleRef = useRef()
   const errRef = useRef()
   const navigateTo = useNavigate()

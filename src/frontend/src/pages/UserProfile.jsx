@@ -7,16 +7,18 @@ import avatarImage from '../images/femaleAvatar.png'
 import checkStorageToken from "../App.jsx"
 
 // Takes in user prop from App, user contains information stored in state of the logged in users details
-const Users = ( {user} ) => {
+const Users = ({ user }) => {
+
+  const BOOK_DESC_REGEX = /.+?\./
   
-  // const [ownProfile, setOwnProfile] = useState()
+  const [ownProfile, setOwnProfile] = useState()
 
   const navigateTo = useNavigate()
   // console.log(user)
   useEffect(() => {
     const fetchOwnProfile = async () => {
       try {
-        const token = localStorage.getItem('token')
+        const token = localStorage.getItem("token")
         const response = await axios.get("api/users/" + user._id, {
           headers: { "Authorization": `Bearer ${token}` },
         })
@@ -71,22 +73,24 @@ const Users = ( {user} ) => {
           </h2>
         <p>You currently have the following books on loan:</p>
         </section>
-        {ownProfile.booksOnLoan.length ? (
-          <section className="book-list">
-            {ownProfile.booksOnLoan.map((book) =>
-              <Card bg="light" style={{ width: '24rem' }} className="book">
-              <Card.Title> {book.title}!</Card.Title>
-              <div className="book-details">
-                        <div><strong>Author:</strong> {book.author}</div>
-                        <div><strong>Genre:</strong> {book.genre}</div>
-                        <div><strong>Description:</strong> {book.decription}</div>  
-                      </div>
-              </Card>
+        <section>
+          {ownProfile.booksOnLoan.length ? (
+            <section className="book-list">
+              {ownProfile.booksOnLoan.map((book) =>
+                <Card bg="light" style={{ width: '24rem' }} className="book">
+                <Card.Title><strong>{book.title}</strong></Card.Title>
+                <div className="book-details">
+                          <div><strong>Author:</strong> {book.author}</div>
+                          <div><strong>Genre:</strong> {book.genre}</div>
+                          <div><strong>Description:</strong> {book.description.match(BOOK_DESC_REGEX)}</div>  
+                        </div>
+                </Card>
+              )}
+            </section>
+            ) : (
+            <p style={{ marginTop: '2rem' }}>You have no books on loan yet</p>
             )}
           </section>
-          ) : (
-          <p style={{ marginTop: '2rem' }}>You have no books on loan yet</p>
-          )}
       </>
       ) : (navigateTo("/"))}
     </>

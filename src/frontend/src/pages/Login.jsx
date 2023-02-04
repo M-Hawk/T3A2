@@ -36,8 +36,8 @@ const Login = ({ setUser }) => {
       // set token in local storage
       localStorage.setItem("token", response.data.token)
       // log user in
-      await setUser(response.data)
       // console.log(response.data)
+      await setUser(response.data)
       // redirect to home page
       navigateTo("/")
     }

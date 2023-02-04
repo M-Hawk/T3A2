@@ -2,6 +2,7 @@ import React from 'react'
 import homeImage from '../images/homeImage.jpg'
 
 const Home = ({ user }) => {
+  // console.log(user)
   return (
     <div>
       <section className="heading">

@@ -3,7 +3,9 @@
 
 # Wormreads Full-Stack Web Application
 
-[Railway Deployment (Wormreads)](https://railway.app/project/b8e2c9a4-ff19-4cb4-bd95-bbe13b7b5fbf)
+[Railway Deployment (Wormreads)](wormreads-frontend-production.up.railway.app)
+
+[Railway Deployment (Wormreads Backend)](wormreads-backend-production.up.railway.app)
 
 [Github Repository Link](https://github.com/M-Hawk/T3A2-Wormreads)
 

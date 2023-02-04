@@ -46,10 +46,10 @@ const Books = ({ user }) => {
 
 
   return (
-    <div>
-      <h2>Books</h2>
-    </div>
     <>
+      <div>
+        <h2>Books</h2>
+      </div>
       <span>
         {/* {put router link here} */}
         <Link className="btn btn-small" to="/books/add">Add a New Book</Link>

@@ -3,7 +3,7 @@ const LoanModel = require("../models/loanModel")
 const BookCopyModel = require("../models/bookCopyModel")
 const UserModel = require("../models/userModel")
 
-// @desc    Get Own Profile's current loans
+// @desc    Get Own Profile's current loans (based on JWT token)
 // @route   GET /api/loans/getmyloans
 // @access  Private
 const getOwnLoans = asyncHandler(async (req, res) => {

@@ -16,7 +16,7 @@ const getBookDetails = asyncHandler(async (req, res) => {
 // @desc    Get a single book's details by its ID
 // @route   GET /api/bookdetails/:id
 // @access  Public
-const getOneBookDetails = asyncHandler(async (req, res) => {
+const getOneBookDetails = asyncHandler(async (req, res) => { 
   try {
     const bookDetails = await BookDetailsModel.findById(req.params.id)
     const count  = await bookCopyModel.count({bookDetails: req.params.id, isAvailable: true})
@@ -59,31 +59,42 @@ const setBookDetails = asyncHandler(async (req, res) => {
 // @route   PUT /api/bookdetails/:id
 // @access  Admin Private
 const updateBookDetails = asyncHandler(async (req, res) => {
-  //Could try Matt's method. 
-  // if(!bookDetails) {
-  //   res.status(400)
-  //   throw new Error('No book could be found with that id.')
-  // }
-  const updatedBookDetails = await BookDetailsModel.findByIdAndUpdate(req.params.id, req.body, {
-    new:true,
-  }) 
-  res.status(201).json(updatedBookDetails)
-})
+  if (req.params.id.length !== 24){
+    res.status(400)
+    throw new Error(`${req.params.id} is not a valid id.`)
+  }
 
+  const bookDetails = await BookDetailsModel.findById(req.params.id)
+  
+  if (!bookDetails) {
+    res.status(400)
+    throw new Error('No book could be found with that id.')
+  }
+  const updatedBookDetails = await BookDetailsModel.findByIdAndUpdate(req.params.id, req.body, {
+        new:true,
+      }) 
+  res.status(201).json(updatedBookDetails)
+
+})
 
 // @desc    Delete an existing book's details
 // @route   DELETE /api/bookdetails/:id
 // @access  Admin Private
 const deleteBookDetails = asyncHandler(async (req, res) => {
+  if (req.params.id.length !== 24){
+    res.status(400)
+    throw new Error(`${req.params.id} is not a valid id.`)
+  }
+
   const bookDetails = await BookDetailsModel.findById(req.params.id)
-  //Could try Matt's method. 
-  // if(!bookDetails) {
-  //   res.status(400)
-  //   throw new Error('No book could be found with that id.')
-  // }
+  if (!bookDetails) {
+    res.status(400)
+    throw new Error('No book could be found with that id.')
+  }
+  
   await bookDetails.remove()
   
-  res.status(200).json({ message: `Deleted a book's details ${req.params.id}` })
+  res.status(200).json({ message: `Deleted the book details for the book with the id ${req.params.id}` })
 })
 
 // exported controller functions

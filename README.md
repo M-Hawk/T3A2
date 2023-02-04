@@ -9,6 +9,8 @@
 
 [Github Repository Link](https://github.com/M-Hawk/T3A2-Wormreads)
 
+[Backend Manual Testing Records](docs/BackendTesting.pdf)
+
 ## Table of Contents
 
 - [Purpose](#purpose)

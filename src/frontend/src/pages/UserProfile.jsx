@@ -9,7 +9,7 @@ import checkStorageToken from "../App.jsx"
 // Takes in user prop from App, user contains information stored in state of the logged in users details
 const Users = ( {user} ) => {
   
-  const [ownProfile, setOwnProfile] = useState()
+  // const [ownProfile, setOwnProfile] = useState()
 
   const navigateTo = useNavigate()
   // console.log(user)

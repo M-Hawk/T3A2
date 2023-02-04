@@ -56,10 +56,6 @@ Market research revealed that the key demographic characteristics of the target 
 
 ## <a name='Tech-Stack'></a>Tech Stack
 
-Based on the web applications requirements, it has been determined that utilisation of the MERN stack would be the most suitable method of execution.
-
-The benefit of using MERN in this manner is that the whole application can be completed using only the JavaScript programming language and JSON. This reduces cognitive load during development by reducing the need to switch between different languages of the front and back-end of the application. The MERN stack is ideal for applications that use JSON extensively and with a React front-end enabling dynamic web interfaces which allows a much nicer user experience with high frequency site visitation.
-
 - **Front-End:** React
 - **Back-End:** Express, Mongoose, Node.js
 - **Database:** MongoDB
@@ -69,6 +65,92 @@ The benefit of using MERN in this manner is that the whole application can be co
 - **Design Architecture:** LucidChart
 - **Wireframes and Sitemap:** Figma
 - **Image Editing:** Image Optimiser and Microsoft Paint 3D
+
+### MERN 
+
+Based on the web applications requirements, it has been determined that utilisation of the MERN stack would be the most suitable method of execution.
+
+The benefit of using MERN in this manner is that the whole application can be completed using only the JavaScript programming language and JSON. This reduces cognitive load during development by reducing the need to switch between different languages of the front and back-end of the application. The MERN stack is ideal for applications that use JSON extensively and with a React front-end enabling dynamic web interfaces which allows a much nicer user experience with high frequency site visitation.
+
+#### React
+
+React is a declarative, free and open-source front-end JavaScript framework that was used to create the dynamic client-side of the application. It was used to build user interfaces and components. Declarative views made the source code more consistent, predictable, understandable, and easier to maintain and debug.  It is a “reactive” framework which allowed views for each state in the application to be designed and only the necessary components are updated and rendered when changes occur. This selective rendering results in performance boosts and improves the overall speed of the app. It is data driven as the focus is on updating data allowing React to take care of the rest of it (Lim, 2021).  Components talk to each other by sharing state information in the form of read-only properties to their child components and by callbacks to their parent components.
+
+#### Node and Express
+
+Node and Express together formed the middle tier web server of the stack. Node is an asynchronous, event driven, open-source JavaScript runtime environment that allowed JavaScript code to be executed in the web server. It allowed many connections to be handled concurrently using minimal resources. 
+
+Express.js is a minimalist, flexible and fast web framework with robust models for URL routing and handling HTTP requests and responses. It has a range of HTTP utility methods and middleware that make it easier to develop this API. For example, it allowed handlers to be written for requests with different HTTP verbs (get, post, patch, put and delete) at different URL paths. Extra request processing "middleware" was also added at different points in the request handling pipeline. 
+
+Making HTTP requests from the React.js front end, allows connections to be made with Express.js functions. This allows the application to communicate back and forth with the front end.  These functions then use MongoDB’s Node.js drivers (which can be done using callbacks or promises), to retrieve, add, update, or delete data in the MongoDB database.
+
+#### MongoDB and Atlas
+
+MongoBD was used as the backend database to store the application’s persistent data. It is a document database that is considered non-relational as it stores data in flexible documents and collections. Documents map to objects in JavaScript, allowing applications to be quickly created. MongoDB Atlas was used to deploy the MongoDB in a cloud server that can be run anywhere in the world. 
+
+### Backend Libraries and Packages
+
+#### Bcryptjs
+
+Bcryptjs is an extension used to protect passwords using bcrypt hashing based on the Blowfish cipher. This involves transforming a string of characters (of any length) into a fixed-length value. The hashing function will always produce the same output given the same input. Changing even one character in the original string will significantly change the resulting hash. It also incorporates salt for protecting the application against any rainbow table attacks. A rainbow table contains a series of precomputed hash values which could be used to find commonly used passwords (as shown in figure 1 below). To overcome this issue a “salt” (a random value) is added to the original message before it's hashed (Okta, 2022). Bcrypt hashing functions can be deliberately made slower to prevent brute force attacks.
+
+#### Colors
+
+Colors was used to add colours and styles to the node.js console. This made it easier during development to see when the database connection stream is successful.
+
+#### Cors
+
+CORS is a node.js package what provides a middleware that can be used to enable cross-origin resource sharing (CORS) with various options. By default, browsers prevent front-end clients talking to REST API’s. Requests sent from clients to server are blocked as a security mechanism to prevent malicious code being run. CORS can be used to circumvent this security feature. This uses additional HTTP headers to instruct browsers to give a web app running at one origin, access to selected resources from a different origin (Lim, 2021).  During development CORS  was used to allow  anyone to access to the database, in production the URL (domain) of the URL for the front end was passed in to only allow requests from that domain. 
+
+#### Dotenv
+
+Dotenv is a module used to set environment variables defined in the “.env” file. It  loads environment variables from the .env file into process.env. The . env file contains information about how to run the project such as where to run the application from, the port number and whether to run the application in debug mode. It is also used to contain configuration information that is sensitive such as the database connection stream as this contains a password and the JWT secret key (Pallets, 2010). This is more secure that hard coding them into the application.
+
+#### Express-async-handler
+
+This was used as an error handling middleware (executing during the request, response cycle) to handle exceptions inside of async express routes and pass them on to express error handlers. It overrides the default express error handler and was used to set the error code of exceptions and respond in JSON. This reduced the number of try—catch statements in the source code. 
+
+#### Jsonwebtoken
+
+Jsonwebtoken has been used to implement JSON Web Tokens (JWT) authentication in the API. JWT involves the server verifying the user's credentials and sending back an encrypted token to the client. The token is stored in local storage and added as an authorization header for subsequent requests. This is critical to protect personal information from unauthorised access. JWT is suitable because it is open standard, self-contained, compact, secure, and scalable (Okta, 2022). Information can be verified and trusted due to the use of digital signature using a secret key. (Andress, 2019). This helps ensure the person accessing the information is who they present themselves to be. Each individual user’s identity can be accessed via the JWT token which allows the application to serve resources to specific users.
+It can be used to prevent a user from needing to login at each request. Jwt.sign was used to make JSON Web Tokens and jwt.verify was used to verify tokens. 
+
+#### Mongoose
+
+Mongoose is a third-party Object Data Modelling (ODM) library for MongoDB, that was used to  structure and access data more easily. It assisted with data modelling, schema enforcement, model validation, and data manipulation.  By default, MongoDB uses a flexible data model that is easily updated and altered. Mongoose, however, forces a semi-rigid schema where Schemas and Models are defined. Mongoose schemas map directly to MongoDB collections and are used to define their structure. Schemas are objects which consist of fields which were used to specify data types, whether they are required and many other validation requirements.  Models then take the schema and apply it to each document in the collection. Models were used to create, read, update, and delete (CRUD) documents.
+
+#### Node-cron
+
+The node-cron module was a task that allows tasks to be scheduled using full crontab syntax.  This allows a function to be run that would be executed at a specific time each day.  This was used to add a feature to automatically return any overdue books at the start of each day. 
+
+#### Jest and Supertest (Development Dependency)
+
+Jest is the JavaScript-based testing framework that was used as a development dependency to test both the front-end and back-end application against a number of assertions.  This allowed tests to be run with the test  results displayed on the terminal. SuperTest then provides a high-level abstraction for testing HTTP. This allows GET, POST, PUT, PATCH and DELETE requests to be tested.
+
+#### Nodemon (Development Dependency)
+
+Nodemon is a tool used in development to automatically restart the node application when file changes in the directory are detected. It operates as a replacement wrapper for node. It was used by replacing the word node  on the command line when executing the script.
+
+### Front End Libraries and Packages 
+
+#### Axios
+
+Axios is a Javascript library used to send asynchronous HTTP requests to REST endpoints from node.js or XMLHttpRequests from the browser. It is used to allow the front-end to communicate with the backend and supports the Promise API native to JS ES6.  It can be used intercept HTTP requests and responses and enables client-side protection against XSRF. It can also cancel requests. Axios has function names which match any HTTP methods. For example, to perform GET requests, the axios.get() method is used. This will get a promise which returns a response object. 
+
+#### Bootstrap, React-Bootstrap
+
+Bootstrap is a user Interface framework which contains a toolkit which made it quicker and easier to develop a responsive, stylised, and professional web application. Bootstap contains customisable HTML, CSS and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.  React-Bootstrap is a component-based library that provides native Bootstrap components as pure React components. It converts JavaScript to React and bundles each component together.
+
+#### React-dom
+
+React-dom is a package which provides Document Object Model (DOM)-specific methods that can be used at the top level of an app and as an escape hatch to get outside the React model if required. It serves as the entry point to the DOM and server renderers for React.
+
+#### React-Router-DOM
+
+React-router-dom is an npm package for React that enabled the application to implement dynamic routing and function as a single-page application. It allows the user to display pages and navigate around the site. It allows the applications to have many pages and components, but the page isn’t refreshed. Instead content is dynamically fetched based on the URL.
+
+
+
 
 ## <a name='Dataflow-Diagram'></a>Dataflow Diagram
 

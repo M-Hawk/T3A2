@@ -9,20 +9,20 @@ import checkStorageToken from "../App.jsx"
 // Takes in user prop from App, user contains information stored in state of the logged in users details
 const Users = ( { user }) => {
   
-  const [ownProfile, setOwnProfile] = useState()
+  // const [ownProfile, setOwnProfile] = useState()
 
-  useEffect(() => {
-    const fetchOwnProfile = async () => {
-      try {
-        const response = await axios.get("api/users/" + user._id)
-        setOwnProfile(response.data)
-      }
-      catch (err){
-        console.log(err.stack)
-      }
-    }
-    fetchOwnProfile()
-  }, [])
+  // useEffect(() => {
+  //   const fetchOwnProfile = async () => {
+  //     try {
+  //       const response = await axios.get("api/users/" + user._id)
+  //       setOwnProfile(response.data)
+  //     }
+  //     catch (err){
+  //       console.log(err.stack)
+  //     }
+  //   }
+  //   fetchOwnProfile()
+  // }, [])
 
  
 
@@ -48,7 +48,7 @@ const Users = ( { user }) => {
                 <div><strong>Email:</strong> {user.email}</div>
                 <div><strong>User Id:</strong> {user._id}</div>
                 <div><strong>Date Joined:</strong> {user.createdAt}</div>
-                <div><strong>Number of Books on Loan:</strong> {user.booksOnLoan.length}</div>
+                {/* <div><strong>Number of Books on Loan:</strong> {user.booksOnLoan.length}</div> */}
               </div>
               <div className="user-button">
                 <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>

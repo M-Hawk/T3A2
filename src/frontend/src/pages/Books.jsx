@@ -11,6 +11,7 @@ const Books = ({ user }) => {
 
   const [books, setBooks] = useState([])
   // const [bookCopies, setBookCopies] = useState([])
+  const [errMsg, setErrMsg] = useState("")
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -24,7 +25,32 @@ const Books = ({ user }) => {
       }
     }
     fetchBooks()
-  }, [])
+  }, [books])
+
+  async function handleRemoveBook(id){
+    console.log(id)
+    try {
+      const token = localStorage.getItem("token")
+      const response = await axios.delete("api/bookdetails/" + id,
+        {
+          headers: { "Authorization": `Bearer ${token}`}
+        },
+        )
+
+      navigateTo("/books")
+      } 
+    catch (e) {
+      if (e.response) {
+        console.log(e.response)
+      }
+      if (!e?.response) {
+        setErrMsg("No server response")
+      } 
+      else {
+        setErrMsg("Delete Book Failed")
+      }
+    }
+  }
 
 
   return (
@@ -53,8 +79,8 @@ const Books = ({ user }) => {
                 { user ? (
                 <div className="book-button">
                   <Button variant="success" onClick={()=> borrowBook}>Borrow</Button>
-                  <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
-                  <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>
+                  <Button variant="warning" onClick={() => editBookDetails(`/edit/${book._id}`)}>Edit</Button>
+                  <Button variant="danger" onClick={() => handleRemoveBook(book._id)}>Delete</Button>
                 </div> ) : ("")}
               </Card.Body>
             </Card>

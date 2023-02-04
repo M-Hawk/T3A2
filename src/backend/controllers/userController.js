@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 const asyncHandler = require("express-async-handler")
 const UserModel = require("../models/userModel")
-// ADD ERROR HANDLING TO ALL ROUTES!!!
 
 // @desc    Register new user
 // @route   POST /api/users/register
@@ -204,11 +203,17 @@ const deleteProfile = asyncHandler(async(req, res) => {
 // @route   DELETE /api/users/:id
 // @access  Admin Private
 const deleteUser = asyncHandler(async(req, res) => {
+  if (req.params.id.length !== 24){
+    res.status(400)
+    throw new Error(`${req.params.id} is not a valid user id.`)
+  }
   const user = await UserModel.findById(req.params.id)
-  const { username } = await UserModel.findById(req.params.id)
+  if (!user) {
+    res.status(400)
+    throw new Error(`No user could be found with id${req.params.id}.`)
+  }
   await user.remove()
-  
-  res.status(200).json({ message: `Deleted user: ${username}, from the database`})
+  res.status(200).json({ message: `Deleted user: ${req.params.id}, from the database`})
 })
 
 // Get Auth Me

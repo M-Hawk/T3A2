@@ -17,16 +17,21 @@ const { protect, admin } = require("../middleware/authMiddleware")
 // PREFIX TO ROUTES: api/users/
 
 // Post routes
-
-router.post("/register", registerUser).post("/registeradmin",protect, admin, registerAdmin).post("/login", loginUser)
+router.post("/register", registerUser)
+router.post("/registeradmin",protect, admin, registerAdmin)
+router.post("/login", loginUser)
 
 // Get routes
-
-// getAuthMe must be above :id get request to avoid being confused with id
+//Used to authenticate users based on their id
 router.get("/auth", protect, getAuthMe)
 
+//Returns a user's profile based on the id of their JWT token
 router.get("/profile", protect, getProfile)
-router.get("/", getUsers)
+
+//Get all users
+router.get("/", protect, getUsers)
+
+//Get one user based on their id
 router.get("/:id", protect, admin, getOneUser)
 
 // Update route
@@ -35,6 +40,8 @@ router.put("/profile", protect, updateUserProfile)
 
 // Delete routes
 
-router.delete("/:id", protect, admin, deleteUser).delete("/profile", protect, deleteProfile)
+router.delete("/:id", protect, admin, deleteUser)
+
+router.delete("/profile", protect, deleteProfile)
 
 module.exports = router

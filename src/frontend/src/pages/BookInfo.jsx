@@ -54,6 +54,32 @@ const BookInfo = ({ user, setUser }) => {
     }
   }
 
+  const handleRemoveBook = async () =>{
+    // console.log("borrow book")
+    try {
+      const token = localStorage.getItem("token")
+      const response = await axios.delete("api/bookdetails/" + id,
+        {
+          headers: { "Authorization": `Bearer ${token}`}
+        },
+        )
+
+      navigateTo("/books")
+      } 
+    catch (e) {
+      if (e.response) {
+        console.log(e.response)
+      }
+      if (!e?.response) {
+        setErrMsg("No server response")
+      } 
+      else {
+        setErrMsg("Delete Book Failed")
+      }
+    }
+  }
+
+
   return (
     <section className="book-list">
         <Card bg="light" style={{ width: '100rem' }} className="book">

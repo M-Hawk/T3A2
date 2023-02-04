@@ -92,11 +92,15 @@ MongoBD was used as the backend database to store the application’s persistent
 
 #### Bcryptjs
 
-Bcryptjs is an extension used to protect passwords using bcrypt hashing based on the Blowfish cipher. This involves transforming a string of characters (of any length) into a fixed-length value. The hashing function will always produce the same output given the same input. Changing even one character in the original string will significantly change the resulting hash. It also incorporates salt for protecting the application against any rainbow table attacks. A rainbow table contains a series of precomputed hash values which could be used to find commonly used passwords (as shown in figure 1 below). To overcome this issue a “salt” (a random value) is added to the original message before it's hashed (Okta, 2022). Bcrypt hashing functions can be deliberately made slower to prevent brute force attacks.
+Bcryptjs is an extension used to protect passwords using bcrypt hashing based on the Blowfish cipher. This involves transforming a string of characters (of any length) into a fixed-length value. The hashing function will always produce the same output given the same input. Changing even one character in the original string will significantly change the resulting hash. It also incorporates salt for protecting the application against any rainbow table attacks. A rainbow table contains a series of precomputed hash values which could be used to find commonly used passwords (as shown in the image below). To overcome this issue a “salt” (a random value) is added to the original message before it's hashed (Okta, 2022). Bcrypt hashing functions can be deliberately made slower to prevent brute force attacks.
+
+![Rainbow Table](/docs/RainbowTable.png)
 
 #### Colors
 
 Colors was used to add colours and styles to the node.js console. This made it easier during development to see when the database connection stream is successful.
+
+![Colors Example](/docs/colorsExample.png)
 
 #### Cors
 
@@ -145,12 +149,23 @@ Bootstrap is a user Interface framework which contains a toolkit which made it q
 
 React-dom is a package which provides Document Object Model (DOM)-specific methods that can be used at the top level of an app and as an escape hatch to get outside the React model if required. It serves as the entry point to the DOM and server renderers for React.
 
+#### React-icons
+
+React-icons allowed popular icons (such as an icon of a user, book and house) to be easily add to the front-end application.
+
 #### React-Router-DOM
 
 React-router-dom is an npm package for React that enabled the application to implement dynamic routing and function as a single-page application. It allows the user to display pages and navigate around the site. It allows the applications to have many pages and components, but the page isn’t refreshed. Instead content is dynamically fetched based on the URL.
 
+#### Vite and @vitejs/plugin-react
 
+Vite (an alternative to create-react-app) was used to scaffold the React project and set up a development server that serves source files over native ES modules. It is a front-end tool that focuses on speed and performance. It has built-in features and fast Hot Module Replacement (HMR). Vite provides support for TypeScript, JSX, CSS, JSON and more.  
 
+@vitejs/plugin-react which is the all-in-one Vite plugin for React was also added to extend Vite. For example, tt enables fast refresh in development, uses the automatic JSX runtime, removes the need to manualling import React in .jsx and .tsx modules and allows custom Babel plugins and pre-sets to be used.
+
+#### @types/react and @types/react-dom
+
+@types/react is a package that contains type definitions for React and @types/react-dom is a package that contains type definitions for React (react-dom)
 
 ## <a name='Dataflow-Diagram'></a>Dataflow Diagram
 

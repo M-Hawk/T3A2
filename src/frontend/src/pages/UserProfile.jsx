@@ -7,29 +7,35 @@ import avatarImage from '../images/femaleAvatar.png'
 import checkStorageToken from "../App.jsx"
 
 // Takes in user prop from App, user contains information stored in state of the logged in users details
-const Users = ( { user }) => {
+const Users = ( {user} ) => {
   
   // const [ownProfile, setOwnProfile] = useState()
 
-  // useEffect(() => {
-  //   const fetchOwnProfile = async () => {
-  //     try {
-  //       const response = await axios.get("api/users/" + user._id)
-  //       setOwnProfile(response.data)
-  //     }
-  //     catch (err){
-  //       console.log(err.stack)
-  //     }
-  //   }
-  //   fetchOwnProfile()
-  // }, [])
-
- 
-
   const navigateTo = useNavigate()
+  // console.log(user)
+  useEffect(() => {
+    const fetchOwnProfile = async () => {
+      try {
+        const token = localStorage.getItem('token')
+        const response = await axios.get("api/users/" + user._id, {
+          headers: { "Authorization": `Bearer ${token}` },
+        })
+        setOwnProfile(response.data)
+      }
+      catch (err){
+        console.log(err.stack)
+      }
+    }
+    fetchOwnProfile()
+  }, [])
+
+  // const userBooksLoan = async () => {
+  //   const loansLength = await user.booksOnLoan.length
+  // }
+
   return (
     <>
-      {user ? (
+      {ownProfile ? (
       <>
         <section className="heading">
           <h2>
@@ -42,13 +48,13 @@ const Users = ( { user }) => {
         <section className="user-list">
           <Card style={{ width: '48rem' }} className="user">
             <Card.Body>
-            <Card.Title className="user-title">Welcome {user.username}!</Card.Title>
+            <Card.Title className="user-title">Welcome {ownProfile.username}!</Card.Title>
               <div className="user-details">
-                <div><strong>Username:</strong> {user.username}</div>
-                <div><strong>Email:</strong> {user.email}</div>
-                <div><strong>User Id:</strong> {user._id}</div>
-                <div><strong>Date Joined:</strong> {user.createdAt}</div>
-                {/* <div><strong>Number of Books on Loan:</strong> {user.booksOnLoan.length}</div> */}
+                <div><strong>Username:</strong> {ownProfile.username}</div>
+                <div><strong>Email:</strong> {ownProfile.email}</div>
+                <div><strong>User Id:</strong> {ownProfile._id}</div>
+                <div><strong>Date Joined:</strong> {ownProfile.createdAt}</div>
+                <div><strong>Number of Books on Loan:</strong> {ownProfile.booksOnLoan.length}</div>
               </div>
               <div className="user-button">
                 <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
@@ -65,24 +71,24 @@ const Users = ( { user }) => {
           </h2>
         <p>You currently have the following books on loan:</p>
         </section>
-        {user.booksOnLoan.length ? (
+        {ownProfile.booksOnLoan.length ? (
           <section className="book-list">
-            {user.booksOnLoan.map((book) =>
+            {ownProfile.booksOnLoan.map((book) =>
               <Card bg="light" style={{ width: '24rem' }} className="book">
-              <Card.Title className="user-title">Book ID {book}!</Card.Title>
+              <Card.Title> {book.title}!</Card.Title>
               <div className="book-details">
-                        <div><strong>Author:</strong> Author to Add</div>
-                        <div><strong>Genre:</strong> Genre to Add</div>
-                        <div><strong>Description:</strong> Descripton to Add</div>  
+                        <div><strong>Author:</strong> {book.author}</div>
+                        <div><strong>Genre:</strong> {book.genre}</div>
+                        <div><strong>Description:</strong> {book.decription}</div>  
                       </div>
               </Card>
             )}
           </section>
           ) : (
           <p style={{ marginTop: '2rem' }}>You have no books on loan yet</p>
-          )}        
+          )}
       </>
-      ) : navigateTo("/")}
+      ) : (navigateTo("/"))}
     </>
   )
 }

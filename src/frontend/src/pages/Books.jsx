@@ -24,25 +24,7 @@ const Books = ({ user }) => {
       }
     }
     fetchBooks()
-    // Change this below to accept changes when new books are added or deleted
   }, [])
-
-  // useEffect(() => {
-  //   const fetchBookCopies = async () => {
-  //     try {
-  //       const response = await axios.get(GET_COPIES_URL)
-  //       const book = response.data
-  //       if(book.bookDetails.title === books.title) {
-  //         setBookcopies(book)
-  //       }
-  //     }
-  //     catch (err){
-  //       console.log(err.stack)
-  //     }
-  //   }
-  //   fetchBookCopies()
-  //   // Change this below to accept changes when new books are added or deleted
-  // }, [books])
 
 
   return (
@@ -67,10 +49,13 @@ const Books = ({ user }) => {
                   <Link to= {`/books/${book._id}`}>
                     <Button variant="primary">More Info</Button>
                   </Link>
-                  <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Borrow</Button>
+                </div>
+                { user ? (
+                <div className="book-button">
+                  <Button variant="success" onClick={()=> borrowBook}>Borrow</Button>
                   <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
                   <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>
-                </div>
+                </div> ) : ("")}
               </Card.Body>
             </Card>
           )}

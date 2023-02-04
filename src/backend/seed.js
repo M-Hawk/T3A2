@@ -32,44 +32,51 @@ const seedDB = async () => {
     {
       username: "Jack",
       email: "JackTheDog11@gmail.com",
-      password: await bcrypt.hash("Jack", salt)
+      password: await bcrypt.hash("Jack", salt),
+      booksOnLoan: []
     },
     {
       username: "Matt",
       email: "MattH@gmail.com",
       password: await bcrypt.hash("Matt", salt),
-      isAdmin: true
+      isAdmin: true,
+      booksOnLoan: []
     },
     {
       username: "Dayle",
       email: "dayleclarke1071@gmail.com",
       password: await bcrypt.hash("Dayle", salt),
-      isAdmin: true
+      isAdmin: true,
+      booksOnLoan: []
     },
     {
       username: "Janet",
       email: "Janetstone@gmail.com",
-      password: await bcrypt.hash("ChangeMe4", salt)
+      password: await bcrypt.hash("ChangeMe4", salt),
+      booksOnLoan: []
     },
     {
       username: "Claire",
       email: "ClaireWhite@gmail.com",
-      password: await bcrypt.hash("ChangeMe5", salt)
+      password: await bcrypt.hash("ChangeMe5", salt),
+      booksOnLoan: []
     },
     {
       username: "Geoff",
       email: "Geoffsmith93@gmail.com",
-      password: await bcrypt.hash("ChangeMe6", salt)
+      password: await bcrypt.hash("ChangeMe6", salt),
+      booksOnLoan: []
     },
     {
       username: "Rhonda",
       email: "RhondaTaylor75@gmail.com",
-      password: await bcrypt.hash("ChangeMe7", salt)
+      password: await bcrypt.hash("ChangeMe7", salt),
+      booksOnLoan: []
     }
   ]
   
   const user = await UserModel.insertMany(users)
-  console.log("Inserted seed data for book details.")
+  console.log("Inserted seed data for user details.")
 
   //Seed Book Details
   const bookDets = await BookDetailsModel.insertMany(bookDetails)
@@ -78,23 +85,23 @@ const seedDB = async () => {
   //Seed Book Copies
   const bookCopies = [
     { bookDetails: bookDets[0],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[0],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[0],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[1],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[1],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[1],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[2],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[2],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[2],
-      isAvailable: false },
+      isAvailable: true },
     { bookDetails: bookDets[3] },
     { bookDetails: bookDets[4] },
     { bookDetails: bookDets[5] },    
@@ -107,40 +114,22 @@ const seedDB = async () => {
   ]
 
   const bookCops = await BookCopyModel.insertMany(bookCopies)
-  console.log("Inserted seed data for book details.")
+  console.log("Inserted seed data for book copies.")
 
   //Seed Loans
-  const loans =[
-    { bookCopy: bookCops[0],
-      user: user[0]
-    },
-    { bookCopy: bookCops[1],
-      user: user[0]
-    },
-    { bookCopy: bookCops[2],
-      user: user[0]
-    },
-    { bookCopy: bookCops[3],
-      user: user[0]
-    },
-    { bookCopy: bookCops[4],
-      user: user[1]
-    },
-    { bookCopy: bookCops[5],
-      user: user[1]
-    },
-    { bookCopy: bookCops[6],
-      user: user[2]
-    },
-    { bookCopy: bookCops[7],
-      user: user[3]
-    },
-    { bookCopy: bookCops[8],
-      user: user[4]
-    }
-  ]
-  await LoanModel.insertMany(loans)
-  console.log("Inserted seed data for loans.")
+  // const loans =[
+  //   { bookCopy: bookCops[0],
+  //     user: user[0]
+  //   },
+  //   { bookCopy: bookCops[1],
+  //     user: user[0]
+  //   },
+  //   { bookCopy: bookCops[6],
+  //     user: user[2]
+  //   }
+  // ]
+  // await LoanModel.insertMany(loans)
+  // console.log("Inserted seed data for loans.")
 }
 seedDB().then(async() => {
   await disconnectDB()

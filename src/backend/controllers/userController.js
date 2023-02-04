@@ -2,7 +2,6 @@ const jwt = require("jsonwebtoken")
 const bcrypt = require("bcryptjs")
 const asyncHandler = require("express-async-handler")
 const UserModel = require("../models/userModel")
-// ADD ERROR HANDLING TO ALL ROUTES!!!
 
 // @desc    Register new user
 // @route   POST /api/users/register

@@ -17,16 +17,21 @@ const { protect, admin } = require("../middleware/authMiddleware")
 // PREFIX TO ROUTES: api/users/
 
 // Post routes
-
-router.post("/register", registerUser).post("/registeradmin",protect, admin, registerAdmin).post("/login", loginUser)
+router.post("/register", registerUser)
+router.post("/registeradmin",protect, admin, registerAdmin)
+router.post("/login", loginUser)
 
 // Get routes
 //Used to authenticate users based on their id
 router.get("/auth", protect, getAuthMe)
 
-//Returns a user's provide based on the id of their JWT token
+//Returns a user's profile based on the id of their JWT token
 router.get("/profile", protect, getProfile)
+
+//Get all users
 router.get("/", protect, getUsers)
+
+//Get one user based on their id
 router.get("/:id", protect, admin, getOneUser)
 
 // Update route

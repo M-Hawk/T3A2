@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect, useContext } from "react"
+import { useRef, useState, useEffect} from "react"
 // import { AuthContext } from "../context/AuthProvider"
 import axios from "../apiConnect/axios"
 import { FaSignInAlt } from "react-icons/fa"
@@ -37,7 +37,7 @@ const Login = ({ setUser }) => {
       localStorage.setItem("token", response.data.token)
       // log user in
       await setUser(response.data)
-      // console.log(response.data.token)
+      // console.log(response.data)
       // redirect to home page
       navigateTo("/")
     }

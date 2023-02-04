@@ -33,7 +33,7 @@ const BookInfo = ( { user } ) => {
           headers: {"Content-Type" : "application/json"},
         },
       )
-      console.log(response.data)
+      // console.log(response.data)
       // redirect to books list page
       navigateTo("/books")
     } 

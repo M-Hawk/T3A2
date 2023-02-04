@@ -41,29 +41,21 @@ const AddBookDetails = ({book}) => {
 
   useEffect(() => {
     const result = TITLE_REGEX.test(title)
-    console.log(result)
-    console.log(title)
     setValidTitle(result)
   }, [title])
 
   useEffect(() => {
     const result = AUTHOR_REGEX.test(author)
-    console.log(result)
-    console.log(author)
     setValidAuthor(result)
   }, [author])
 
   useEffect(() => {
     const result = GENRE_REGEX.test(genre)
-    console.log(result)
-    console.log(genre)
     setValidGenre(result)
   }, [genre])
 
   useEffect(() => {
     const result = DESCRIPTION_REGEX.test(description)
-    console.log(result)
-    console.log(description)
     setValidDescription(result)
   }, [description])
 
@@ -76,8 +68,6 @@ const AddBookDetails = ({book}) => {
         }
       )
       // Delete these console logs after
-      console.log(response.data)
-      console.log(JSON.stringify(response))
       navigateTo("/books")
     } 
     catch (err) {

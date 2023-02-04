@@ -17,11 +17,12 @@ import axios from "./apiConnect/axios"
 const App = () => {
 
   const [user, setUser] = useState(null)
-  const [loggedIn, loggedInUser] = useState(null)
+  // const [loggedIn, loggedInUser] = useState(null)
   const [token, setToken] = useState(null)
   const [isAdmin, setAdmin] = useState(false)
   
-  
+  // const navigateTo = useNavigate()
+
   // Checks whether a user is logged in when a page is reloaded via the local storage
   useEffect(() => {
     const checkStorageToken = async () => {
@@ -30,9 +31,11 @@ const App = () => {
         // console.log(token)
         const response = await axios.get("/api/users/auth", {
           headers: { "Authorization": `Bearer ${token}` },
-          
         })
         setUser(response.data)
+        // navigateTo("/")
+        // const refresh = () => window.location.reload(true)
+        // refresh()
         // console.log(response.data)
       }
     }

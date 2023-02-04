@@ -4,7 +4,7 @@ import axios from "../apiConnect/axios"
 
 const AddBookCopy = () => {
   const { details } = useParams()
-  console.log(details)
+  // console.log(details)
   
   const errRef = useRef()
 
@@ -29,8 +29,8 @@ const AddBookCopy = () => {
         }
       )
       // Delete these console logs after
-      console.log(response.data)
-      console.log(JSON.stringify(response))
+      // console.log(response.data)
+      // console.log(JSON.stringify(response))
       setSuccess(true)
     } 
     catch (err) {

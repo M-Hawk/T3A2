@@ -49,15 +49,22 @@ const setLoan = asyncHandler(async (req, res) => {
 // @route   PUT /api/loans/:id
 // @access  Admin Private
 const updateLoan = asyncHandler(async (req, res) => {
-  // if(!bookDetails) {
-  //   res.status(400)
-  //   throw new Error('No book could be found with that id.')
-  // } 
+  if (req.params.id.length !== 24){
+    res.status(404)
+    throw new Error(`${req.params.id} is not a valid id.`)
+  }
+  
+  const loan = await LoanModel.findById(req.params.id)
+  if (!loan) {
+    res.status(404)
+    throw new Error(`No loan record could be found with id: ${req.params.id}.`
+  )}
+ 
   const updatedloan = await LoanModel.findByIdAndUpdate(req.params.id, req.body, {
     new:true,
   })
+  
   res.status(201).json(updatedloan)
-
 })
 
 // @desc    Delete a loan
@@ -74,6 +81,7 @@ const deleteLoan = asyncHandler(async (req, res) => {
     res.status(404)
     throw new Error(`No loan record could be found with id: ${req.params.id}.`)
   }
+
   await loan.remove()
   
   res.status(200).json({ message: `Deleted loan details for the loan record with this ID: ${req.params.id}` })

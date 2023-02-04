@@ -31,17 +31,18 @@ const setLoan = asyncHandler(async (req, res) => {
   const bookCopy = await BookCopyModel.findOne({bookDetails: req.params.id, isAvailable: true})
   // .populate("bookDetails")
   console.log(bookCopy)
-
+  // console.log(req.body._id)
   if(!bookCopy) {
-    res.status(200).json({ message: "No Books are currently available"})
+    res.status(200).json( {message: "No Books are currently available"} )
   }
   else {
-    const loan = await LoanModel.create({ bookCopy: bookCopy._id, user: req.user.id })
-    const user = await UserModel.findById(req.user._id)
+    const loan = await LoanModel.create({ bookCopy: bookCopy._id, user: req.body._id })
+    const user = await UserModel.findById(req.body._id)
     user.booksOnLoan.push(bookCopy.bookDetails._id)
     user.save()
-    await BookCopyModel.findByIdAndUpdate(bookCopy._id, { isAvailable: false})
-    res.status(200).json(loan)
+    await BookCopyModel.findByIdAndUpdate(bookCopy._id, { isAvailable: false })
+    console.log(user)
+    res.status(200).json(user)
   }
 })
 

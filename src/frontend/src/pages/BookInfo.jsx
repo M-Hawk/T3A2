@@ -4,12 +4,14 @@ import { useParams } from "react-router-dom"
 import axios from "../apiConnect/axios"
 import { Link, useNavigate } from "react-router-dom"
 
-const BookInfo = ( { user } ) => {
+const BookInfo = ({ user, setUser }) => {
 
-
+  // console.log(user._id)
   const [book, setBook] = useState([])
   const { id } = useParams()
+  // console.log(id)
   const navigateTo = useNavigate()
+
   const [errMsg, setErrMsg] = useState("") 
 
   useEffect(() => {
@@ -26,19 +28,24 @@ const BookInfo = ( { user } ) => {
     fetchBook()
   }, [])
 
-  const borrowBook = async (id) =>{
+  const borrowBook = async () =>{
+    // console.log("borrow book")
     try {
-      const response = await axios.post("api/loans/" + id,
+      const token = localStorage.getItem("token")
+      const response = await axios.post("api/loans/" + id, user,
         {
-          headers: {"Content-Type" : "application/json"},
+          headers: { "Authorization": `Bearer ${token}`}
         },
-      )
+        )
       // console.log(response.data)
-      // redirect to books list page
+      // await setUser(response.data)
       navigateTo("/books")
-    } 
-    catch (err) {
-      if (!err?.response) {
+      } 
+    catch (e) {
+      if (e.response) {
+        console.log(e.response)
+      }
+      if (!e?.response) {
         setErrMsg("No server response")
       } 
       else {
@@ -61,7 +68,7 @@ const BookInfo = ( { user } ) => {
             </div>
             { user ? (
             <div className="book-button">
-              <Button variant="success" onClick={()=> borrowBook}>Borrow</Button>
+              <Button variant="success" onClick={()=> borrowBook()}>Borrow</Button>
               <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
               <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>
             </div> ) : ("")}

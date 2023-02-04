@@ -21,7 +21,7 @@ router.route("/:id").post(setLoan)
 
 router.route("/").get(protect, admin, getLoans)
 
-router.route("/getmyloans").get(protect, admin, getOwnLoans)
+router.route("/getmyloans").get(protect, getOwnLoans)
 
 
 module.exports = router

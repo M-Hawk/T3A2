@@ -39,7 +39,7 @@ const BookInfo = ({ user, setUser }) => {
         )
       // console.log(response.data)
       // await setUser(response.data)
-      navigateTo("/books")
+      navigateTo("/userprofile/:id")
       } 
     catch (e) {
       if (e.response) {

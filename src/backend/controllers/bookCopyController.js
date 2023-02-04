@@ -10,16 +10,18 @@ const getBookCopies = asyncHandler(async (req, res) => {
   res.status(200).json(bookCopy)
 })
 
-// To-Do- Find out why the else statement below doesn't work but the catch does.
-
 // @desc    Get a single book copy by its ID
 // @route   GET /api/bookcopies/:id
 // @access  Public
 const getOneBookCopy = asyncHandler(async (req, res) => {
+  if (req.params.id.length !== 24){
+    res.status(404)
+    throw new Error(`${req.params.id} is not a valid book copy id.`)
+  }
     const bookCopy = await BookCopyModel.findById(req.params.id).populate("bookDetails")
     if (!bookCopy) {
       res.status(404)
-      throw new Error("Book copy not found with that ID")
+      throw new Error(`Book copy not found with the ID: ${req.params.id}`)
     }
     else {
       res.status(200).json(bookCopy)
@@ -37,35 +39,42 @@ const setBookCopy = asyncHandler(async (req, res) => {
   res.status(200).json(bookCopy)
 })
 
-//To-Do: find a way to provide a more semantic error message for when a book doesn't exist with that id. 
-
-// @desc    Update an exsisting book copy
+// @desc    Update an existing book copy based on an ID passed in as a URI parameter
 // @route   PUT /api/bookcopies/:id
 // @access  Admin Private
 const updateBookCopy = asyncHandler(async (req, res) => {
-//Could try Matt's method. 
+  if (req.params.id.length !== 24){
+    res.status(404)
+    throw new Error(`${req.params.id} is not a valid id.`)
+  }
 
-  // if(!bookDetails) {
-  //   res.status(400)
-  //   throw new Error('No book could be found with that id.')
-  // } 
+  const bookCopy = await BookCopyModel.findById(req.params.id)
+  if (!bookCopy) {
+    res.status(404)
+    throw new Error(`No book copy could be found with id: ${req.params.id}.`)
+  }
+
   const updatedBookCopy = await BookCopyModel.findByIdAndUpdate(req.params.id, req.body, {
     new:true,
   }) 
   res.status(201).json(updatedBookCopy)
-
 })
 
-// @desc    Delete book copy
+// @desc    Delete an existing book copy based on an ID passed in as a URI parameter
 // @route   DELETE /api/bookcopies/:id
 // @access  Admin Private
 const deleteBookCopy = asyncHandler(async (req, res) => {
+  if (req.params.id.length !== 24){
+    res.status(404)
+    throw new Error(`${req.params.id} is not a valid id.`)
+  }
+
   const bookCopy = await BookCopyModel.findById(req.params.id)
-  //Could try Matt's method. 
-  // if(!bookDetails) {
-  //   res.status(400)
-  //   throw new Error('No book could be found with that id.')
-  // }
+  if (!bookCopy) {
+    res.status(404)
+    throw new Error(`No book copy could be found with id: ${req.params.id}.`)
+  }
+
   await bookCopy.remove()
   
   res.status(200).json({ message: `Deleted a book's details with this ID: ${req.params.id}` })

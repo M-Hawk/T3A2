@@ -204,12 +204,12 @@ const deleteProfile = asyncHandler(async(req, res) => {
 // @access  Admin Private
 const deleteUser = asyncHandler(async(req, res) => {
   if (req.params.id.length !== 24){
-    res.status(400)
+    res.status(404)
     throw new Error(`${req.params.id} is not a valid user id.`)
   }
   const user = await UserModel.findById(req.params.id)
   if (!user) {
-    res.status(400)
+    res.status(404)
     throw new Error(`No user could be found with id${req.params.id}.`)
   }
   await user.remove()

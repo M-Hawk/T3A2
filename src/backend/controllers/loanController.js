@@ -45,10 +45,6 @@ const setLoan = asyncHandler(async (req, res) => {
   }
 })
 
-//To-Do: find a way to provide a more semantic error message for a loan doesn't exist with that id. 
-//Could try Matt's method. 
-// Protected route (To-Do add isAdmin)
-
 // @desc    Update a loan
 // @route   PUT /api/loans/:id
 // @access  Admin Private
@@ -68,13 +64,16 @@ const updateLoan = asyncHandler(async (req, res) => {
 // @route   PUT /api/loans/:id
 // @access  Admin Private
 const deleteLoan = asyncHandler(async (req, res) => {
-  const loan = await LoanModel.findById(req.params.id)
-  //Could try Matt's method. 
-  // if(!bookDetails) {
-  //   res.status(400)
-  //   throw new Error('No book could be found with that id.')
-  // }
+  if (req.params.id.length !== 24){
+    res.status(404)
+    throw new Error(`${req.params.id} is not a valid id.`)
+  }
 
+  const loan = await LoanModel.findById(req.params.id)
+  if (!loan) {
+    res.status(404)
+    throw new Error(`No loan record could be found with id: ${req.params.id}.`)
+  }
   await loan.remove()
   
   res.status(200).json({ message: `Deleted loan details for the loan record with this ID: ${req.params.id}` })

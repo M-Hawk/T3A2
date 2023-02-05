@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import axios from "../apiConnect/axios"
 import { Link, useNavigate } from "react-router-dom"
+import UpdateBookDetails from "./UpdateBookDetails"
 
 const BookInfo = ({ user, setUser }) => {
 

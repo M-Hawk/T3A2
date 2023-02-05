@@ -1,9 +1,24 @@
-
+import { Container, Row, Col } from "react-bootstrap"
 
 
 const Footer = () => {
   return (
     <>
+    {/* <footer>
+    //   <Container>
+    //     <Row>
+    //       <Col className="text-center py-3">
+    //       Copyright &copy; Wormreads 2023
+
+    //       </Col>
+
+
+    //     </Row>
+
+
+    //   </Container>
+    // </footer> */}
+
       <footer className="footer">
         <section id="contact-details">
             <div>
@@ -14,8 +29,8 @@ const Footer = () => {
             <h6>&copy; Wormreads 2023</h6>
         </section>
       </footer>
-    
-      {/* <div class="container">
+{/*     
+      <div class="container">
         <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
           <p class="col-md-4 mb-0 text-muted">&copy; 2023 Wormreads, Inc</p>
 

@@ -4,7 +4,7 @@ import axios from "../apiConnect/axios"
 import { Link, useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 
-const TITLE_REGEX = /^[A-Za-z0-9\s\-_,\.;:@&()]{3,250}$/
+const TITLE_REGEX = /^[A-Za-z0-9\s\-_,\.;é:@&()]{3,250}$/
 const AUTHOR_REGEX = /^[A-Za-z0-9\s\-_,\.;:@&()]{3,250}$/
 const GENRE_REGEX = /^[A-Za-z0-9\s\-_,\.;:@&()]{3,250}$/
 
@@ -14,7 +14,7 @@ const UpdateBookDetails = ({ book }) => {
   const errRef = useRef()
   const navigateTo = useNavigate()
 
-  const [title, setTitle] = useState(`${book.title}`) //Perhaps needs a string `
+  const [title, setTitle] = useState(`sdsffdfds`) //Perhaps needs a string `
   const [validTitle, setValidTitle] = useState(false)
   const [titleFocus, setTitleFocus] = useState(false)
 
@@ -31,7 +31,7 @@ const UpdateBookDetails = ({ book }) => {
   const [descriptionFocus, setDescriptionFocus] = useState(false)
 
 
-  const [errMsg, setErrMsg] = useState(`${book.title}`) 
+  const [errMsg, setErrMsg] = useState("") 
 
   useEffect(() => {
     titleRef.current.focus()
@@ -51,6 +51,7 @@ const UpdateBookDetails = ({ book }) => {
     const result = GENRE_REGEX.test(genre)
     setValidGenre(result)
   }, [genre])
+
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -108,15 +109,15 @@ const UpdateBookDetails = ({ book }) => {
             </label>
             <input 
               type="text"
-              id="title"
               ref= {titleRef}
+              id="title"              
               onChange={(e) => setTitle(e.target.value)}
               required
-              value={title}
               aria-invalid={validTitle ? "false" : "true"}
               aria-describedby="titlenote"
               onFocus={() => setTitleFocus(true)}
               onBlur={() => setTitleFocus(false)}
+              value={title}
             />
             <p id="titlenote" className={titleFocus && title && !validTitle ? "instructions" : "offscreen"}>
               <FaInfoCircle />
@@ -142,7 +143,6 @@ const UpdateBookDetails = ({ book }) => {
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
               required
-              placeholder="Enter the author."
               aria-invalid={validAuthor ? "false" : "true"}
               aria-describedby="authornote"
               onFocus={() => setAuthorFocus(true)}

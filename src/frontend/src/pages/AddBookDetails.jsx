@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react"
-import { FaUser, FaInfoCircle, FaCheck, FaTimes} from "react-icons/fa"
+import { FaBook, FaInfoCircle, FaCheck, FaTimes} from "react-icons/fa"
 import axios from "../apiConnect/axios"
 import { Link, useNavigate } from "react-router-dom"
 
@@ -67,7 +67,6 @@ const AddBookDetails = ({ book }) => {
           headers: {"Content-Type" : "application/json"}
         }
       )
-      // Delete these console logs after
       navigateTo("/books")
     } 
     catch (err) {
@@ -91,7 +90,7 @@ const AddBookDetails = ({ book }) => {
       </section>
       <section className="heading">
           <h2>
-            <FaUser /> Add New Book Details
+            <FaBook /> Add New Book Details
           </h2>
           <p>Please enter the book details associated with the book you would like to add</p>
       </section>

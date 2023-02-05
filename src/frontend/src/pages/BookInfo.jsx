@@ -117,6 +117,7 @@ const BookInfo = ({ user, setUser }) => {
             </Card.Body>
           </Card>
       </section>
+      <UpdateBookDetails book={book} />
     </>
   )
 }

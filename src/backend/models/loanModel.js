@@ -12,9 +12,9 @@ const loanSchema = mongoose.Schema({
   },
   dueDate: {
     type: Date,
-    default: Date.now() + 14*24*60*60*1000,
+    default: Date.now() + 5*60*1000
   },
-  
+  // 14*24*60*60*1000,
   }, {
   timestamp: true
 })

@@ -26,7 +26,6 @@ const Books = ({ user }) => {
 
 
 
-  console.log(user)
   return (
     <>
         {user ? (

@@ -133,7 +133,7 @@ const loginUser = asyncHandler(async (req, res) => {
 })
 
 // @desc    Get own user data
-// @route   GET /api/users/profile
+// @route   GET /api/users/profile/me
 // @access  Private
 const getProfile = asyncHandler(async(req, res) => {
   // const { _id, email, username,  } = await UserModel.findById(req.user.id)
@@ -192,12 +192,11 @@ const updateUserProfile = asyncHandler(async (req, res) => {
 })
 
 // @desc    Delete own profile
-// @route   DELETE /api/users/profile
+// @route   DELETE /api/users/profile/me
 // @access  Private
 const deleteProfile = asyncHandler(async(req, res) => {
-  const deleteprofile = await UserModel.findById(req.user.id)
+  const deleteprofile = await UserModel.findById(req.body._id)
   await deleteprofile.remove()
-  
   res.status(200).json({ message: `Your profile has been deleted from the database`})
 })
 

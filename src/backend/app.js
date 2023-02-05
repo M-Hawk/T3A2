@@ -20,8 +20,9 @@ app.use(express.json())
 
 // Scheduled jobs
 
-// Checks 
 // scheduledFunctions.initScheduledJobs()
+
+// Checks 
 // Middleware
 //API homepage Route
 app.get('/', (req, res) => res.send({ info: "Wormreads API"}))

@@ -32,20 +32,20 @@ const seedDB = async () => {
     {
       username: "Jack",
       email: "JackTheDog11@gmail.com",
-      password: await bcrypt.hash("Jack", salt),
+      password: await bcrypt.hash("jack!", salt),
       booksOnLoan: []
     },
     {
       username: "Matt",
       email: "MattH@gmail.com",
-      password: await bcrypt.hash("Matt", salt),
+      password: await bcrypt.hash("matt!", salt),
       isAdmin: true,
       booksOnLoan: []
     },
     {
       username: "Dayle",
       email: "dayleclarke1071@gmail.com",
-      password: await bcrypt.hash("Dayle", salt),
+      password: await bcrypt.hash("dayle!", salt),
       isAdmin: true,
       booksOnLoan: []
     },
@@ -110,7 +110,16 @@ const seedDB = async () => {
     { bookDetails: bookDets[6] },    
     { bookDetails: bookDets[7] },    
     { bookDetails: bookDets[8] },    
-    { bookDetails: bookDets[9] }    
+    { bookDetails: bookDets[9] },    
+    { bookDetails: bookDets[3] },
+    { bookDetails: bookDets[4] },
+    { bookDetails: bookDets[5] },    
+    { bookDetails: bookDets[5] },    
+    { bookDetails: bookDets[6] },    
+    { bookDetails: bookDets[6] },    
+    { bookDetails: bookDets[7] },    
+    { bookDetails: bookDets[8] },    
+    { bookDetails: bookDets[9] },    
   ]
 
   const bookCops = await BookCopyModel.insertMany(bookCopies)

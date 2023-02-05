@@ -66,8 +66,7 @@ const Users = ({ user }) => {
               <div className="user-details">
                 <div><strong>Username:</strong> {ownProfile.username}</div>
                 <div><strong>Email:</strong> {ownProfile.email}</div>
-                <div><strong>User Id:</strong> {ownProfile._id}</div>
-                <div><strong>Date Joined:</strong> {ownProfile.createdAt}</div>
+                <div><strong>Date Joined:</strong> {ownProfile.createdAt.slice(0,10)}</div>
                 <div><strong>Number of Books on Loan:</strong> {ownProfile.booksOnLoan.length}</div>
               </div>
               <div className="user-button">

@@ -5,6 +5,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Home from "./pages/Home"
 import Login from "./pages/Login"
+import Logout from "./pages/Logout"
 import Register from "./pages/Register"
 import Books from "./pages/Books"
 import BookInfo from "./pages/BookInfo"
@@ -63,20 +64,21 @@ const App = () => {
   return (
     <>
       <Router>
-            <NavBar className="container" user={user}/>
-              <Header />
-              <Routes>
-                <Route path="/" element={<Home user={user} />} />
-                <Route path="/login" element={<Login setUser={setUser}/>} />
-                <Route path="/register" element={<Register setUser={setUser}/>} />
-                <Route path="/userprofile/:id" element={<UserProfile token={token} user={user}/>} />
-                <Route path="/books" element={<Books user={user}/>} />
-                <Route path="/books/:id" element={<BookInfo user={user}/>} />
-                <Route path="/books/add/" element={<AddBookDetails />} />
-                <Route path="/books/add/copy/:details" element={<AddBookCopy />} />
-                <Route path="*" element={<h4>Page not found!</h4>} />
-              </Routes>
-              <Footer />
+        <NavBar user={user}/>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home user={user} />} />
+          <Route path="/login" element={<Login setUser={setUser}/>} />
+          <Route path="/logout" element={<Logout user={user} setUser={setUser}/>} />
+          <Route path="/register" element={<Register setUser={setUser}/>} />
+          <Route path="/userprofile/:id" element={<UserProfile token={token} user={user}/>} />
+          <Route path="/books" element={<Books user={user}/>} />
+          <Route path="/books/:id" element={<BookInfo user={user}/>} />
+          <Route path="/books/add/" element={<AddBookDetails />} />
+          <Route path="/books/add/copy/:details" element={<AddBookCopy />} />
+          <Route path="*" element={<h4>Page not found!</h4>} />
+        </Routes>
+        <Footer />
       </Router>
     </>
   )

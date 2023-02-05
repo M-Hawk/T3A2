@@ -332,7 +332,7 @@ h3 {
 .copyright-info {
     background: #288f5f;
     border-top: solid 0.9rem #99806e;
-    border-bottom: solid 0.9rem #288f5f;
+    border-bottom: solid 0.9rem #99806e;
 }
 
 .copyright-info h6 {
@@ -346,6 +346,18 @@ h3 {
     line-height: 1.4;
 }
 
+.footer {
+  margin-top: auto;      
+} 
+.logout-card {
+  display: flex;
+  flex-direction: column;
+  height: 40vh;
+  justify-content: space-evenly;
+}
+.logout-text {
+  font-size: 1.5rem;
+}
 .footer {
   margin-top: auto;      
 } 

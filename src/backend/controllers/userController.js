@@ -44,6 +44,7 @@ const registerUser = asyncHandler(async (req, res) => {
       _id: user._id,
       username: user.username,
       email: user.email,
+      isAdmin: user.isAdmin,
       token: generateToken(user._id)
     })
   } 
@@ -121,6 +122,7 @@ const loginUser = asyncHandler(async (req, res) => {
       _id: user._id,
       email: user.email,
       username: user.username,
+      isAdmin: user.isAdmin,
       token: generateToken(user._id),
     })
   }
@@ -155,8 +157,8 @@ const getUsers = asyncHandler(async(req, res) => {
   res.status(200).json(users)
 })
 // @desc    Get a single user's profile by their ID
-// @route   GET /api/bookdetails/:id
-// @access  Public
+// @route   GET /api/users/:id
+// @access  Private
 const getOneUser = asyncHandler(async (req, res) => {
   try {
     const user = await UserModel.findById(req.params.id).populate("booksOnLoan")

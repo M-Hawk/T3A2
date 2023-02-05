@@ -41,7 +41,7 @@ const setLoan = asyncHandler(async (req, res) => {
     user.booksOnLoan.push(bookCopy.bookDetails._id)
     user.save()
     await BookCopyModel.findByIdAndUpdate(bookCopy._id, { isAvailable: false })
-    console.log(user)
+    // console.log(user)
     res.status(200).json(user)
   }
 })

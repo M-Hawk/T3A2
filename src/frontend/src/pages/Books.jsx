@@ -5,13 +5,10 @@ import axios from "../apiConnect/axios"
 
 const BOOK_DESC_REGEX = /.+?\./
 const GET_BOOKS_URL = "api/bookdetails"
-const GET_COPIES_URL = "api/bookcopies"
 
-const Books = ({ user }) => {
+const Books = () => {
 
   const [books, setBooks] = useState([])
-  // const [bookCopies, setBookCopies] = useState([])
-  const [errMsg, setErrMsg] = useState("")
 
   useEffect(() => {
     const fetchBooks = async () => {
@@ -25,38 +22,11 @@ const Books = ({ user }) => {
       }
     }
     fetchBooks()
-  }, [books])
-
-  async function handleRemoveBook(id){
-    console.log(id)
-    try {
-      const token = localStorage.getItem("token")
-      const response = await axios.delete("api/bookdetails/" + id,
-        {
-          headers: { "Authorization": `Bearer ${token}`}
-        },
-        )
-
-      navigateTo("/books")
-      } 
-    catch (e) {
-      if (e.response) {
-        console.log(e.response)
-      }
-      if (!e?.response) {
-        setErrMsg("No server response")
-      } 
-      else {
-        setErrMsg("Delete Book Failed")
-      }
-    }
-  }
-
+  }, [])
 
   return (
     <>
       <span>
-        {/* {put router link here} */}
         <Link className="btn btn-small" to="/books/add">Add a New Book</Link>
       </span>
       {books.length ? (
@@ -76,12 +46,6 @@ const Books = ({ user }) => {
                     <Button variant="primary">More Info</Button>
                   </Link>
                 </div>
-                { user ? (
-                <div className="book-button">
-                  <Button variant="success" onClick={()=> borrowBook}>Borrow</Button>
-                  <Button variant="warning" onClick={() => editBookDetails(`/edit/${book._id}`)}>Edit</Button>
-                  <Button variant="danger" onClick={() => handleRemoveBook(book._id)}>Delete</Button>
-                </div> ) : ("")}
               </Card.Body>
             </Card>
           )}

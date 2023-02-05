@@ -11,7 +11,7 @@
 
 [Manual Testing Backend Development and Production](docs/ManualTestingBackend.pdf)
 
-[Manual Testing Front Development and Production](docs/FrontEndManualTesting.pdf)
+[Manual Testing Frontend Development and Production](docs/FrontEndManualTesting.pdf)
 
 [Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
 

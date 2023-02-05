@@ -11,6 +11,7 @@ const BookInfo = ({ user, setUser }) => {
   const [book, setBook] = useState([])
   const { id } = useParams()
   const ref = useRef()
+  const [showEdit, setShowEdit] = useState(false) 
 
   // console.log(id)
   const navigateTo = useNavigate()
@@ -111,13 +112,18 @@ const BookInfo = ({ user, setUser }) => {
               { user ? (
               <div className="book-button">
                 <Button variant="success" onClick={()=> borrowBook()}>Borrow</Button>
-                <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Edit</Button>
+                <Button variant="warning" onClick={() => setShowEdit(true)}>Edit</Button>
                 <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>
               </div> ) : ("")}
             </Card.Body>
           </Card>
       </section>
-      <UpdateBookDetails book={book} />
+ 
+      { showEdit ? (
+        <div>
+          <UpdateBookDetails book={book} />
+        </div> 
+      ) : ("")}
     </>
   )
 }

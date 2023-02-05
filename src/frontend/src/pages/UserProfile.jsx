@@ -1,7 +1,7 @@
 import {FaIdBadge, FaBook } from "react-icons/fa"
 import { Button, Card } from "react-bootstrap"
 import { useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import axios from "../apiConnect/axios"
 import avatarImage from '../images/femaleAvatar.png'
 import checkStorageToken from "../App.jsx"
@@ -9,6 +9,18 @@ import checkStorageToken from "../App.jsx"
 // Takes in user prop from App, user contains information stored in state of the logged in users details
 const Users = ({ user }) => {
 
+  const randBookReadPage = () => {
+    let baconIpsumUrls = 
+    ["https://baconipsum.com/api/?type=meat-and-filler",
+    "https://baconipsum.com/api/?type=all-meat&paras=2&start-with-lorem=1",
+    "https://baconipsum.com/api/?type=all-meat&sentences=1&start-with-lorem=1",
+    "https://baconipsum.com/api/?type=meat-and-filler&paras=5&format=text",
+    "https://baconipsum.com/api/?type=all-meat&paras=3&start-with-lorem=1&format=html",
+    ]
+    let random = Math.floor((Math.random() * baconIpsumUrls.length))
+    let randUrl = baconIpsumUrls[random]
+    return randUrl
+  }
   const BOOK_DESC_REGEX = /.+?\./
   
   const [ownProfile, setOwnProfile] = useState()
@@ -59,8 +71,8 @@ const Users = ({ user }) => {
                 <div><strong>Number of Books on Loan:</strong> {ownProfile.booksOnLoan.length}</div>
               </div>
               <div className="user-button">
-                <Button variant="success" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
-                <Button variant="primary" onClick={() => editBookDetails(`/edit/${id}`)}>Delete Account</Button>
+                <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
+                <Button variant="danger" onClick={() => editBookDetails(`/edit/${id}`)}>Delete Account</Button>
               </div>
             </Card.Body>
           </Card>
@@ -80,10 +92,15 @@ const Users = ({ user }) => {
                 <Card bg="light" style={{ width: '24rem' }} className="book">
                 <Card.Title><strong>{book.title}</strong></Card.Title>
                 <div className="book-details">
-                          <div><strong>Author:</strong> {book.author}</div>
-                          <div><strong>Genre:</strong> {book.genre}</div>
-                          <div><strong>Description:</strong> {book.description.match(BOOK_DESC_REGEX)}</div>  
-                        </div>
+                  <div><strong>Author:</strong> {book.author}</div>
+                  <div><strong>Genre:</strong> {book.genre}</div>
+                  <div><strong>Description:</strong> {book.description.match(BOOK_DESC_REGEX)}</div>  
+                </div>
+                <div className="book-button">
+                  <Link to= {{ pathname: randBookReadPage() }} target="_blank">
+                    <Button variant="success">Read</Button>
+                  </Link>
+                </div>
                 </Card>
               )}
             </section>

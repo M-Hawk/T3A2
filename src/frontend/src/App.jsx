@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { useState, useEffect } from "react"
 import NavBar from "./components/NavBar"
 import Header from "./components/Header"
@@ -18,11 +18,7 @@ import axios from "./apiConnect/axios"
 const App = () => {
 
   const [user, setUser] = useState(null)
-  // const [loggedIn, loggedInUser] = useState(null)
   const [token, setToken] = useState(null)
-  const [isAdmin, setAdmin] = useState(false)
-  
-  // const navigateTo = useNavigate()
 
   // Checks whether a user is logged in when a page is reloaded via the local storage
   useEffect(() => {
@@ -34,16 +30,13 @@ const App = () => {
           headers: { "Authorization": `Bearer ${token}` },
         })
         setUser(response.data)
-        // navigateTo("/")
-        // const refresh = () => window.location.reload(true)
-        // refresh()
-        // console.log(response.data)
       }
     }
     checkStorageToken()
   }, [])
 
-  // YET TO IMPLEMENT SCAFFOLD IS HERE
+  // YET TO IMPLEMENT Scaffold code for loggin users out when JWT token expires
+
   // const AuthVerify = (user) => {
   //   let location = useLocation()  
   // // Checks whether the Jwt token is expired and logs the user out
@@ -85,8 +78,3 @@ const App = () => {
 }
 
 export default App
-
-{/* <Route path="/books/add/details" element={<AddBookDetails />} />
-<Route path="/books/add/copy/:details" element={<AddBookCopy />} />
-
-directory id action  */}

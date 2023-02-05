@@ -14,7 +14,7 @@ const UpdateBookDetails = ({ book }) => {
   const errRef = useRef()
   const navigateTo = useNavigate()
 
-  const [title, setTitle] = useState(`${book.title}`) //Perhaps needs a string `
+  const [title, setTitle] = useState(`${book.title}`)
   const [validTitle, setValidTitle] = useState(false)
   const [titleFocus, setTitleFocus] = useState(false)
 

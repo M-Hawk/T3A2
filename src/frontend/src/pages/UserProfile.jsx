@@ -1,7 +1,7 @@
 import {FaIdBadge, FaBook } from "react-icons/fa"
 import { Button, Card } from "react-bootstrap"
 import { useState, useEffect } from "react"
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import axios from "../apiConnect/axios"
 import avatarImage from '../images/femaleAvatar.png'
 
@@ -23,6 +23,8 @@ const Users = ({ user }) => {
   const BOOK_DESC_REGEX = /.+?\./
   
   const [ownProfile, setOwnProfile] = useState()
+  const [errMsg, setErrMsg] = useState("") 
+
 
   const navigateTo = useNavigate()
   // console.log(user)
@@ -42,9 +44,32 @@ const Users = ({ user }) => {
     fetchOwnProfile()
   }, [])
 
-  // const userBooksLoan = async () => {
-  //   const loansLength = await user.booksOnLoan.length
-  // }
+
+  // Scaffold code for deleting user account currently a work in progress!
+
+  // const handleRemoveAccount = async () => {
+  //   try {
+  //     const token = localStorage.getItem("token")
+  //     console.log(token)
+  //     const response = await axios.delete("api/users/profile/me", user,
+  //       { headers: { "Authorization": `Bearer ${token}` },}
+  //       )
+  //     console.log(response)
+  //     navigateTo("/logout")
+  //     }
+  //   catch (e) {
+  //     if (e.response) {
+  //       console.log(e.response)
+  //     }
+  //     if (!e?.response) {
+  //       setErrMsg("No server response")
+  //     } 
+  //     else {
+  //       setErrMsg("Delete Book Failed")
+  //     }
+  //   }
+  // }  
+
 
   return (
     <>
@@ -67,10 +92,6 @@ const Users = ({ user }) => {
                 <div><strong>Email:</strong> {ownProfile.email}</div>
                 <div><strong>Date Joined:</strong> {ownProfile.createdAt.slice(0,10)}</div>
                 <div><strong>Number of Books on Loan:</strong> {ownProfile.booksOnLoan.length}</div>
-              </div>
-              <div className="user-button">
-                <Button variant="warning" onClick={() => editBookDetails(`/edit/${id}`)}>Update User Information</Button>
-                <Button variant="danger" onClick={() => editBookDetails(`/edit/${id}`)}>Delete Account</Button>
               </div>
             </Card.Body>
           </Card>

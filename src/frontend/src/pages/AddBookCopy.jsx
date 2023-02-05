@@ -28,9 +28,6 @@ const AddBookCopy = () => {
           headers: {"Content-Type" : "application/json"}
         }
       )
-      // Delete these console logs after
-      // console.log(response.data)
-      // console.log(JSON.stringify(response))
       setSuccess(true)
     } 
     catch (err) {

@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect} from "react"
-// import { AuthContext } from "../context/AuthProvider"
 import axios from "../apiConnect/axios"
 import { FaSignInAlt } from "react-icons/fa"
 import { Link, useNavigate } from "react-router-dom"

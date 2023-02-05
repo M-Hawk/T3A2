@@ -2,10 +2,10 @@ import { useRef, useState, useEffect } from "react"
 import { Button, Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import axios from "../apiConnect/axios"
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import UpdateBookDetails from "./UpdateBookDetails"
 
-const BookInfo = ({ user, setUser }) => {
+const BookInfo = ({ user }) => {
 
   // console.log(user._id)
   const [book, setBook] = useState([])
@@ -112,8 +112,12 @@ const BookInfo = ({ user, setUser }) => {
               { user ? (
               <div className="book-button">
                 <Button variant="success" onClick={()=> borrowBook()}>Borrow</Button>
-                <Button variant="warning" onClick={() => setShowEdit(true)}>Edit</Button>
-                <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>
+                {user.isAdmin ? (
+                <>
+                  <Button variant="warning" onClick={() => setShowEdit(true)}>Edit</Button>
+                  <Button variant="danger" onClick={() => handleRemoveBook(id)}>Delete</Button>
+                </>
+                ) : ("")}
               </div> ) : ("")}
             </Card.Body>
           </Card>

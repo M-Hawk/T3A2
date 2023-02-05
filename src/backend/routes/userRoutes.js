@@ -26,7 +26,7 @@ router.post("/login", loginUser)
 router.get("/auth", protect, getAuthMe)
 
 //Returns a user's profile based on the id of their JWT token
-router.get("/profile", protect, getProfile)
+router.get("/profile/me", protect, getProfile)
 
 //Get all users
 router.get("/", protect, admin, getUsers)
@@ -39,9 +39,9 @@ router.get("/:id", protect, getOneUser)
 router.put("/profile", protect, updateUserProfile)
 
 // Delete routes
+router.delete("/profile/me", protect, deleteProfile)
 
 router.delete("/:id", protect, admin, deleteUser)
 
-router.delete("/profile", protect, deleteProfile)
 
 module.exports = router

@@ -9,19 +9,25 @@
 
 [Github Repository Link](https://github.com/M-Hawk/T3A2-Wormreads)
 
-[Backend Manual Testing Records](docs/BackendTesting.pdf)
+[Manual Testing Backend Development and Production](docs/ManualTestingBackend.pdf)
+
+[Manual Testing Front Development and Production](docs/FrontEndManualTesting.pdf)
+
+[Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
 
 ## Table of Contents
 
-- [Purpose](#purpose)
+- [Purpose](#Purpose)
 - [Functionality](#Functionality)
 - [Target Audience](#Target-Audience)
 - [Tech Stack](#Tech-Stack)
+- [Testing](#Testing)
+- [Project Management Methodology and Task Delegation](#Project-Management-Methodology)
 - [Dataflow Diagram](#Dataflow-Diagram)
 - [Application Architecture Diagram](#Application-Architecture-Diagram)
 - [User Stories](#User-Stories)
 - [Wireframes](#Wireframes)
-- [Project Management](#Project-Management)
+
 
 ## <a name='Purpose'></a>Purpose
 
@@ -171,12 +177,84 @@ Vite (an alternative to create-react-app) was used to scaffold the React project
 
 ## <a name='Testing'></a>Testing
 
-### Backend Development API Testing in PostMan
-Manual testing was run using Postman to test to endpoints of the API. A comprehensive table of the results was compiled and include here:
+### Backend Development and Deployment API Testing in PostMan
 
-[BackEnd Manual Testing Findings](/docs/BackendTesting.pdf)
+Manual testing of the backend was run using Postman to test to the endpoints of the API. This was done during development and again after production/deployment. A comprehensive table of the results was compiled and include here:
+
+[Manual Testing Backend Development and Production](docs/ManualTestingBackend.pdf)
+
+### Front End Development and Deployment 
+
+Manual testing of the front end application was run in Chrome, Firefox and Edge during development then again after deployment and production. A comprehensive table of the results was compiled and include here:
+[Manual Testing Front Development and Production](docs/FrontEndManualTesting.pdf)
 
 
+## <a name='Project-Management-Methodology'></a>Project Management Methodology and Task Delegation
+
+Trello was used to plan and track tasks for this project. This allowed work streams to be defined in lists, with user stories and Kanban methodology being implemented. The following lists were created:
+
+- Grading Tracker: This list tracks the grade requirements for each expected assignment outcome.
+- Backlog: A prioritised list of unplanned tasks that we intended to spend time on but haven't started yet. This is the staging area where tasks will get fleshed out. They are not in the current implementation plan.
+- To-do: A prioritised list of planned work that is ready to be completed.
+- Doing: A task currently being worked on. This allows the entire team to immediately see who is working on what and to ensure we don’t have too many ongoing tasks at the one time.
+- Ongoing: A task that has been worked on, however is awaiting other tasks to be completed or requires refinement, revision or review prior to being marked as completed.
+- Completed: All completed tasks
+  
+Tasks were delegated evenly though out this project between both team members. Each day we began a stand-up meeting with and real time video conference over Microsoft Meet. We begin by each briefly explaining what work we had completed since we last met and pulling each other’s changes from GitHub so that each day we began from the same place. We then discussed any blockers or issues we were facing to see if the other person had a possible solution and discussed what we had learned. We then decided which tasks we thought were the most important to complete in the next 24 hours and assigned them to the most appropriate team member based on their skill set.  We moved these to the Doing section of the Trello board and labelled them according to which team member was responsible for them.  
+
+We remained on an extended video conference each day so that we could easily communicate with each other. This allowed us to:
+-work together on critical sections of the code. We did this extensively in the beginning when we would watch videos together while one team member would code along and the other would check their work so that we could both learn how the front-end and back-end were set up. This slowed down the development process but allowed us to both gain the skills in all areas of the project and make important decisions together. 
+-work independently but still ask each other advice immediately whenever issues arose
+-make quick decisions together when required
+-warn each other before reseeding the database or deleting/updating entries in a collection 
+
+Throughout this project we each worked on a broad range of tasks so that we were both able to learn all areas of full stack development.  Many specific tasks, however, were assigned to team members to take advantage of their  interests and personal skills.  Matt is analytical, with meticulous attention to detail and an excellent problem solver. He was typically the member responsible for fixing bugs and issues in the code and completing the more challenging coding aspects of the project such as getting the borrow book function to work.  I am good at written communication and organisation, so I tended to complete documentation, testing, error handling on the back-end database and updating the Trello board. I am also creative so often worked on the design aspects of the application such as modifying bootstrap and CSS settings and creating the logo. 
+
+[Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
+
+### Trello Board as at 16th Jan 2023
+
+![Trello Board 16th Jan](/docs/Trello%20Board%2016%20Jan.jpg)
+
+### Trello Board as at 18th Jan 2023
+
+![Trello Board 18th Jan](/docs/Trello%20Board%2018%20Jan.png)
+
+Features were added as tasks to complete in the Trello board. Each feature encompasses relevant user stories that have dictated the contents of the feature. The user stories that relate to each feature have been included in the description of each feature as shown here:
+
+![Trello Board Features](/docs/Trello%20Board%20Features.jpg)
+
+### Trello Board as at 20th Jan 2023
+
+![Trello Board 20 Jan](/docs/Trello%20Board%20Screenshot.png)
+
+### Trello Board as at 21st Jan 2023
+
+![Trello Board 21 Jan](/docs/Trello%20Board%20Screenshot1.png)
+
+### Trello Board as at 31st Jan 2023
+
+![Trello Board 31 Jan](/docs/TrelloBoard31Jan.jpg)
+
+### Trello Board as at 1st Feb 2023
+
+![Trello Board 1 Feb](/docs/TrelloBoard1Feb.jpg)
+
+### Trello Board as at 2nd Feb 2023
+
+![Trello Board 2 Feb](/docs/TrelloBoard2Feb.jpg)
+
+### Trello Board as at 3rd Feb 2023
+
+![Trello Board 3 Feb](/docs/TrelloBoard3Feb.jpg)
+
+### Trello Board as at 4th Feb 2023
+
+![Trello Board 3 Feb](/docs/TrelloBoard4Feb.jpg)
+
+### Trello Board as at 5th Feb 2023 (Morning of Due Date)
+
+![Trello Board 3 Feb](/docs/TrelloBoard5FebAM.jpg)
 
 ## <a name='Dataflow-Diagram'></a>Dataflow Diagram
 
@@ -255,38 +333,7 @@ Build and operate an online electronic book library for users to access books in
 
 ![View Borrowings Page](/docs/View%20Borrowings%20Page%20Wireframe.png)
 
-## <a name='Project-Management'></a>Project Management
 
-[Trello Board Link](https://trello.com/b/9dVZ6hYp/t3a2-full-stack-app)
 
-Trello was used to plan and track tasks for this project. This allowed work streams to be defined in lists, with user stories and Kanban methodology being implemented. The following lists were created:
-
-Grading Tracker: This list tracks the grade requirements for each expected assignment outcome.
-
-- Backlog: A prioritised list of unplanned tasks that we intended to spend time on but haven't started yet. This is the staging area where tasks will get fleshed out. They are not in the current implementation plan.
-- To-do: A prioritised list of planned work that is ready to be completed.
-- Doing: A task currently being worked on. This allows the entire team to immediately see who is working on what and to ensure we don’t have too many ongoing tasks at the one time.
-- Ongoing: A task that has been worked on, however is awaiting other tasks to be completed or requires refinement, revision or review prior to being marked as completed.
-- Completed: All completed tasks
-
-### Trello Board as at 16th Jan 2023
-
-![Trello Board 16th Jan](/docs/Trello%20Board%2016%20Jan.jpg)
-
-### Trello Board as at 18th Jan 2023
-
-![Trello Board 18th Jan](/docs/Trello%20Board%2018%20Jan.png)
-
-Features were added as tasks to complete in the Trello board. Each feature encompasses relevant user stories that have dictated the contents of the feature. The user stories that relate to each feature have been included in the description of each feature as shown here:
-
-![Trello Board Feature](/docs/Trello%20Board%20Features.jpg)
-
-### Trello Board as at 20th Jan 2023
-
-![Trello Board Screenshot](/docs/Trello%20Board%20Screenshot.png)
-
-### Trello Board as at 21st Jan 2023
-
-![Trello Board Screenshot1](/docs/Trello%20Board%20Screenshot1.png)
 
 [Return to Top](#Return)

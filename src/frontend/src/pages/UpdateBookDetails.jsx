@@ -14,7 +14,7 @@ const UpdateBookDetails = ({ book }) => {
   const errRef = useRef()
   const navigateTo = useNavigate()
 
-  const [title, setTitle] = useState(`sdsffdfds`) //Perhaps needs a string `
+  const [title, setTitle] = useState(`${book.title}`) //Perhaps needs a string `
   const [validTitle, setValidTitle] = useState(false)
   const [titleFocus, setTitleFocus] = useState(false)
 
@@ -85,6 +85,7 @@ const UpdateBookDetails = ({ book }) => {
  
   return (
     <>
+      <hr className="hr hr-blurry" />
       <section>
         <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       </section>
@@ -201,7 +202,7 @@ const UpdateBookDetails = ({ book }) => {
               onBlur={() => setDescriptionFocus(false)}
             />
           </div>
-          <button className="btn btn-block">Add Book Details</button>
+          <button className="btn btn-block">Update Book Details</button>
         </form>
       </section>
     </> 

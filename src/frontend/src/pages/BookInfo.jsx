@@ -77,7 +77,7 @@ const BookInfo = ({ user, setUser }) => {
         )
 
       navigateTo("/books")
-      } 
+      }
     catch (e) {
       if (e.response) {
         console.log(e.response)

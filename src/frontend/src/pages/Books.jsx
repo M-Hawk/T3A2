@@ -6,7 +6,7 @@ import axios from "../apiConnect/axios"
 const BOOK_DESC_REGEX = /.+?\./
 const GET_BOOKS_URL = "api/bookdetails"
 
-const Books = () => {
+const Books = ({ user }) => {
 
   const [books, setBooks] = useState([])
 
@@ -24,11 +24,20 @@ const Books = () => {
     fetchBooks()
   }, [])
 
+
+
+  console.log(user)
   return (
     <>
-      <span>
-        <Link className="btn btn-small" to="/books/add">Add a New Book</Link>
-      </span>
+        {user ? (
+          <div>
+          {user.isAdmin ? (
+            <span>
+              <Link className="btn btn-small" to="/books/add">Add a New Book</Link>
+            </span>
+              ) : ("")}
+          </div>
+        ) : ("")}
       {books.length ? (
         <section className="book-list">
           {books.map((book) =>
@@ -39,7 +48,7 @@ const Books = () => {
                 <div className="book-details">
                   <div><strong>Author:</strong> {book.author}</div>
                   <div><strong>Genre:</strong> {book.genre}</div>
-                  <div><strong>Description:</strong> {book.description.match(BOOK_DESC_REGEX)}</div>  
+                  <div><strong>Description:</strong> {book.description.match(BOOK_DESC_REGEX)}</div>
                 </div>
                 <div className="book-button">
                   <Link to= {`/books/${book._id}`}>

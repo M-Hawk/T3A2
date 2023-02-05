@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import { useParams, useNavigate, Link } from "react-router-dom"
 import axios from "../apiConnect/axios"
 import avatarImage from '../images/femaleAvatar.png'
-import checkStorageToken from "../App.jsx"
 
 // Takes in user prop from App, user contains information stored in state of the logged in users details
 const Users = ({ user }) => {

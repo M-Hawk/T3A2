@@ -29,10 +29,10 @@ router.get("/auth", protect, getAuthMe)
 router.get("/profile", protect, getProfile)
 
 //Get all users
-router.get("/", protect, getUsers)
+router.get("/", protect, admin, getUsers)
 
 //Get one user based on their id
-router.get("/:id", protect, admin, getOneUser)
+router.get("/:id", protect, getOneUser)
 
 // Update route
 
